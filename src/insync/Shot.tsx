@@ -96,15 +96,15 @@ export const Shot: React.FC<{shot: ShotT; clip?: ClipInput; dim?: number}> = ({s
     <>
       {[0, 3, 6].map((at) => (
         <Sequence key={at} from={at} durationInFrames={3} layout="none">
-          <Media clip={clip} startSec={startSec} index={shot.clip} offsetFrames={0} />
+          <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={0} />
         </Sequence>
       ))}
       <Sequence from={9} layout="none">
-        <Media clip={clip} startSec={startSec} index={shot.clip} offsetFrames={3} />
+        <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={3} />
       </Sequence>
     </>
   ) : (
-    <Media clip={clip} startSec={startSec} index={shot.clip} offsetFrames={0} />
+    <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={0} />
   );
 
   return (
