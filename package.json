@@ -1,0 +1,37 @@
+{
+  "name": "bettergitjoe-studio",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts",
+    "test": "remotion render src/index.ts HelloStudio out/hello.mp4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluebydesignz-gif/bettergitjoe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bluebydesignz-gif/bettergitjoe/issues"
+  },
+  "homepage": "https://github.com/bluebydesignz-gif/bettergitjoe#readme",
+  "dependencies": {
+    "@react-three/fiber": "^9.8.2",
+    "@remotion/cli": "^4.0.540",
+    "@remotion/three": "^4.0.540",
+    "gsap": "^3.15.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.540",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/three": "^0.187.0",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
