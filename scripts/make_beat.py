@@ -9,7 +9,7 @@ Arrangement (in beats) matches src/insync/timeline.ts:
   28-30 snare roll
   30    impact, then outro
 
-Usage: python3 scripts/make_beat.py public/music/beat.wav
+Usage: python3 scripts/make_beat.py public/music/beat.wav [total_beats]
 """
 import sys
 import wave
@@ -19,7 +19,7 @@ import numpy as np
 SR = 48000
 BPM = 124
 BEAT = 60 / BPM
-TOTAL_BEATS = 36
+TOTAL_BEATS = int(sys.argv[2]) if len(sys.argv) > 2 else 36
 LEN = int(SR * (TOTAL_BEATS * BEAT + 1.5))
 rng = np.random.default_rng(7)
 out = np.zeros((LEN, 2))
@@ -149,9 +149,15 @@ for b in np.arange(28, 30, 0.125):
     add(clap(), b, 0.15 + 0.25 * (b - 28) / 2)
 add(riser(2), 28, 0.7)
 add(impact(), 30, 1.0)
-add(drone(6, 55), 30, 0.5)
-for b in (30, 32, 34):
+add(drone(TOTAL_BEATS - 30, 55), 30, 0.5)
+for b in range(30, TOTAL_BEATS, 2):
     add(kick(), b, 0.6)
+if TOTAL_BEATS > 36:
+    # Longer outro: half-time hats, then a final hit under the end card.
+    for b in range(30, TOTAL_BEATS - 4):
+        add(hat(open_=True), b + 0.5, 0.6, pan=0.2)
+    add(riser(2), TOTAL_BEATS - 6, 0.6)
+    add(impact(), TOTAL_BEATS - 4, 0.9)
 
 # Master: soft clip and normalize
 out = np.tanh(out * 1.1)

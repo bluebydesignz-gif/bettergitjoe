@@ -103,13 +103,15 @@ export const MidTitle: React.FC = () => {
   );
 };
 
-export const EndCard: React.FC = () => {
+export const EndCard: React.FC<{duration: number}> = ({duration}) => {
   const f = useCurrentFrame();
   const letters = 'INSYNC'.split('');
   const sub = interpolate(f, [18, 30], [0, 1], clamp);
-  const out = interpolate(f, [80, 95], [1, 0], clamp);
+  const out = interpolate(f, [duration - 15, duration], [1, 0], clamp);
+  const scrim = interpolate(f, [0, 8], [0, 0.45], clamp);
   return (
     <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', flexDirection: 'column', opacity: out}}>
+      <AbsoluteFill style={{background: `rgba(0,0,0,${scrim})`}} />
       <div style={{display: 'flex', fontFamily: 'Anton', fontSize: 250, lineHeight: 1, color: ORANGE}}>
         {letters.map((l, i) => {
           const on = f > 3 + i * 2;

@@ -1,7 +1,7 @@
 import {Composition} from 'remotion';
 import {HelloStudio} from './HelloStudio';
 import {InsyncHalloween, type InsyncProps} from './insync/InsyncHalloween';
-import {DURATION, FPS} from './insync/timeline';
+import {DURATION, FPS, planDuration} from './insync/timeline';
 
 export const Root: React.FC = () => (
   <>
@@ -20,8 +20,9 @@ export const Root: React.FC = () => (
       fps={FPS}
       width={1080}
       height={1920}
-      // Empty clips = placeholder preview. Pass real clips with --props.
-      defaultProps={{clips: [], music: 'music/beat.wav'} satisfies InsyncProps}
+      // Empty clips = placeholder preview. Pass real clips or a plan with --props.
+      defaultProps={{clips: [], music: 'music/beat.wav'} as InsyncProps}
+      calculateMetadata={({props}) => ({durationInFrames: props.plan ? planDuration(props.plan) : DURATION})}
     />
   </>
 );

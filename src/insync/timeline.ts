@@ -76,3 +76,73 @@ export const SECTIONS = {
   midTitle: [b2f(16), b2f(18)],
   endCard: [b2f(30), DURATION],
 } as const;
+
+// Explicit edit: one entry per shot, each with its own length in beats.
+// Used when an edit needs held shots, slow motion or a custom ending.
+export type PlanShot = {
+  src: string; // path inside public/
+  start: number; // seconds into the clip
+  beats: number; // shot length in beats
+  fx?: Fx;
+  bw?: boolean;
+  stutter?: boolean;
+  section?: 'intro' | 'mid';
+};
+
+export type Plan = {
+  shots: PlanShot[];
+  endCardBeats: number; // end card overlays the last N beats
+};
+
+export type Timeline = {
+  shots: Shot[];
+  clips: ClipInput[];
+  duration: number;
+  intro: [number, number];
+  midTitle: [number, number];
+  endCard: [number, number];
+};
+
+const TAIL = 15;
+
+export const planBeats = (plan: Plan) => plan.shots.reduce((sum, s) => sum + s.beats, 0);
+export const planDuration = (plan: Plan) => b2f(planBeats(plan)) + TAIL;
+
+export const buildTimeline = (clips: ClipInput[], plan?: Plan): Timeline => {
+  if (!plan) {
+    return {
+      shots: buildShots(clips.length),
+      clips,
+      duration: DURATION,
+      intro: [...SECTIONS.intro],
+      midTitle: [...SECTIONS.midTitle],
+      endCard: [...SECTIONS.endCard],
+    };
+  }
+  const shots: Shot[] = [];
+  const planClips: ClipInput[] = [];
+  let intro: [number, number] = [0, 0];
+  let midTitle: [number, number] = [0, 0];
+  let beat = 0;
+  plan.shots.forEach((s, i) => {
+    const from = b2f(beat);
+    const last = i === plan.shots.length - 1;
+    const duration = b2f(beat + s.beats) - from + (last ? TAIL : 0);
+    planClips.push({src: s.src, moments: [s.start]});
+    shots.push({
+      index: i,
+      from,
+      duration,
+      clip: i,
+      moment: 0,
+      fx: s.fx ?? FX_CYCLE[i % 4],
+      bw: s.bw ?? false,
+      stutter: s.stutter ?? false,
+    });
+    if (s.section === 'intro') intro = [from, from + duration];
+    if (s.section === 'mid') midTitle = [from, from + duration];
+    beat += s.beats;
+  });
+  const duration = b2f(beat) + TAIL;
+  return {shots, clips: planClips, duration, intro, midTitle, endCard: [b2f(beat - plan.endCardBeats), duration]};
+};

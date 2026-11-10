@@ -24,6 +24,12 @@ inserts, orange/purple grade, grain. Do not say it was a "first" event.
    `moments` in `out/clips.json` with the best start times.
 3. `npx remotion render src/index.ts InsyncHalloween out/insync.mp4 --props=out/clips.json`
 
+For held shots, slow motion or a custom ending, pass a `plan` instead of
+`clips` (see `edits/insync-halloween-2026.json`): one entry per shot with its
+length in beats. Time effects (slow-mo, speed ramps, boomerangs) are baked into
+clips with ffmpeg first, e.g. `public/clips/finale.mp4`. Regenerate the beat to
+the plan length: `python3 scripts/make_beat.py public/music/beat.wav 42`.
+
 Music: `public/music/beat.wav` is a synthesized placeholder
 (`scripts/make_beat.py`). Swap in a licensed 124 BPM track for posting,
 or retime `BPM` in `src/insync/timeline.ts`.
