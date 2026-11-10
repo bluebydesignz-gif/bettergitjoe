@@ -1,0 +1,203 @@
+{
+ "music": "music/beat.wav",
+ "clips": [
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    86.4
+   ]
+  },
+  {
+   "src": "clips/clip03.mp4",
+   "moments": [
+    30.0
+   ]
+  },
+  {
+   "src": "clips/clip10.mp4",
+   "moments": [
+    0.0
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    11.5
+   ]
+  },
+  {
+   "src": "clips/clip01.mp4",
+   "moments": [
+    0.3
+   ]
+  },
+  {
+   "src": "clips/clip07.mp4",
+   "moments": [
+    38.9
+   ]
+  },
+  {
+   "src": "clips/clip03.mp4",
+   "moments": [
+    20.0
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    34.5
+   ]
+  },
+  {
+   "src": "clips/clip02.mp4",
+   "moments": [
+    6.0
+   ]
+  },
+  {
+   "src": "clips/clip05.mp4",
+   "moments": [
+    0.5
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    46.0
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    17.3
+   ]
+  },
+  {
+   "src": "clips/clip07.mp4",
+   "moments": [
+    32.4
+   ]
+  },
+  {
+   "src": "clips/clip10.mp4",
+   "moments": [
+    17.1
+   ]
+  },
+  {
+   "src": "clips/clip03.mp4",
+   "moments": [
+    36.7
+   ]
+  },
+  {
+   "src": "clips/clip01.mp4",
+   "moments": [
+    2.0
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    69.1
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    11.5
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    57.6
+   ]
+  },
+  {
+   "src": "clips/clip07.mp4",
+   "moments": [
+    48.6
+   ]
+  },
+  {
+   "src": "clips/clip02.mp4",
+   "moments": [
+    15.8
+   ]
+  },
+  {
+   "src": "clips/clip10.mp4",
+   "moments": [
+    5.7
+   ]
+  },
+  {
+   "src": "clips/clip03.mp4",
+   "moments": [
+    13.3
+   ]
+  },
+  {
+   "src": "clips/clip09.mp4",
+   "moments": [
+    40.7
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    80.6
+   ]
+  },
+  {
+   "src": "clips/clip06.mp4",
+   "moments": [
+    9.6
+   ]
+  },
+  {
+   "src": "clips/clip07.mp4",
+   "moments": [
+    35.7
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    23.0
+   ]
+  },
+  {
+   "src": "clips/clip07.mp4",
+   "moments": [
+    45.4
+   ]
+  },
+  {
+   "src": "clips/clip10.mp4",
+   "moments": [
+    22.8
+   ]
+  },
+  {
+   "src": "clips/clip01.mp4",
+   "moments": [
+    1.0
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    5.7
+   ]
+  },
+  {
+   "src": "clips/clip12.mp4",
+   "moments": [
+    120.9
+   ]
+  }
+ ]
+}

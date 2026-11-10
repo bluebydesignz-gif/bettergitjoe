@@ -80,7 +80,7 @@ export const Shot: React.FC<{shot: ShotT; clip?: ClipInput; dim?: number}> = ({s
   if (shot.fx === 'whip') tx = interpolate(f, [0, 6], [70, 0], {...clamp, easing: Easing.out(Easing.cubic)});
   if (f < 3) tx += (random(`${id}x`) - 0.5) * 4; // impact shake
 
-  const glitching = shot.fx === 'glitch' && f < 5;
+  const glitching = shot.fx === 'glitch' && f < Math.min(5, Math.floor(shot.duration / 2));
   const whipping = shot.fx === 'whip' && f < 5;
   const filters = [
     shot.bw ? 'grayscale(1) contrast(1.45) brightness(0.95)' : 'contrast(1.15) saturate(1.2) brightness(0.95)',
