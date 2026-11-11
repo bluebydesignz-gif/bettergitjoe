@@ -1,0 +1,201 @@
+{
+ "clips": [],
+ "music": "music/beat.wav",
+ "plan": {
+  "shots": [
+   {
+    "src": "clips/clip12.mp4",
+    "start": 86.4,
+    "beats": 4,
+    "fx": "flash",
+    "section": "intro"
+   },
+   {
+    "src": "clips/clip03.mp4",
+    "start": 30.0,
+    "beats": 1,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip10.mp4",
+    "start": 0.0,
+    "beats": 1,
+    "fx": "whip"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 23.0,
+    "beats": 1,
+    "fx": "zoom"
+   },
+   {
+    "src": "clips/freddy_slow.mp4",
+    "start": 0.0,
+    "beats": 2,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip07.mp4",
+    "start": 38.9,
+    "beats": 1,
+    "fx": "whip"
+   },
+   {
+    "src": "clips/clip03.mp4",
+    "start": 20.0,
+    "beats": 1,
+    "fx": "zoom",
+    "stutter": true
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 34.5,
+    "beats": 1,
+    "fx": "glitch"
+   },
+   {
+    "src": "clips/clip05.mp4",
+    "start": 0.5,
+    "beats": 0.5,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 46.0,
+    "beats": 0.5,
+    "fx": "glitch",
+    "bw": true
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 17.3,
+    "beats": 0.5,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip07.mp4",
+    "start": 32.4,
+    "beats": 0.5,
+    "fx": "glitch",
+    "bw": true
+   },
+   {
+    "src": "clips/clip10.mp4",
+    "start": 17.1,
+    "beats": 0.5,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip03.mp4",
+    "start": 36.7,
+    "beats": 0.5,
+    "fx": "glitch",
+    "bw": true
+   },
+   {
+    "src": "clips/clip01.mp4",
+    "start": 2.0,
+    "beats": 0.5,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 69.1,
+    "beats": 0.5,
+    "fx": "glitch",
+    "bw": true
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 11.5,
+    "beats": 2,
+    "fx": "flash",
+    "bw": true,
+    "section": "mid"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 56.8,
+    "beats": 1,
+    "fx": "whip"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 59.6,
+    "beats": 3,
+    "fx": "zoom"
+   },
+   {
+    "src": "clips/clip07.mp4",
+    "start": 48.6,
+    "beats": 1,
+    "fx": "whip"
+   },
+   {
+    "src": "clips/clip10.mp4",
+    "start": 5.7,
+    "beats": 1,
+    "fx": "zoom"
+   },
+   {
+    "src": "clips/clip03.mp4",
+    "start": 13.3,
+    "beats": 1,
+    "fx": "glitch",
+    "stutter": true
+   },
+   {
+    "src": "clips/clip09.mp4",
+    "start": 40.7,
+    "beats": 1,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 80.6,
+    "beats": 1,
+    "fx": "whip",
+    "bw": true
+   },
+   {
+    "src": "clips/clip07.mp4",
+    "start": 35.7,
+    "beats": 1,
+    "fx": "zoom"
+   },
+   {
+    "src": "clips/clip07.mp4",
+    "start": 45.4,
+    "beats": 0.5,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip10.mp4",
+    "start": 22.8,
+    "beats": 0.5,
+    "fx": "glitch",
+    "bw": true
+   },
+   {
+    "src": "clips/clip01.mp4",
+    "start": 1.0,
+    "beats": 0.5,
+    "fx": "flash"
+   },
+   {
+    "src": "clips/clip12.mp4",
+    "start": 5.7,
+    "beats": 0.5,
+    "fx": "glitch",
+    "bw": true
+   },
+   {
+    "src": "clips/finale.mp4",
+    "start": 0.0,
+    "beats": 12,
+    "fx": "flash"
+   }
+  ],
+  "endCardBeats": 4
+ }
+}
