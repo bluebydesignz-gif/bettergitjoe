@@ -48,5 +48,10 @@ Same plan format as INSYNC, plus per-shot real audio and captions
 2. `scripts/contact_sheet.sh public/clips/clip01.mp4 2` for timestamped thumbnails.
 3. `python3 -I scripts/audio_scan.py public/clips/*.mp4` lists speech and
    likely laughs by time (no speech-to-text needed).
-4. Preview: `npx remotion render src/index.ts BarberReel out/barber-preview.mp4 --props=edits/barber-<name>.json --scale=0.5`
+   For exact words, use faster-whisper from `.venv`. Passing it a file path fails
+   (PyAV `metadata_errors` error), so decode with ffmpeg to 16 kHz mono and pass the array.
+4. Phone speech is quiet next to the music: loudness-normalize the clips that play
+   real audio (`ffmpeg -i clipNN.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5 ...`).
+5. Preview: `npx remotion render src/index.ts BarberReel out/barber-preview.mp4 --props=edits/barber-<name>.json --scale=0.5`
+   Real edit: `edits/barber-fight-week.json` (footage from ~/Desktop/inspo, Nov 2026).
 Don't name the boxer or coach on screen without the names and spelling from the user.

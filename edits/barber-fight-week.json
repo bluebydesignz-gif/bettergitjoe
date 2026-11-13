@@ -1,0 +1,41 @@
+{
+  "music": "music/beat.wav",
+  "title": "FIGHT WEEK",
+  "subtitle": "IN THE CHAIR",
+  "endTitle": "BOOK NOW",
+  "endSubtitle": "LINK IN BIO",
+  "look": {
+    "accent": "#3fe6dc",
+    "top": "rgba(0,70,80,0.55)",
+    "bottom": "rgba(0,30,40,0.55)",
+    "grain": 0.12
+  },
+  "plan": {
+    "shots": [
+      {"src": "clips/clip05.mp4", "start": 0.5, "beats": 4, "fx": "flash", "section": "intro", "comment": "press conference wide under the title"},
+      {"src": "clips/clip04.mp4", "start": 2.6, "beats": 1, "fx": "whip", "comment": "camera crew"},
+      {"src": "clips/clip05.mp4", "start": 6.0, "beats": 1, "fx": "zoom", "comment": "phones up"},
+      {"src": "photos/photo02.jpg", "start": 0, "beats": 1, "fx": "flash", "comment": "ice sculpture"},
+      {"src": "clips/clip01.mp4", "start": 0.5, "beats": 2, "fx": "whip", "comment": "fresh fade"},
+      {"src": "clips/clip02.mp4", "start": 24, "beats": 0.5, "fx": "flash"},
+      {"src": "clips/clip02.mp4", "start": 90, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "clips/clip02.mp4", "start": 108, "beats": 0.5, "fx": "flash"},
+      {"src": "clips/clip02.mp4", "start": 150, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "clips/clip02.mp4", "start": 5.25, "beats": 15, "fx": "flash", "audio": 1, "comment": "laugh: 'every day you look more like Big G'"},
+      {"src": "clips/clip04.mp4", "start": 4.5, "beats": 1, "fx": "whip"},
+      {"src": "clips/clip01.mp4", "start": 3.0, "beats": 1, "fx": "zoom", "stutter": true},
+      {"src": "clips/clip03.mp4", "start": 2.15, "beats": 15.5, "fx": "flash", "audio": 1, "captions": [
+        {"text": "Shout out to my boy Leonard", "at": 0.4, "end": 2.2},
+        {"text": "he got us right", "at": 2.4, "end": 3.6},
+        {"text": "you guys are gonna come by", "at": 5.3, "end": 6.6},
+        {"text": "let's go!", "at": 6.75, "end": 7.45}
+      ], "comment": "shout-out: real audio, ducked music, captions. clip02/clip03 audio was loudness-normalized after prep (ffmpeg loudnorm I=-14) so speech sits above the ducked music"},
+      {"src": "clips/clip05.mp4", "start": 9.0, "beats": 0.5, "fx": "flash"},
+      {"src": "clips/clip02.mp4", "start": 180, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "clips/clip01.mp4", "start": 4.5, "beats": 0.5, "fx": "flash"},
+      {"src": "clips/clip04.mp4", "start": 6.0, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "photos/photo01.jpg", "start": 0, "beats": 6, "fx": "flash", "comment": "group photo under the end card"}
+    ],
+    "endCardBeats": 5
+  }
+}
