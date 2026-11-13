@@ -1,6 +1,7 @@
 import {
   AbsoluteFill,
   Easing,
+  Img,
   interpolate,
   OffthreadVideo,
   random,
@@ -50,19 +51,27 @@ const Placeholder: React.FC<{index: number; offset: number}> = ({index, offset})
   );
 };
 
-const Media: React.FC<{clip?: ClipInput; startSec: number; index: number; offsetFrames: number}> = ({
+const IMAGE = /\.(jpe?g|png|webp|gif)$/i;
+
+const Media: React.FC<{clip?: ClipInput; startSec: number; index: number; offsetFrames: number; audio?: number}> = ({
   clip,
   startSec,
   index,
   offsetFrames,
+  audio,
 }) => {
   const {fps} = useVideoConfig();
-  if (!clip) return <Placeholder index={index} offset={offsetFrames} />;
+  if (!clip?.src) return <Placeholder index={index} offset={offsetFrames} />;
+  // Photos: shown full-bleed; the shot's push-in gives them movement.
+  if (IMAGE.test(clip.src)) {
+    return <Img src={staticFile(clip.src)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />;
+  }
   return (
     <OffthreadVideo
       src={staticFile(clip.src)}
       startFrom={Math.round(startSec * fps) + offsetFrames}
-      muted
+      muted={!audio}
+      volume={audio ?? 0}
       style={{width: '100%', height: '100%', objectFit: 'cover'}}
     />
   );
@@ -100,11 +109,11 @@ export const Shot: React.FC<{shot: ShotT; clip?: ClipInput; dim?: number}> = ({s
         </Sequence>
       ))}
       <Sequence from={9} layout="none">
-        <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={3} />
+        <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={3} audio={shot.audio} />
       </Sequence>
     </>
   ) : (
-    <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={0} />
+    <Media clip={clip} startSec={startSec} index={clip ? shot.clip : shot.index} offsetFrames={0} audio={shot.audio} />
   );
 
   return (

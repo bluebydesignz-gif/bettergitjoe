@@ -33,3 +33,25 @@ the plan length: `python3 scripts/make_beat.py public/music/beat.wav 42`.
 Music: `public/music/beat.wav` is a synthesized placeholder
 (`scripts/make_beat.py`). Swap in a licensed 124 BPM track for posting,
 or retime `BPM` in `src/insync/timeline.ts`.
+
+## Barber reel (`src/barber/`, composition `BarberReel`)
+
+Same plan format as INSYNC, plus per-shot real audio and captions
+(see `edits/barber-placeholder.json`):
+- `"audio": 1` plays the clip's own sound; music ducks under it automatically.
+- `"captions": [{"text", "at", "end"}]` burns in a caption (seconds from shot start).
+- `src` can be a photo (`photos/photo01.jpg`).
+- Text: `title`, `subtitle`, `endTitle`, `endSubtitle`; colors via `look`.
+
+1. `KEEP_AUDIO=1 scripts/prep_clips.sh <raw folder>` keeps clip sound and
+   converts photos to `public/photos/`.
+2. `scripts/contact_sheet.sh public/clips/clip01.mp4 2` for timestamped thumbnails.
+3. `python3 -I scripts/audio_scan.py public/clips/*.mp4` lists speech and
+   likely laughs by time (no speech-to-text needed).
+   For exact words, use faster-whisper from `.venv`. Passing it a file path fails
+   (PyAV `metadata_errors` error), so decode with ffmpeg to 16 kHz mono and pass the array.
+4. Phone speech is quiet next to the music: loudness-normalize the clips that play
+   real audio (`ffmpeg -i clipNN.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5 ...`).
+5. Preview: `npx remotion render src/index.ts BarberReel out/barber-preview.mp4 --props=edits/barber-<name>.json --scale=0.5`
+   Real edit: `edits/barber-fight-week.json` (footage from ~/Desktop/inspo, Nov 2026).
+Don't name the boxer or coach on screen without the names and spelling from the user.

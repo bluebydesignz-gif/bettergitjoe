@@ -1,0 +1,29 @@
+{
+  "music": "music/beat.wav",
+  "title": "FRESH CUTS",
+  "subtitle": "BEHIND THE CHAIR",
+  "endTitle": "BOOK NOW",
+  "endSubtitle": "LINK IN BIO",
+  "plan": {
+    "shots": [
+      {"src": "", "start": 0, "beats": 4, "fx": "flash", "section": "intro"},
+      {"src": "", "start": 0, "beats": 1, "fx": "whip"},
+      {"src": "", "start": 0, "beats": 1, "fx": "zoom"},
+      {"src": "", "start": 0, "beats": 0.5, "fx": "flash"},
+      {"src": "", "start": 0, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "", "start": 0, "beats": 6, "fx": "flash", "audio": 1, "comment": "laugh moment: real audio, music ducked"},
+      {"src": "", "start": 0, "beats": 1, "fx": "whip"},
+      {"src": "", "start": 0, "beats": 1, "fx": "zoom", "stutter": true},
+      {"src": "", "start": 0, "beats": 8, "fx": "flash", "audio": 1, "captions": [
+        {"text": "Shout out to my barber", "at": 0.3, "end": 1.9},
+        {"text": "he always got me right", "at": 2.0, "end": 3.8}
+      ], "comment": "shout-out: real audio, ducked music, captions"},
+      {"src": "", "start": 0, "beats": 0.5, "fx": "flash"},
+      {"src": "", "start": 0, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "", "start": 0, "beats": 0.5, "fx": "flash"},
+      {"src": "", "start": 0, "beats": 0.5, "fx": "glitch", "bw": true},
+      {"src": "", "start": 0, "beats": 6, "fx": "flash"}
+    ],
+    "endCardBeats": 4
+  }
+}

@@ -27,6 +27,7 @@ export type Shot = {
   fx: Fx;
   bw: boolean;
   stutter: boolean;
+  audio?: number; // play the clip's own sound at this volume (0-1); muted when unset
 };
 
 // Cut points in beats.

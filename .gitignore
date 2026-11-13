@@ -3,3 +3,5 @@ out/
 .env
 public/clips/
 public/music/
+public/photos/
+.venv/
