@@ -4,3 +4,4 @@ out/
 public/clips/
 public/music/
 public/photos/
+.venv/
