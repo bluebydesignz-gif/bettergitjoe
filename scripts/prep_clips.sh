@@ -4,6 +4,8 @@
 # evenly spaced starting "moments" for the InsyncHalloween composition.
 #
 # Usage: scripts/prep_clips.sh /path/to/raw/folder [moments_per_clip]
+#   KEEP_AUDIO=1 keeps each clip's own sound (AAC) for shots that play real audio.
+#   Photos (jpg/png/heic) in the folder become 1080x1920 JPGs in public/photos/.
 # Then:  npx remotion render src/index.ts InsyncHalloween out/insync.mp4 --props=out/clips.json
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -30,7 +32,8 @@ for f in "$SRC_DIR"/*.{mov,mp4,m4v}; do
   fi
 
   echo "[$i] $(basename "$f") (${dur%.*}s, $trc) -> public/clips/$name"
-  ffmpeg -loglevel error -y -i "$f" -vf "$vf,format=yuv420p" -an \
+  if [[ "${KEEP_AUDIO:-0}" == 1 ]]; then audio=(-c:a aac -b:a 192k -ar 48000 -ac 2); else audio=(-an); fi
+  ffmpeg -loglevel error -y -i "$f" -vf "$vf,format=yuv420p" "${audio[@]}" \
     -c:v libx264 -preset veryfast -crf 20 -g 15 "public/clips/$name"
 
   moments=$(python3 -I -c "
@@ -41,6 +44,18 @@ print(','.join(f'{lo + (hi-lo)*k/max(n-1,1):.2f}' for k in range(n)))")
 done
 json+=']}'
 
+p=0
+mkdir -p public/photos
+for f in "$SRC_DIR"/*.{jpg,jpeg,png,heic}; do
+  p=$((p + 1))
+  out=$(printf 'public/photos/photo%02d.jpg' "$p")
+  echo "[photo $p] $(basename "$f") -> $out"
+  ffmpeg -loglevel error -y -i "$f" -frames:v 1 \
+    -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -q:v 2 "$out" \
+    || echo "  could not convert $(basename "$f") (HEIC may need exporting as JPG)"
+done
+
 [[ $i -eq 0 ]] && { echo "No video files found in $SRC_DIR"; exit 1; }
+[[ $p -gt 0 ]] && echo "Prepared $p photos in public/photos/"
 echo "$json" > out/clips.json
 echo "Prepared $i clips. Props written to out/clips.json"
