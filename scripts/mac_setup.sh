@@ -29,7 +29,7 @@ grep -q 'brew shellenv' "$HOME/.zprofile" 2>/dev/null || echo "eval \"\$($BREW s
 
 # 2. Command-line tools
 say "Installing Node, ffmpeg, Python, git, yt-dlp, GitHub CLI"
-brew install node ffmpeg python git yt-dlp gh
+brew install node ffmpeg python@3.12 git yt-dlp gh
 
 # 3. Claude Code
 if ! command -v claude >/dev/null 2>&1; then
@@ -56,9 +56,13 @@ npm ci
 npx remotion browser ensure >/dev/null
 
 say "Setting up Python for speech-to-text and the beat maker"
-python3 -m venv .venv
+# Python 3.12: speech-to-text needs packages that lag behind the newest Python.
+PY312="$(brew --prefix python@3.12)/bin/python3.12"
+if [[ ! -x .venv/bin/python3.12 ]]; then rm -rf .venv; "$PY312" -m venv .venv; fi
 .venv/bin/pip install -q --upgrade pip
-.venv/bin/pip install -q faster-whisper numpy
+.venv/bin/pip install -q numpy
+.venv/bin/pip install -q --only-binary=av faster-whisper \
+  || echo "  (speech-to-text didn't install; everything else still works)"
 grep -q 'VideoStudio/.venv' "$HOME/.zprofile" 2>/dev/null || echo "export PATH=\"$STUDIO/.venv/bin:\$PATH\"" >>"$HOME/.zprofile"
 
 mkdir -p public/music out
