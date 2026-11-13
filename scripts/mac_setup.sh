@@ -8,6 +8,7 @@
 # Installs: Homebrew, Node, ffmpeg, Python, git, yt-dlp, GitHub CLI, Claude Code,
 # then puts the studio in ~/VideoStudio with its tools and a Python env for
 # faster-whisper (speech-to-text, works on the Mac because Hugging Face is reachable).
+# Everything runs inside main() so the whole script is read before anything runs.
 set -euo pipefail
 
 STUDIO="$HOME/VideoStudio"
@@ -16,6 +17,7 @@ BRANCH="claude/barber-reel"
 
 say() { printf '\n\033[1;33m==> %s\033[0m\n' "$*"; }
 
+main() {
 # 1. Homebrew (asks you to press Return, then your Mac password; typing it shows nothing, that is normal)
 if ! command -v brew >/dev/null 2>&1; then
   say "Installing Homebrew: press Return, then type your Mac password when asked"
@@ -74,3 +76,6 @@ To start working with Claude, open a NEW Terminal window and type:
 
 Claude on your Mac can open files on your Desktop (like the inspo folder).
 EOF
+}
+
+main "$@" </dev/null
