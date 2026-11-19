@@ -5,13 +5,14 @@ so the track is royalty-free. Timeline matches src/CertifiedGTA.tsx.
 """
 import numpy as np
 from scipy.signal import butter, sosfilt
-import wave, sys
+import wave, sys, json
 
 SR = 48000
 BPM = 120
 BEAT = 60 / BPM
 BAR = 4 * BEAT
-DUR = 26.0
+SCHED = json.load(open('src/flickerSchedule.json'))
+DUR = SCHED['duration'] / SCHED['fps']
 N = int(SR * DUR)
 rng = np.random.default_rng(7)
 
@@ -93,7 +94,7 @@ DROP = 4.0       # drums enter on the first card
 END_HIT = 22.5   # final hit / end card
 for b in range(int(DUR / BEAT) + 1):
     tb = b * BEAT
-    if tb < DROP - 0.01 or tb >= END_HIT + 2.5:
+    if tb < DROP - 0.01 or tb >= DUR - 0.6:
         continue
     add(K, tb, 0.9)
     if b % 2 == 1:
@@ -129,7 +130,7 @@ for bar in range(int(DUR / BAR) + 1):
 # bass: pulsing 8ths with octave jump
 for i in range(int(DUR / (BEAT / 2))):
     tb = i * BEAT / 2
-    if tb < DROP - 0.01 or tb >= END_HIT:
+    if tb < DROP - 0.01 or tb >= DUR - 0.6:
         continue
     root, _ = chord_at(tb)
     f = note(root - 24 + (12 if i % 2 else 0))
@@ -141,7 +142,7 @@ for i in range(int(DUR / (BEAT / 2))):
 arp_pat = [0, 1, 2, 3, 2, 1, 2, 3]
 for i in range(int(DUR / (BEAT / 4))):
     tb = i * BEAT / 4
-    if tb < DROP - 0.01 or tb >= END_HIT:
+    if tb < DROP - 0.01 or tb >= DUR - 0.6:
         continue
     _, ch = chord_at(tb)
     tones = ch + [ch[0] + 12]
@@ -229,11 +230,30 @@ add(riser(1.4), END_HIT - 1.4, 0.6)
 add(impact(), END_HIT, 0.75)
 add(chime(), END_HIT + 0.4, 0.4)
 
+# reality <-> GTA: reality is the same mix heard muffled, GTA is full range
+fps = SCHED['fps']
+mode = np.zeros(N)
+state, last = 0, 0
+for f in SCHED['toggles'] + [SCHED['duration']]:
+    a, b = int(last / fps * SR), int(f / fps * SR)
+    mode[a:b] = state
+    state ^= 1
+    last = f
+ramp = int(0.004 * SR)
+mode = np.convolve(mode, np.ones(ramp) / ramp, mode='same')
+for ch in (L, R):
+    muffled = lp(ch, 450, 4) * 0.8 + hp(rng.standard_normal(N), 3000) * 0.004
+    ch[:] = muffled * (1 - mode) + ch * mode
+tick_t = t_arr(0.035)
+for f in SCHED['toggles']:
+    tick = hp(rng.standard_normal(len(tick_t)), 1500) * np.exp(-tick_t * 90)
+    add(tick, f / fps, 0.16, rng.uniform(-0.6, 0.6))
+
 # master: gentle sidechain-ish pump, soft clip, fade
 pump = np.ones(N)
 for b in range(int(DUR / BEAT) + 1):
     tb = b * BEAT
-    if DROP - 0.01 <= tb < END_HIT:
+    if DROP - 0.01 <= tb < DUR - 0.6:
         i = int(tb * SR)
         ln = int(0.22 * SR)
         seg = 1 - 0.35 * np.exp(-np.arange(ln) / SR * 18)

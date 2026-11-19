@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
+import sched from './flickerSchedule.json';
 import {
   AbsoluteFill,
   Audio,
@@ -12,7 +13,6 @@ import {
   spring,
   staticFile,
   useCurrentFrame,
-  useVideoConfig,
   Easing,
 } from 'remotion';
 
@@ -24,9 +24,13 @@ const PURPLE = '#7a2bff';
 const SUN = '#ffcc33';
 const NAVY = 'rgba(16, 6, 40, 0.82)';
 
+// brand (Brand Kit v3.1)
+const BRAND_RED = '#E01B22';
+const INK = '#0B0B0C';
+
 // ---------- timeline (frames @30fps) ----------
 export const GTA_FPS = 30;
-export const GTA_DURATION = 780;
+export const GTA_DURATION: number = sched.duration;
 const T = {
   intro: [0, 120],
   card1: [120, 210],
@@ -35,9 +39,25 @@ const T = {
   card4: [390, 480],
   selected: [480, 570],
   mission: [570, 675],
-  end: [675, 780],
+  end: [675, 825],
 } as const;
-const CUTS = [120, 210, 300, 390, 480, 570, 675];
+
+// ---------- reality <-> GTA flicker ----------
+// Mode starts in reality (0); each frame in the schedule flips it.
+const TOGGLES: number[] = sched.toggles;
+const modeAt = (f: number) => {
+  let n = 0;
+  for (const t of TOGGLES) {
+    if (t <= f) n++;
+    else break;
+  }
+  return n % 2;
+};
+const GlobalFrame = createContext(0);
+const useGta = () => modeAt(useContext(GlobalFrame));
+// Renders its children only while the world is in GTA mode.
+const GtaOnly: React.FC<{children: React.ReactNode}> = ({children}) =>
+  useGta() ? <AbsoluteFill>{children}</AbsoluteFill> : null;
 
 // ---------- fonts ----------
 const FONTS: [string, string][] = [
@@ -45,6 +65,9 @@ const FONTS: [string, string][] = [
   ['Russo', 'fonts/RussoOne-Regular.ttf'],
   ['Pixel', 'fonts/PressStart2P-Regular.ttf'],
   ['Brush', 'fonts/KaushanScript-Regular.ttf'],
+  ['Barlow', 'fonts/Barlow-Black.ttf'],
+  ['BarlowXB', 'fonts/Barlow-ExtraBold.ttf'],
+  ['BarlowC', 'fonts/BarlowCondensed-Black.ttf'],
 ];
 const useFonts = () => {
   const [handle] = useState(() => delayRender('fonts'));
@@ -67,42 +90,73 @@ const Shot: React.FC<{src: string; rate?: number; zoom?: [number, number]; dur: 
   dur,
 }) => {
   const f = useCurrentFrame();
+  const gta = useGta();
   const s = interpolate(f, [0, dur], zoom, {extrapolateRight: 'clamp'});
+  // GTA mode: cel-shaded (posterized) neon grade, slightly punched in; reality: untouched phone footage
   return (
     <AbsoluteFill style={{overflow: 'hidden', backgroundColor: '#000'}}>
       <OffthreadVideo
         src={staticFile(src)}
         playbackRate={rate}
         muted
-        style={{width: '100%', height: '100%', objectFit: 'cover', filter: GRADE, transform: `scale(${s})`}}
-      />
-      {/* sunset tint: magenta sky, teal shadows */}
-      <AbsoluteFill
         style={{
-          background: 'linear-gradient(180deg, rgba(255,60,200,0.22) 0%, rgba(255,140,80,0.10) 40%, rgba(0,200,255,0.12) 100%)',
-          mixBlendMode: 'soft-light',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          filter: gta ? `url(#gtaLook) ${GRADE}` : 'none',
+          transform: `scale(${s * (gta ? 1.03 : 1)})`,
         }}
       />
-      <AbsoluteFill
-        style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(20,0,40,0.55) 100%)'}}
-      />
+      {gta ? (
+        <>
+          {/* sunset tint: magenta sky, teal shadows */}
+          <AbsoluteFill
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,60,200,0.28) 0%, rgba(255,140,80,0.12) 40%, rgba(0,200,255,0.16) 100%)',
+              mixBlendMode: 'soft-light',
+            }}
+          />
+          <AbsoluteFill
+            style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(20,0,40,0.55) 100%)'}}
+          />
+          <AbsoluteFill
+            style={{
+              background: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.10) 0px, rgba(0,0,0,0.10) 2px, transparent 2px, transparent 5px)',
+            }}
+          />
+        </>
+      ) : null}
     </AbsoluteFill>
   );
 };
 
+// SVG filter behind the GTA look: posterize into flat game-render bands
+const GtaFilterDefs: React.FC = () => (
+  <svg width="0" height="0" style={{position: 'absolute'}}>
+    <filter id="gtaLook" colorInterpolationFilters="sRGB">
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="0 0.12 0.25 0.37 0.5 0.62 0.75 0.87 1" />
+        <feFuncG type="discrete" tableValues="0 0.12 0.25 0.37 0.5 0.62 0.75 0.87 1" />
+        <feFuncB type="discrete" tableValues="0 0.12 0.25 0.37 0.5 0.62 0.75 0.87 1" />
+      </feComponentTransfer>
+    </filter>
+  </svg>
+);
+
 // ---------- glitch helpers ----------
 const glitchAmt = (frame: number) => {
-  // spikes around every cut
+  // spikes on every reality <-> GTA flip
   let a = 0;
-  for (const c of CUTS) {
+  for (const c of TOGGLES) {
     const d = frame - c;
-    if (d >= -3 && d <= 5) a = Math.max(a, 1 - Math.abs(d + (d < 0 ? 0 : 0)) / 6);
+    if (d >= -1 && d <= 3) a = Math.max(a, 1 - Math.abs(d) / 4);
+    if (c > frame + 2) break;
   }
   return a;
 };
 
 const CutGlitch: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useContext(GlobalFrame);
   const a = glitchAmt(frame);
   if (a <= 0) return null;
   const bars = new Array(7).fill(0).map((_, i) => {
@@ -117,7 +171,7 @@ const CutGlitch: React.FC = () => {
       />
     );
   });
-  const flash = CUTS.includes(frame) ? 0.55 : 0;
+  const flash = TOGGLES.includes(frame) ? 0.22 : 0;
   return (
     <AbsoluteFill>
       {bars}
@@ -216,12 +270,12 @@ const SunsetBadge: React.FC<{w: number}> = ({w}) => (
 );
 
 const Wings: React.FC<{w: number; style?: React.CSSProperties}> = ({w, style}) => (
-  <Img src={staticFile('ccc/wings.png')} style={{width: w, ...style}} />
+  <Img src={staticFile('ccc/bolted-mark.png')} style={{width: w, ...style}} />
 );
 
 // ---------- intro: loading screen ----------
 const Intro: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = Math.max(0, useCurrentFrame() - 22);
   const inA = spring({frame: frame - 8, fps: GTA_FPS, config: {damping: 12, stiffness: 120}});
   const flick = frame < 26 ? (random(`fl${frame}`) > 0.45 ? 1 : 0.15) : 1;
   const dots = '.'.repeat(1 + (Math.floor(frame / 8) % 3));
@@ -231,6 +285,7 @@ const Intro: React.FC = () => {
   return (
     <AbsoluteFill>
       <Shot src="ccc/intro.mp4" dur={120} zoom={[1.0, 1.06]} />
+      <GtaOnly>
       <AbsoluteFill style={{alignItems: 'center', top: 560, opacity: flick, transform: `scale(${0.6 + 0.4 * inA})`}}>
         <NeonText text="CERTIFIED" size={136} jitter={jitter} seed="t1" />
         <div style={{height: 10}} />
@@ -261,7 +316,7 @@ const Intro: React.FC = () => {
           <div style={{width: `${prog * 100}%`, height: '100%', background: `linear-gradient(90deg, ${CYAN}, ${PINK})`}} />
         </div>
         <div style={{marginTop: 22, fontFamily: 'Russo', fontSize: 30, color: '#fff', textShadow: '2px 2px 0 #000', letterSpacing: 2}}>
-          8880 OAKLAND RD · SAN ANTONIO, TX
+          HUEBNER · 8880 OAKLAND RD
         </div>
       </AbsoluteFill>
       {/* GTA-like spinner bottom right */}
@@ -271,6 +326,7 @@ const Intro: React.FC = () => {
           <path d="M35 9 A26 26 0 0 1 61 35" stroke="#fff" strokeWidth="8" fill="none" strokeLinecap="round" />
         </svg>
       </div>
+      </GtaOnly>
     </AbsoluteFill>
   );
 };
@@ -316,7 +372,7 @@ const ServiceCard: React.FC<CardProps> = ({index, title, stats, chip, y}) => {
           width: W - 120,
         }}
       >
-        <Wings w={120} style={{transform: 'skewX(9deg)', marginRight: 14}} />
+        <Wings w={150} style={{transform: 'skewX(9deg)', marginRight: 16}} />
         <div
           style={{
             fontFamily: 'Russo',
@@ -419,8 +475,8 @@ const ServiceCard: React.FC<CardProps> = ({index, title, stats, chip, y}) => {
 
 const STATS = (a: number, b: number, c: number, d: number): [string, number][] => [
   ['QUALITY', a],
-  ['PAINT MATCH', b],
-  ['PRECISION', c],
+  ['PRECISION', b],
+  ['DETAIL', c],
   ['CARE', d],
 ];
 
@@ -547,7 +603,7 @@ const Minimap: React.FC = () => {
         </g>
         <path d="M175 285 l-16 30 l16 -9 l16 9 z" fill="#fff" stroke="#000" strokeWidth="2" />
         <text x="270" y="150" fontFamily="Russo" fontSize="20" fill="#fff" transform="rotate(-18 270 150)">
-          OAKLAND RD
+          HUEBNER
         </text>
       </svg>
     </div>
@@ -586,7 +642,7 @@ const Mission: React.FC = () => {
       >
         <div style={{fontFamily: 'Pixel', fontSize: 26, color: CYAN, letterSpacing: 2}}>TEXAS LAW</div>
         <div style={{fontFamily: 'Russo', fontSize: 50, color: '#fff', marginTop: 12, lineHeight: 1.15, textShadow: `3px 3px 0 ${PURPLE}`}}>
-          YOU HAVE THE RIGHT TO CHOOSE YOUR BODY SHOP
+          IN TEXAS, YOU PICK THE BODY SHOP.
         </div>
       </div>
       <Minimap />
@@ -605,7 +661,7 @@ const Mission: React.FC = () => {
           textShadow: '3px 3px 0 #000, 0 0 10px #000',
         }}
       >
-        Head to <span style={{color: SUN}}>Certified Collision</span> on <span style={{color: CYAN}}>Oakland Rd</span>.
+        Head to <span style={{color: SUN}}>Certified Collision</span> <span style={{color: CYAN}}>Huebner</span>.
       </div>
     </AbsoluteFill>
   );
@@ -613,14 +669,31 @@ const Mission: React.FC = () => {
 
 // ---------- end card ----------
 const EndCard: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useCurrentFrame() - 20; // GTA mode lands ~20 frames in
   const s = spring({frame: frame - 2, fps: GTA_FPS, config: {damping: 10, stiffness: 110}});
-  const passed = spring({frame: frame - 14, fps: GTA_FPS, config: {damping: 9}});
-  const info = interpolate(frame, [30, 42], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const fade = interpolate(frame, [92, 105], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const gridY = (frame * 6) % 80;
+  const passed = spring({frame: frame - 12, fps: GTA_FPS, config: {damping: 9}});
+  const info = interpolate(frame, [18, 28], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const shops = spring({frame: frame - 30, fps: GTA_FPS, config: {damping: 11}});
+  const gridY = (Math.max(0, frame) * 6) % 80;
+  const chip = (name: string, hot: boolean) => (
+    <div
+      key={name}
+      style={{
+        fontFamily: 'Barlow',
+        fontSize: 38,
+        letterSpacing: 2,
+        padding: '8px 22px',
+        borderRadius: 10,
+        color: hot ? '#fff' : INK,
+        background: hot ? BRAND_RED : '#C9CDD2',
+        boxShadow: hot ? `0 0 18px ${BRAND_RED}` : 'none',
+      }}
+    >
+      {name}
+    </div>
+  );
   return (
-    <AbsoluteFill style={{background: `linear-gradient(180deg, #12002e 0%, #3b0a5e 45%, #ff3d81 72%, #ffb347 100%)`, opacity: fade}}>
+    <AbsoluteFill style={{background: `linear-gradient(180deg, #12002e 0%, #3b0a5e 45%, #ff3d81 72%, #ffb347 100%)`}}>
       {/* retro sun + grid floor */}
       <svg width="1080" height="1920" style={{position: 'absolute'}}>
         <defs>
@@ -629,35 +702,68 @@ const EndCard: React.FC = () => {
             <stop offset="1" stopColor={HOT} />
           </linearGradient>
         </defs>
-        <circle cx="540" cy="1260" r="330" fill="url(#bigsun)" opacity="0.85" />
+        <circle cx="540" cy="1380" r="330" fill="url(#bigsun)" opacity="0.85" />
         {[0, 1, 2, 3, 4, 5].map((i) => (
-          <rect key={i} x="0" y={1180 + i * 34} width="1080" height={6 + i * 3} fill="#3b0a5e" opacity="0.9" />
+          <rect key={i} x="0" y={1300 + i * 34} width="1080" height={6 + i * 3} fill="#3b0a5e" opacity="0.9" />
         ))}
-        <rect x="0" y="1380" width="1080" height="540" fill="#14062a" />
+        <rect x="0" y="1500" width="1080" height="420" fill="#14062a" />
         <g stroke={PINK} strokeWidth="3" opacity="0.8">
-          {new Array(9).fill(0).map((_, i) => (
-            <line key={`h${i}`} x1="0" x2="1080" y1={1400 + ((i * 80 + gridY) % 560)} y2={1400 + ((i * 80 + gridY) % 560)} />
+          {new Array(7).fill(0).map((_, i) => (
+            <line key={`h${i}`} x1="0" x2="1080" y1={1520 + ((i * 70 + gridY) % 420)} y2={1520 + ((i * 70 + gridY) % 420)} />
           ))}
           {new Array(15).fill(0).map((_, i) => (
-            <line key={`v${i}`} x1={540 + (i - 7) * 60} y1="1380" x2={540 + (i - 7) * 320} y2="1920" />
+            <line key={`v${i}`} x1={540 + (i - 7) * 60} y1="1500" x2={540 + (i - 7) * 320} y2="1920" />
           ))}
         </g>
       </svg>
-      <AbsoluteFill style={{alignItems: 'center', top: 230}}>
-        <div style={{transform: `scale(${s})`, filter: `drop-shadow(0 0 30px ${CYAN})`}}>
-          <Wings w={760} />
-        </div>
-        <Img src={staticFile('ccc/script.png')} style={{width: 900, marginTop: 30, transform: `scale(${s})`, filter: 'drop-shadow(0 0 14px rgba(255,255,255,0.7)) brightness(1.15)'}} />
-        <div style={{marginTop: 40, transform: `scale(${passed}) rotate(-3deg)`}}>
-          <div style={{fontFamily: 'Brush', fontSize: 120, color: SUN, textShadow: `0 0 20px ${HOT}, 5px 5px 0 #000`, textAlign: 'center'}}>
+      <AbsoluteFill style={{alignItems: 'center', top: 190}}>
+        <Img
+          src={staticFile('ccc/logo-full.png')}
+          style={{width: 880, transform: `scale(${s})`, filter: `drop-shadow(0 0 26px rgba(33,243,255,0.65))`}}
+        />
+        <div style={{marginTop: 4, transform: `scale(${passed}) rotate(-3deg)`}}>
+          <div style={{fontFamily: 'Brush', fontSize: 104, color: SUN, textShadow: `0 0 20px ${HOT}, 5px 5px 0 #000`, textAlign: 'center'}}>
             Mission Passed
           </div>
         </div>
-        <div style={{opacity: info, marginTop: 30, textAlign: 'center'}}>
-          <div style={{fontFamily: 'Russo', fontSize: 50, color: '#fff', textShadow: '3px 3px 0 #000'}}>8880 OAKLAND RD</div>
-          <div style={{fontFamily: 'Russo', fontSize: 40, color: '#fff', textShadow: '3px 3px 0 #000', marginTop: 6}}>SAN ANTONIO, TX 78240</div>
-          <div style={{fontFamily: 'Bungee', fontSize: 86, color: CYAN, marginTop: 24, WebkitTextStroke: '4px #14062a', paintOrder: 'stroke fill', textShadow: `0 0 18px ${CYAN}, 5px 5px 0 #14062a`}}>
+        <div
+          style={{
+            opacity: info,
+            marginTop: 18,
+            width: 940,
+            background: 'rgba(11, 11, 12, 0.78)',
+            border: `4px solid ${BRAND_RED}`,
+            borderRadius: 26,
+            boxShadow: `0 0 28px rgba(224,27,34,0.7)`,
+            padding: '26px 30px 30px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          {chip('HUEBNER', true)}
+          <div style={{fontFamily: 'BarlowXB', fontSize: 40, color: '#fff', marginTop: 16}}>8880 Oakland Rd, San Antonio, TX 78240</div>
+          <div style={{fontFamily: 'BarlowC', fontSize: 104, color: '#fff', lineHeight: 1, marginTop: 8, textShadow: `4px 4px 0 ${BRAND_RED}`}}>
             210-663-6577
+          </div>
+          <div style={{width: '100%', height: 3, background: 'rgba(201,205,210,0.4)', margin: '22px 0 18px'}} />
+          <div style={{transform: `scale(${shops})`, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style={{fontFamily: 'BarlowC', fontSize: 58, color: SUN, letterSpacing: 2, textShadow: '3px 3px 0 #000'}}>
+              3 SAN ANTONIO SHOPS
+            </div>
+            <div style={{display: 'flex', gap: 18, marginTop: 14}}>
+              {chip('BANDERA', false)}
+              {chip('HUEBNER', true)}
+              {chip('KIRBY', false)}
+            </div>
+          </div>
+        </div>
+        <div style={{opacity: shops, marginTop: 22, textAlign: 'center', background: 'rgba(11,11,12,0.72)', borderRadius: 20, padding: '14px 30px 18px'}}>
+          <div style={{fontFamily: 'BarlowXB', fontSize: 36, color: '#fff', textShadow: '3px 3px 0 #000'}}>
+            Visit our website for a free estimate:
+          </div>
+          <div style={{fontFamily: 'Barlow', fontSize: 62, color: '#fff', marginTop: 4, letterSpacing: 1, textShadow: `0 0 16px ${PINK}, 4px 4px 0 ${BRAND_RED}`}}>
+            CERTIFIEDCOLLISIONSA.COM
           </div>
         </div>
       </AbsoluteFill>
@@ -670,62 +776,103 @@ const Hud: React.FC = () => {
   return (
     <div style={{position: 'absolute', top: 230, right: 60, textAlign: 'right'}}>
       <div style={{fontFamily: 'Pixel', fontSize: 22, color: '#fff', textShadow: `0 0 8px ${PINK}, 2px 2px 0 #000`}}>SAN ANTONIO</div>
-      <div style={{fontFamily: 'Russo', fontSize: 30, color: CYAN, textShadow: '2px 2px 0 #000', marginTop: 8}}>NORTHWEST SIDE</div>
+      <div style={{fontFamily: 'Russo', fontSize: 30, color: CYAN, textShadow: '2px 2px 0 #000', marginTop: 8}}>HUEBNER</div>
     </div>
   );
 };
 
 const len = (r: readonly [number, number]) => r[1] - r[0];
 
+// card timing: GTA mode lands ~12-20 frames into each shot
+const Late: React.FC<{by: number; children: React.ReactNode}> = ({by, children}) => (
+  <Sequence from={by} layout="none">
+    {children}
+  </Sequence>
+);
+
+const World: React.FC<{children: React.ReactNode}> = ({children}) => {
+  const frame = useCurrentFrame();
+  return <GlobalFrame.Provider value={frame}>{children}</GlobalFrame.Provider>;
+};
+
 export const CertifiedGTA: React.FC = () => {
   useFonts();
-  const {fps} = useVideoConfig();
   return (
-    <AbsoluteFill style={{backgroundColor: '#000'}}>
-      <Sequence from={T.intro[0]} durationInFrames={len(T.intro)}>
-        <Intro />
-      </Sequence>
+    <World>
+      <AbsoluteFill style={{backgroundColor: '#000'}}>
+        <GtaFilterDefs />
+        <Sequence from={T.intro[0]} durationInFrames={len(T.intro)}>
+          <Intro />
+        </Sequence>
 
-      <Sequence from={T.card1[0]} durationInFrames={len(T.card1)}>
-        <Shot src="ccc/sign.mp4" dur={90} zoom={[1.0, 1.08]} />
-        <ServiceCard index={1} title="COLLISION REPAIR" stats={STATS(0.96, 0.92, 0.95, 0.98)} chip="INSURANCE APPROVED" y={1090} />
-        <Hud />
-      </Sequence>
+        <Sequence from={T.card1[0]} durationInFrames={len(T.card1)}>
+          <Shot src="ccc/sign.mp4" dur={90} zoom={[1.0, 1.08]} />
+          <GtaOnly>
+            <Late by={12}>
+              <ServiceCard index={1} title="COLLISION REPAIR" stats={STATS(0.96, 0.92, 0.95, 0.98)} chip="WORKS WITH ALL INSURANCE" y={1090} />
+            </Late>
+            <Hud />
+          </GtaOnly>
+        </Sequence>
 
-      <Sequence from={T.card2[0]} durationInFrames={len(T.card2)}>
-        <Shot src="ccc/roof.mp4" dur={90} rate={2.8} />
-        <ServiceCard index={2} title="HAIL DAMAGE REPAIR" stats={STATS(0.95, 0.9, 0.94, 0.97)} y={1090} />
-        <Hud />
-      </Sequence>
+        <Sequence from={T.card2[0]} durationInFrames={len(T.card2)}>
+          <Shot src="ccc/roof.mp4" dur={90} rate={2.8} />
+          <GtaOnly>
+            <Late by={10}>
+              <ServiceCard index={2} title="CUSTOM PAINT" stats={STATS(0.95, 0.9, 0.97, 0.96)} chip="GENUINE PARTS" y={1090} />
+            </Late>
+            <Hud />
+          </GtaOnly>
+        </Sequence>
 
-      <Sequence from={T.card3[0]} durationInFrames={len(T.card3)}>
-        <Shot src="ccc/door.mp4" dur={90} zoom={[1.0, 1.05]} />
-        <ServiceCard index={3} title="PAINTLESS DENT REPAIR" stats={STATS(0.94, 0.97, 0.96, 0.95)} y={300} />
-      </Sequence>
+        <Sequence from={T.card3[0]} durationInFrames={len(T.card3)}>
+          <Shot src="ccc/door.mp4" dur={90} zoom={[1.0, 1.05]} />
+          <GtaOnly>
+            <Late by={10}>
+              <ServiceCard index={3} title="PAINTLESS DENT REPAIR" stats={STATS(0.94, 0.97, 0.96, 0.95)} y={300} />
+            </Late>
+          </GtaOnly>
+        </Sequence>
 
-      <Sequence from={T.card4[0]} durationInFrames={len(T.card4)}>
-        <Shot src="ccc/pole.mp4" dur={90} />
-        <ServiceCard index={4} title="AUTO REPAIR" stats={STATS(0.95, 0.91, 0.93, 0.98)} chip="LIMITED LIFETIME WARRANTY" y={330} />
-      </Sequence>
+        <Sequence from={T.card4[0]} durationInFrames={len(T.card4)}>
+          <Shot src="ccc/pole.mp4" dur={90} />
+          <GtaOnly>
+            <Late by={8}>
+              <ServiceCard index={4} title="ADAS CALIBRATION" stats={STATS(0.97, 0.98, 0.95, 0.96)} chip="LIFETIME WARRANTY" y={330} />
+            </Late>
+          </GtaOnly>
+        </Sequence>
 
-      <Sequence from={T.selected[0]} durationInFrames={len(T.selected)}>
-        <Shot src="ccc/front.mp4" dur={90} zoom={[1.0, 1.1]} />
-        <Selected />
-        <Hud />
-      </Sequence>
+        <Sequence from={T.selected[0]} durationInFrames={len(T.selected)}>
+          <Shot src="ccc/front.mp4" dur={90} zoom={[1.0, 1.1]} />
+          <GtaOnly>
+            <Late by={8}>
+              <Selected />
+            </Late>
+            <Hud />
+          </GtaOnly>
+        </Sequence>
 
-      <Sequence from={T.mission[0]} durationInFrames={len(T.mission)}>
-        <Shot src="ccc/reveal.mp4" dur={105} rate={0.97} />
-        <Mission />
-      </Sequence>
+        <Sequence from={T.mission[0]} durationInFrames={len(T.mission)}>
+          <Shot src="ccc/reveal.mp4" dur={105} rate={0.97} />
+          <GtaOnly>
+            <Late by={8}>
+              <Mission />
+            </Late>
+          </GtaOnly>
+        </Sequence>
 
-      <Sequence from={T.end[0]} durationInFrames={len(T.end)}>
-        <EndCard />
-      </Sequence>
+        <Sequence from={T.end[0]} durationInFrames={len(T.end)}>
+          {/* reality behind the end card: the real shop */}
+          <Shot src="ccc/intro.mp4" dur={150} />
+          <GtaOnly>
+            <EndCard />
+          </GtaOnly>
+        </Sequence>
 
-      <CutGlitch />
-      <Audio src={staticFile('ccc/music.wav')} />
-      {fps !== GTA_FPS ? null : null}
-    </AbsoluteFill>
+        <CutGlitch />
+        <Audio src={staticFile('ccc/music.wav')} />
+      </AbsoluteFill>
+    </World>
   );
 };
