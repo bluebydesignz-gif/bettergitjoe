@@ -83,15 +83,20 @@ const useFonts = () => {
 
 // ---------- footage ----------
 const GRADE = 'saturate(1.35) contrast(1.1) brightness(1.04)';
-const Shot: React.FC<{src: string; rate?: number; zoom?: [number, number]; dur: number}> = ({
+const Shot: React.FC<{src: string; rate?: number; zoom?: [number, number]; dur: number; punchIn?: boolean}> = ({
   src,
   rate = 1,
   zoom = [1, 1],
   dur,
+  punchIn = true,
 }) => {
   const f = useCurrentFrame();
   const gta = useGta();
   const s = interpolate(f, [0, dur], zoom, {extrapolateRight: 'clamp'});
+  // smooth shot-to-shot whip: blur/zoom out over the last 4 frames, blur/zoom in over the first 7
+  const pin = punchIn ? interpolate(f, [0, 7], [1, 0], {extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}) : 0;
+  const pout = interpolate(f, [dur - 4, dur], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.in(Easing.quad)});
+  const whip = Math.max(pin, pout);
   // GTA mode: cel-shaded (posterized) neon grade, slightly punched in; reality: untouched phone footage
   return (
     <AbsoluteFill style={{overflow: 'hidden', backgroundColor: '#000'}}>
@@ -103,8 +108,8 @@ const Shot: React.FC<{src: string; rate?: number; zoom?: [number, number]; dur: 
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          filter: gta ? `url(#gtaLook) ${GRADE}` : 'none',
-          transform: `scale(${s * (gta ? 1.03 : 1)})`,
+          filter: `${gta ? `url(#gtaLook) ${GRADE}` : ''} blur(${whip * 9}px) brightness(${1 + whip * 0.35})`,
+          transform: `scale(${s * (gta ? 1.03 : 1) * (1 + pin * 0.12 + pout * 0.08)})`,
         }}
       />
       {gta ? (
@@ -145,7 +150,7 @@ const GtaFilterDefs: React.FC = () => (
 
 // ---------- glitch helpers ----------
 const glitchAmt = (frame: number) => {
-  // spikes on every reality <-> GTA flip
+  // spikes on the reality -> GTA transformation flickers
   let a = 0;
   for (const c of TOGGLES) {
     const d = frame - c;
@@ -275,7 +280,7 @@ const Wings: React.FC<{w: number; style?: React.CSSProperties}> = ({w, style}) =
 
 // ---------- intro: loading screen ----------
 const Intro: React.FC = () => {
-  const frame = Math.max(0, useCurrentFrame() - 22);
+  const frame = Math.max(0, useCurrentFrame() - 18);
   const inA = spring({frame: frame - 8, fps: GTA_FPS, config: {damping: 12, stiffness: 120}});
   const flick = frame < 26 ? (random(`fl${frame}`) > 0.45 ? 1 : 0.15) : 1;
   const dots = '.'.repeat(1 + (Math.floor(frame / 8) % 3));
@@ -284,7 +289,7 @@ const Intro: React.FC = () => {
   const jitter = frame < 30 ? 30 : 4 + 10 * Math.max(0, Math.sin(frame * 0.9)) * (random(`j${Math.floor(frame / 6)}`) > 0.7 ? 1 : 0);
   return (
     <AbsoluteFill>
-      <Shot src="ccc/intro.mp4" dur={120} zoom={[1.0, 1.06]} />
+      <Shot src="ccc/intro.mp4" dur={120} zoom={[1.0, 1.06]} punchIn={false} />
       <GtaOnly>
       <AbsoluteFill style={{alignItems: 'center', top: 560, opacity: flick, transform: `scale(${0.6 + 0.4 * inA})`}}>
         <NeonText text="CERTIFIED" size={136} jitter={jitter} seed="t1" />
@@ -669,7 +674,7 @@ const Mission: React.FC = () => {
 
 // ---------- end card ----------
 const EndCard: React.FC = () => {
-  const frame = useCurrentFrame() - 20; // GTA mode lands ~20 frames in
+  const frame = useCurrentFrame();
   const s = spring({frame: frame - 2, fps: GTA_FPS, config: {damping: 10, stiffness: 110}});
   const passed = spring({frame: frame - 12, fps: GTA_FPS, config: {damping: 9}});
   const info = interpolate(frame, [18, 28], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
@@ -693,7 +698,13 @@ const EndCard: React.FC = () => {
     </div>
   );
   return (
-    <AbsoluteFill style={{background: `linear-gradient(180deg, #12002e 0%, #3b0a5e 45%, #ff3d81 72%, #ffb347 100%)`}}>
+    <AbsoluteFill
+      style={{
+        background: `linear-gradient(180deg, #12002e 0%, #3b0a5e 45%, #ff3d81 72%, #ffb347 100%)`,
+        opacity: interpolate(frame, [0, 6], [0, 1], {extrapolateRight: 'clamp'}),
+        filter: `blur(${interpolate(frame, [0, 6], [8, 0], {extrapolateRight: 'clamp'})}px)`,
+      }}
+    >
       {/* retro sun + grid floor */}
       <svg width="1080" height="1920" style={{position: 'absolute'}}>
         <defs>
@@ -808,7 +819,7 @@ export const CertifiedGTA: React.FC = () => {
         <Sequence from={T.card1[0]} durationInFrames={len(T.card1)}>
           <Shot src="ccc/sign.mp4" dur={90} zoom={[1.0, 1.08]} />
           <GtaOnly>
-            <Late by={12}>
+            <Late by={3}>
               <ServiceCard index={1} title="COLLISION REPAIR" stats={STATS(0.96, 0.92, 0.95, 0.98)} chip="WORKS WITH ALL INSURANCE" y={1090} />
             </Late>
             <Hud />
@@ -818,7 +829,7 @@ export const CertifiedGTA: React.FC = () => {
         <Sequence from={T.card2[0]} durationInFrames={len(T.card2)}>
           <Shot src="ccc/roof.mp4" dur={90} rate={2.8} />
           <GtaOnly>
-            <Late by={10}>
+            <Late by={3}>
               <ServiceCard index={2} title="CUSTOM PAINT" stats={STATS(0.95, 0.9, 0.97, 0.96)} chip="GENUINE PARTS" y={1090} />
             </Late>
             <Hud />
@@ -828,7 +839,7 @@ export const CertifiedGTA: React.FC = () => {
         <Sequence from={T.card3[0]} durationInFrames={len(T.card3)}>
           <Shot src="ccc/door.mp4" dur={90} zoom={[1.0, 1.05]} />
           <GtaOnly>
-            <Late by={10}>
+            <Late by={3}>
               <ServiceCard index={3} title="PAINTLESS DENT REPAIR" stats={STATS(0.94, 0.97, 0.96, 0.95)} y={300} />
             </Late>
           </GtaOnly>
@@ -837,7 +848,7 @@ export const CertifiedGTA: React.FC = () => {
         <Sequence from={T.card4[0]} durationInFrames={len(T.card4)}>
           <Shot src="ccc/pole.mp4" dur={90} />
           <GtaOnly>
-            <Late by={8}>
+            <Late by={3}>
               <ServiceCard index={4} title="ADAS CALIBRATION" stats={STATS(0.97, 0.98, 0.95, 0.96)} chip="LIFETIME WARRANTY" y={330} />
             </Late>
           </GtaOnly>
@@ -846,7 +857,7 @@ export const CertifiedGTA: React.FC = () => {
         <Sequence from={T.selected[0]} durationInFrames={len(T.selected)}>
           <Shot src="ccc/front.mp4" dur={90} zoom={[1.0, 1.1]} />
           <GtaOnly>
-            <Late by={8}>
+            <Late by={3}>
               <Selected />
             </Late>
             <Hud />
@@ -856,15 +867,13 @@ export const CertifiedGTA: React.FC = () => {
         <Sequence from={T.mission[0]} durationInFrames={len(T.mission)}>
           <Shot src="ccc/reveal.mp4" dur={105} rate={0.97} />
           <GtaOnly>
-            <Late by={8}>
+            <Late by={3}>
               <Mission />
             </Late>
           </GtaOnly>
         </Sequence>
 
         <Sequence from={T.end[0]} durationInFrames={len(T.end)}>
-          {/* reality behind the end card: the real shop */}
-          <Shot src="ccc/intro.mp4" dur={150} />
           <GtaOnly>
             <EndCard />
           </GtaOnly>
