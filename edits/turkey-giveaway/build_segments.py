@@ -37,6 +37,19 @@ def build(b, footage, outdir):
     speed = b.get("speed", 1.0)
     dur = b["dur"]
     src_dur = dur * speed
+    t_in = b["in"]
+    if b.get("stab"):
+        # Two-pass stabilisation on the trimmed source: removes drone jitter, keeps the flight path.
+        tmp = os.path.join(outdir, b["id"] + "_raw.mp4"); trf = os.path.join(outdir, b["id"] + ".trf")
+        stb = os.path.join(outdir, b["id"] + "_stab.mp4")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t_in:.3f}", "-t", f"{src_dur + 0.5:.3f}", "-i", src, "-an",
+                        "-c:v", "libx264", "-preset", "fast", "-crf", "10", tmp], check=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-vf", f"vidstabdetect=shakiness=6:accuracy=15:result={trf}",
+                        "-f", "null", "-"], check=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-vf",
+                        f"vidstabtransform=input={trf}:smoothing={b['stab'] if b['stab'] is not True else 40}:optzoom=1:zoomspeed=0.1:interpol=bicubic",
+                        "-c:v", "libx264", "-preset", "fast", "-crf", "10", stb], check=True)
+        src, t_in = stb, 0.0
     zoom = b.get("zoom", 1.0)
     cx, cy = b.get("cx", 0.5), b.get("cy", 0.5)
     vf = list(pre)
@@ -73,10 +86,12 @@ def build(b, footage, outdir):
     vf.append(f"tpad=stop_mode=clone:stop_duration={dur:.2f}")     # hold the last frame if the source runs out
     vf.append("setsar=1,format=yuv420p")
     out = os.path.join(outdir, b["id"] + ".mp4")
-    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{b['in']:.3f}", "-t", f"{b.get('src_len', src_dur + 0.3):.3f}", "-i", src,
+    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{t_in:.3f}", "-t", f"{b.get('src_len', src_dur + 0.3):.3f}", "-i", src,
            "-an", "-vf", ",".join(vf), "-frames:v", str(nfr),
            "-c:v", "libx264", "-preset", "fast", "-crf", "13", "-g", "15", "-movflags", "+faststart", out]
     subprocess.run(cmd, check=True)
+    for f in (b["id"] + "_raw.mp4", b["id"] + ".trf", b["id"] + "_stab.mp4"):
+        if os.path.exists(os.path.join(outdir, f)): os.remove(os.path.join(outdir, f))
     info.update({"id": b["id"], "frames": nfr})
     return info
 

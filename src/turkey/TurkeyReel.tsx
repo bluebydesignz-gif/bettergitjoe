@@ -319,10 +319,11 @@ const Shot: React.FC<{seg: (typeof timeline.segments)[number]}> = ({seg}) => {
   );
 };
 
-export const TurkeyReel: React.FC<{minimal?: boolean}> = ({minimal = false}) => {
+export const TurkeyReel: React.FC<{minimal?: boolean; bare?: boolean}> = ({minimal = false, bare = false}) => {
   const frame = useCurrentFrame();
   const fadeIn = interpolate(frame, [0, 6], [1, 0], {extrapolateRight: 'clamp'});
-  const overlays = (timeline.overlays as Ov[]).filter((o) => !minimal || o.keepInMinimal);
+  // bare = picture and sound only; the text layer is composited in HyperFrames (edits/turkey-giveaway/hf)
+  const overlays = bare ? [] : (timeline.overlays as Ov[]).filter((o) => !minimal || o.keepInMinimal);
   return (
     <AbsoluteFill style={{background: INK}}>
       {timeline.segments.map((seg) => (

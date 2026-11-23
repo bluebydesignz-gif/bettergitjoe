@@ -2,3 +2,8 @@ node_modules/
 out/
 .env
 public/turkey/
+edits/turkey-giveaway/hf/assets/base.mp4
+edits/turkey-giveaway/hf/assets/logo.png
+edits/turkey-giveaway/hf/.hyperframes/
+edits/turkey-giveaway/hf/renders/
+edits/turkey-giveaway/hf/node_modules/

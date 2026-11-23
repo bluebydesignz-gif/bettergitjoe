@@ -20,7 +20,7 @@ export const Root: React.FC = () => (
       fps={30}
       width={1080}
       height={1920}
-      defaultProps={{minimal: false}}
+      defaultProps={{minimal: false, bare: false}}
     />
     <Composition
       id="TurkeyThankYouClean"
@@ -29,7 +29,16 @@ export const Root: React.FC = () => (
       fps={30}
       width={1080}
       height={1920}
-      defaultProps={{minimal: true}}
+      defaultProps={{minimal: true, bare: false}}
+    />
+    <Composition
+      id="TurkeyBase"
+      component={TurkeyReel}
+      durationInFrames={turkeyDuration}
+      fps={30}
+      width={1080}
+      height={1920}
+      defaultProps={{minimal: false, bare: true}}
     />
   </>
 );
