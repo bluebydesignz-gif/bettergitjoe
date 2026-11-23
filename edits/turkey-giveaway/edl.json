@@ -23,7 +23,7 @@
    "id": "d1",
    "src": "IMG_1634.MP4",
    "in": 12.0,
-   "dur": 3.4,
+   "dur": 3.0,
    "speed": 2,
    "cx": 0.52,
    "push": [
@@ -38,19 +38,15 @@
    "grain": 4
   },
   {
-   "id": "d2",
+   "id": "w0",
    "src": "IMG_1634.MP4",
-   "in": 62.0,
-   "dur": 4.6,
-   "speed": 2,
-   "cx": [
-    0.47,
-    0.66
-   ],
-   "xfade": 0.5,
+   "in": 23.05,
+   "dur": 1.8,
+   "cx": 0.62,
+   "xfade": 0.35,
    "push": [
     1.0,
-    1.02
+    1.03
    ],
    "audio": {
     "kind": "bed"
@@ -60,15 +56,57 @@
    "grain": 4
   },
   {
-   "id": "a1",
-   "src": "IMG_1635.MP4",
-   "in": 23.0,
-   "dur": 2.0,
-   "cx": 0.5,
-   "xfade": 0.4,
+   "id": "w1",
+   "src": "IMG_1634.MP4",
+   "in": 39.6,
+   "dur": 2.5,
+   "speed": 2,
+   "cx": 0.48,
+   "xfade": 0.35,
    "push": [
     1.0,
     1.03
+   ],
+   "audio": {
+    "kind": "bed"
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
+  },
+  {
+   "id": "w2",
+   "src": "DRONE_094045.mp4",
+   "in": 58.4,
+   "dur": 2.4,
+   "speed": 2,
+   "cx": 0.5,
+   "xfade": 0.35,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "bed"
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
+  },
+  {
+   "id": "d2",
+   "src": "IMG_1634.MP4",
+   "in": 62.8,
+   "dur": 4.2,
+   "speed": 2,
+   "cx": [
+    0.47,
+    0.66
+   ],
+   "xfade": 0.4,
+   "push": [
+    1.0,
+    1.02
    ],
    "audio": {
     "kind": "bed"
@@ -83,7 +121,7 @@
    "in": 29.2,
    "dur": 2.2,
    "cx": 0.55,
-   "xfade": 0.3,
+   "xfade": 0.35,
    "push": [
     1.0,
     1.03
@@ -313,8 +351,8 @@
   },
   {
    "type": "tagline",
-   "at": "a1+0.3",
-   "dur": 3.4,
+   "at": "d2+0.45",
+   "dur": 3.3,
    "text": "Giving thanks.|Giving back."
   },
   {

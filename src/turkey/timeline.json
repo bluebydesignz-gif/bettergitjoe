@@ -1,13 +1,46 @@
 {
  "fps": 30,
- "durationInFrames": 1647,
+ "durationInFrames": 1746,
  "segments": [
   {
    "id": "d1",
    "file": "turkey/seg/d1.mp4",
    "from": 0,
-   "dur": 102,
+   "dur": 90,
    "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "w0",
+   "file": "turkey/seg/w0.mp4",
+   "from": 80,
+   "dur": 54,
+   "xfade": 10,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "w1",
+   "file": "turkey/seg/w1.mp4",
+   "from": 123,
+   "dur": 75,
+   "xfade": 10,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "w2",
+   "file": "turkey/seg/w2.mp4",
+   "from": 188,
+   "dur": 72,
+   "xfade": 10,
    "push": [
     1.0,
     1.03
@@ -16,31 +49,20 @@
   {
    "id": "d2",
    "file": "turkey/seg/d2.mp4",
-   "from": 87,
-   "dur": 138,
-   "xfade": 15,
+   "from": 248,
+   "dur": 126,
+   "xfade": 12,
    "push": [
     1.0,
     1.02
    ]
   },
   {
-   "id": "a1",
-   "file": "turkey/seg/a1.mp4",
-   "from": 213,
-   "dur": 60,
-   "xfade": 12,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
    "id": "a2",
    "file": "turkey/seg/a2.mp4",
-   "from": 264,
+   "from": 363,
    "dur": 66,
-   "xfade": 9,
+   "xfade": 10,
    "push": [
     1.0,
     1.03
@@ -49,7 +71,7 @@
   {
    "id": "a3",
    "file": "turkey/seg/a3.mp4",
-   "from": 322,
+   "from": 421,
    "dur": 75,
    "xfade": 8,
    "push": [
@@ -60,7 +82,7 @@
   {
    "id": "m3",
    "file": "turkey/seg/m3.mp4",
-   "from": 397,
+   "from": 496,
    "dur": 170,
    "xfade": 0,
    "push": [
@@ -71,7 +93,7 @@
   {
    "id": "p1",
    "file": "turkey/seg/p1.mp4",
-   "from": 558,
+   "from": 657,
    "dur": 126,
    "xfade": 8,
    "push": [
@@ -82,7 +104,7 @@
   {
    "id": "g1",
    "file": "turkey/seg/g1.mp4",
-   "from": 675,
+   "from": 774,
    "dur": 66,
    "xfade": 9,
    "push": [
@@ -93,7 +115,7 @@
   {
    "id": "g2",
    "file": "turkey/seg/g2.mp4",
-   "from": 741,
+   "from": 840,
    "dur": 84,
    "xfade": 0,
    "push": [
@@ -104,7 +126,7 @@
   {
    "id": "g3",
    "file": "turkey/seg/g3.mp4",
-   "from": 825,
+   "from": 924,
    "dur": 78,
    "xfade": 0,
    "push": [
@@ -115,7 +137,7 @@
   {
    "id": "g4",
    "file": "turkey/seg/g4.mp4",
-   "from": 903,
+   "from": 1002,
    "dur": 60,
    "xfade": 0,
    "push": [
@@ -126,7 +148,7 @@
   {
    "id": "g5",
    "file": "turkey/seg/g5.mp4",
-   "from": 963,
+   "from": 1062,
    "dur": 69,
    "xfade": 0,
    "push": [
@@ -137,7 +159,7 @@
   {
    "id": "t0",
    "file": "turkey/seg/t0.mp4",
-   "from": 1022,
+   "from": 1121,
    "dur": 60,
    "xfade": 10,
    "push": [
@@ -148,7 +170,7 @@
   {
    "id": "t2",
    "file": "turkey/seg/t2.mp4",
-   "from": 1082,
+   "from": 1181,
    "dur": 69,
    "xfade": 0,
    "push": [
@@ -159,7 +181,7 @@
   {
    "id": "t1",
    "file": "turkey/seg/t1.mp4",
-   "from": 1151,
+   "from": 1250,
    "dur": 48,
    "xfade": 0,
    "push": [
@@ -170,7 +192,7 @@
   {
    "id": "t3",
    "file": "turkey/seg/t3.mp4",
-   "from": 1199,
+   "from": 1298,
    "dur": 117,
    "xfade": 0,
    "push": [
@@ -181,7 +203,7 @@
   {
    "id": "f1",
    "file": "turkey/seg/f1.mp4",
-   "from": 1308,
+   "from": 1407,
    "dur": 339,
    "xfade": 8,
    "push": [
@@ -201,70 +223,70 @@
   },
   {
    "type": "tagline",
-   "dur": 102,
+   "dur": 99,
    "text": "Giving thanks.|Giving back.",
-   "from": 222
+   "from": 261
   },
   {
    "type": "caption",
    "dur": 57,
    "text": "\u201cJust want to thank everybody|for coming out.\u201d",
-   "from": 334
+   "from": 434
   },
   {
    "type": "name",
    "dur": 138,
    "name": "Marcos Ruiz",
    "role": "Owner, Certified Collision Center",
-   "from": 407
+   "from": 506
   },
   {
    "type": "caption",
    "dur": 51,
    "text": "\u201cThis is our third year doing it.\u201d",
-   "from": 400
+   "from": 499
   },
   {
    "type": "caption",
    "dur": 96,
    "text": "\u201cAnd we\u2019re just blessed|to be a part of it.\u201d",
-   "from": 464
+   "from": 563
   },
   {
    "type": "caption",
    "dur": 117,
    "text": "\u201cThank God for all the entities that|helped to make this thing happen.\u201d",
-   "from": 563
+   "from": 662
   },
   {
    "type": "label",
    "dur": 132,
    "text": "Even the turkey pitched in.",
-   "from": 753
+   "from": 852
   },
   {
    "type": "caption",
    "dur": 38,
    "text": "\u201cDriven to\u2026 what?\u201d",
-   "from": 1083
+   "from": 1182
   },
   {
    "type": "caption",
    "dur": 34,
    "text": "\u201cDriven to repair.\u201d",
-   "from": 1202
+   "from": 1301
   },
   {
    "type": "caption",
    "dur": 30,
    "text": "\u201cCommitted to care.\u201d",
-   "from": 1238
+   "from": 1337
   },
   {
    "type": "caption",
    "dur": 45,
    "text": "\u201cKeep your Toyota a Toyota.\u201d",
-   "from": 1270
+   "from": 1369
   },
   {
    "type": "thanks",
@@ -279,7 +301,7 @@
     "Every volunteer. Every family."
    ],
    "lineSize": 34,
-   "from": 1404
+   "from": 1503
   },
   {
    "type": "endcard",
@@ -288,7 +310,7 @@
    "proud": "Certified Collision Center|was proud to be part of it.",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true,
-   "from": 1494
+   "from": 1593
   }
  ]
 }

@@ -1,6 +1,6 @@
 # Thanksgiving Turkey Giveaway thank-you reel
 
-A 55-second 9:16 reel cut only from the original event footage. No generated video and no music bed:
+A 57-second 9:16 reel cut only from the original event footage. No generated video and no music bed:
 the music track is added in Instagram.
 
 | File | Role |
