@@ -1,0 +1,428 @@
+{
+ "title": "24th Annual Thanksgiving Turkey Giveaway - thank-you reel",
+ "fps": 30,
+ "beats": [
+  {
+   "id": "d1",
+   "src": "IMG_1634.MP4",
+   "in": 1.0,
+   "dur": 3.2,
+   "cx": 0.46,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "d2",
+   "src": "IMG_1634.MP4",
+   "in": 20.5,
+   "dur": 2.3,
+   "cx": 0.5,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "xfade": 0.4,
+   "push": [
+    1.0,
+    1.04
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "d3",
+   "src": "IMG_1634.MP4",
+   "in": 53.0,
+   "dur": 2.8,
+   "cx": 0.48,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "xfade": 0.4,
+   "push": [
+    1.0,
+    1.04
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "a1",
+   "src": "IMG_1635.MP4",
+   "in": 21.0,
+   "dur": 2.0,
+   "cx": 0.5,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "push": [
+    1.0,
+    1.04
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "a2",
+   "src": "IMG_1640.MP4",
+   "in": 27.0,
+   "dur": 2.4,
+   "cx": 0.45,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "a3",
+   "src": "IMG_5297.MOV",
+   "in": 3.7,
+   "dur": 2.2,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -38
+   }
+  },
+  {
+   "id": "m1",
+   "src": "IMG_5277.MOV",
+   "in": 2.85,
+   "dur": 1.5,
+   "zoom": 1.2,
+   "cx": 0.5,
+   "cy": 0.44,
+   "push": [
+    1.0,
+    1.04
+   ],
+   "audio": {
+    "kind": "voice",
+    "chain": "pa",
+    "src": "IMG_5277.MOV",
+    "in": 3.18,
+    "lead": 0.4,
+    "len": 1.9
+   }
+  },
+  {
+   "id": "m3",
+   "src": "IMG_5277.MOV",
+   "in": 12.2,
+   "dur": 5.5,
+   "zoom": 2.0,
+   "cx": 0.58,
+   "cy": 0.32,
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "voice",
+    "chain": "pa"
+   }
+  },
+  {
+   "id": "m4",
+   "src": "IMG_5277.MOV",
+   "in": 19.9,
+   "dur": 2.0,
+   "speed": 0.5,
+   "zoom": 1.8,
+   "cx": 0.58,
+   "cy": 0.33,
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "c1",
+   "src": "IMG_5279.MOV",
+   "in": 9.3,
+   "dur": 1.8,
+   "zoom": 1.2,
+   "cx": 0.5,
+   "cy": 0.42,
+   "audio": {
+    "kind": "nat",
+    "db": -30
+   }
+  },
+  {
+   "id": "g1",
+   "src": "IMG_5275.MOV",
+   "in": 1.2,
+   "dur": 2.2,
+   "zoom": 1.5,
+   "cx": 0.48,
+   "cy": 0.5,
+   "audio": {
+    "kind": "nat",
+    "db": -38
+   }
+  },
+  {
+   "id": "g2",
+   "src": "IMG_5284.MOV",
+   "in": 4.4,
+   "dur": 2.8,
+   "zoom": 1.5,
+   "cx": 0.7,
+   "cy": 0.42,
+   "audio": {
+    "kind": "nat",
+    "db": -40
+   }
+  },
+  {
+   "id": "g3",
+   "src": "IMG_5306.MOV",
+   "in": 1.4,
+   "dur": 2.6,
+   "push": [
+    1.0,
+    1.04
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -40
+   }
+  },
+  {
+   "id": "g4",
+   "src": "IMG_5306.MOV",
+   "in": 13.5,
+   "dur": 2.0,
+   "zoom": 1.15,
+   "cx": 0.55,
+   "cy": 0.5,
+   "audio": {
+    "kind": "bed"
+   },
+   "speed": 0.5
+  },
+  {
+   "id": "g5",
+   "src": "IMG_5287.MOV",
+   "in": 1.6,
+   "dur": 2.3,
+   "zoom": 1.2,
+   "cx": 0.55,
+   "cy": 0.4,
+   "audio": {
+    "kind": "nat",
+    "db": -40
+   }
+  },
+  {
+   "id": "t0",
+   "src": "DRONE_094045.mp4",
+   "in": 0.8,
+   "dur": 1.8,
+   "cx": 0.36,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "t1",
+   "src": "IMG_5295.MOV",
+   "in": 6.6,
+   "dur": 1.8,
+   "rot": "cw",
+   "zoom": 1.5,
+   "cx": 0.7,
+   "cy": 0.6,
+   "audio": {
+    "kind": "nat",
+    "db": -40
+   }
+  },
+  {
+   "id": "t2",
+   "src": "IMG_5304.MOV",
+   "in": 19.75,
+   "dur": 3.0,
+   "grade": "bright",
+   "audio": {
+    "kind": "voice",
+    "chain": "close_lvl",
+    "window": [
+     0.15,
+     1.2
+    ]
+   }
+  },
+  {
+   "id": "t3",
+   "src": "IMG_5304.MOV",
+   "in": 40.65,
+   "dur": 3.9,
+   "grade": "bright",
+   "audio": {
+    "kind": "voice",
+    "chain": "close"
+   }
+  },
+  {
+   "id": "f1",
+   "src": "IMG_5327.MOV",
+   "in": 9.9,
+   "dur": 3.1,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "voice",
+    "chain": "close"
+   }
+  },
+  {
+   "id": "f2",
+   "src": "DRONE_094045.mp4",
+   "in": 78.0,
+   "dur": 6.9,
+   "cx": 0.5,
+   "grade": "drone",
+   "sharpen": 0.7,
+   "xfade": 0.5,
+   "push": [
+    1.0,
+    1.06
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  }
+ ],
+ "tail": 1.6,
+ "bed": {
+  "src": "IMG_5302.MOV",
+  "in": 3.0,
+  "len": 12.0,
+  "db": -46
+ },
+ "overlays": [
+  {
+   "type": "title",
+   "at": "d1+0.5",
+   "dur": 5.4,
+   "eyebrow": "24th Annual",
+   "line1": "Thanksgiving",
+   "line2": "TURKEY GIVEAWAY"
+  },
+  {
+   "type": "tagline",
+   "at": "a1+0.35",
+   "dur": 4.2,
+   "text": "Giving thanks.|Giving back."
+  },
+  {
+   "type": "caption",
+   "at": "m1-0.35",
+   "dur": 1.8,
+   "text": "“Just want to thank everybody|for coming out.”"
+  },
+  {
+   "type": "name",
+   "at": "m3+0.35",
+   "dur": 4.6,
+   "name": "Marcos Ruiz",
+   "role": "Owner, Certified Collision Center"
+  },
+  {
+   "type": "caption",
+   "at": "m3+0.1",
+   "dur": 1.7,
+   "text": "“This is our third year doing it.”"
+  },
+  {
+   "type": "caption",
+   "at": "m3+2.25",
+   "dur": 3.2,
+   "text": "“And we’re just blessed|to be a part of it.”"
+  },
+  {
+   "type": "label",
+   "at": "g2+0.4",
+   "dur": 4.4,
+   "text": "Even the turkey pitched in."
+  },
+  {
+   "type": "caption",
+   "at": "t2+0.12",
+   "dur": 1.45,
+   "text": "“Driven to repair… what?”"
+  },
+  {
+   "type": "caption",
+   "at": "t3+0.08",
+   "dur": 1.15,
+   "text": "“Driven to repair.”"
+  },
+  {
+   "type": "caption",
+   "at": "t3+1.30",
+   "dur": 1.0,
+   "text": "“Committed to care.”"
+  },
+  {
+   "type": "caption",
+   "at": "t3+2.36",
+   "dur": 1.5,
+   "text": "“Keep your Toyota a Toyota.”"
+  },
+  {
+   "type": "caption",
+   "at": "f1+0.38",
+   "dur": 1.4,
+   "text": "“We’re driven to what?”"
+  },
+  {
+   "type": "caption",
+   "at": "f1+1.92",
+   "dur": 1.15,
+   "text": "“Driven to repair!”"
+  },
+  {
+   "type": "thanks",
+   "at": "f2+0.45",
+   "dur": 3.1,
+   "head": "Thank you",
+   "lines": [
+    "Gospel Vision Ministries",
+    "Greater Love MBC",
+    "Every volunteer. Every family."
+   ]
+  },
+  {
+   "type": "endcard",
+   "at": "f2+3.45",
+   "dur": 5.05,
+   "proud": "Certified Collision Center|was proud to be part of it.",
+   "slogan": "Driven to repair. Committed to care.",
+   "keepInMinimal": true
+  }
+ ]
+}
