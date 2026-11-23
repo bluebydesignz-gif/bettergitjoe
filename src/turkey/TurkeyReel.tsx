@@ -80,7 +80,7 @@ const Reveal: React.FC<{
 
 const shadow = '0 2px 18px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.5)';
 const strongShadow = '0 2px 22px rgba(0,0,0,0.85), 0 0 46px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.7)';
-const lines = (t: string) => t.split('|');
+const lines = (t?: string) => (t ?? '').split('|');
 
 // Soft dark veil behind text so it stays readable without a hard box.
 const Veil: React.FC<{dur: number; from: 'top' | 'bottom'; strength?: number; size?: number}> = ({dur, from, strength = 0.5, size = 46}) => {
