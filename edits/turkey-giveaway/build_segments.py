@@ -73,7 +73,7 @@ def build(b, footage, outdir):
     vf.append(f"tpad=stop_mode=clone:stop_duration={dur:.2f}")     # hold the last frame if the source runs out
     vf.append("setsar=1,format=yuv420p")
     out = os.path.join(outdir, b["id"] + ".mp4")
-    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{b['in']:.3f}", "-t", f"{src_dur + 0.3:.3f}", "-i", src,
+    cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{b['in']:.3f}", "-t", f"{b.get('src_len', src_dur + 0.3):.3f}", "-i", src,
            "-an", "-vf", ",".join(vf), "-frames:v", str(nfr),
            "-c:v", "libx264", "-preset", "fast", "-crf", "13", "-g", "15", "-movflags", "+faststart", out]
     subprocess.run(cmd, check=True)

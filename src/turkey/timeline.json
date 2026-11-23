@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "durationInFrames": 1622,
+ "durationInFrames": 1647,
  "segments": [
   {
    "id": "d1",
@@ -181,20 +181,9 @@
   {
    "id": "f1",
    "file": "turkey/seg/f1.mp4",
-   "from": 1316,
-   "dur": 60,
-   "xfade": 0,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
-   "id": "f2",
-   "file": "turkey/seg/f2.mp4",
-   "from": 1367,
-   "dur": 207,
-   "xfade": 9,
+   "from": 1308,
+   "dur": 339,
+   "xfade": 8,
    "push": [
     1.0,
     1.06
@@ -278,29 +267,28 @@
    "from": 1270
   },
   {
-   "type": "caption",
-   "dur": 28,
-   "text": "\u201cDriven to repair!\u201d",
-   "from": 1352
-  },
-  {
    "type": "thanks",
-   "dur": 93,
+   "dur": 90,
+   "top": 740,
+   "headSize": 176,
+   "dim": 0.72,
    "head": "Thank you",
    "lines": [
     "Gospel Vision Ministries",
     "Greater Love MBC",
     "Every volunteer. Every family."
    ],
-   "from": 1381
+   "lineSize": 34,
+   "from": 1404
   },
   {
    "type": "endcard",
-   "dur": 152,
+   "dur": 153,
+   "scrimFrom": 0.72,
    "proud": "Certified Collision Center|was proud to be part of it.",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true,
-   "from": 1471
+   "from": 1494
   }
  ]
 }

@@ -204,41 +204,56 @@ const ThanksGlow: React.FC<{dur: number}> = ({dur}) => {
   return <AbsoluteFill style={{opacity: o, background: 'radial-gradient(ellipse 62% 24% at 50% 56%, rgba(11,11,12,0.62) 0%, rgba(11,11,12,0) 100%)'}} />;
 };
 
-const Thanks: React.FC<{o: Ov}> = ({o}) => (
-  <AbsoluteFill>
-    <Veil dur={o.dur} from="bottom" strength={0.8} size={78} />
-    <ThanksGlow dur={o.dur} />
-    <AbsoluteFill style={{top: 850, alignItems: 'center', color: 'white', textAlign: 'center'}}>
-      <Reveal dur={o.dur} rise={44}>
-        <div style={{fontFamily: SERIF, fontStyle: 'italic', fontSize: 196, lineHeight: 1.05, textShadow: strongShadow}}>{o.head}</div>
-      </Reveal>
-      <div style={{marginTop: 34}}>
-        {(o.lines as string[]).map((l, i) => (
-          <Reveal key={i} dur={o.dur} delay={14 + i * 8} rise={22}>
-            <div
-              style={{
-                fontFamily: SANS,
-                fontWeight: 600,
-                fontSize: 36,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                lineHeight: 1.75,
-                textShadow: strongShadow,
-                marginRight: '-0.16em',
-              }}
-            >
-              {l}
-            </div>
-          </Reveal>
-        ))}
-      </div>
+const Thanks: React.FC<{o: Ov}> = ({o}) => {
+  const f = useCurrentFrame();
+  const dim = o.dim ? interpolate(f, [0, 18], [0, o.dim], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}) : 0;
+  const head = o.headSize ?? 196;
+  return (
+    <AbsoluteFill>
+      {o.dim ? (
+        <>
+          <AbsoluteFill style={{background: INK, opacity: dim}} />
+          {o.veil ? <Veil dur={o.dur + 30} from="bottom" strength={0.78} size={46} /> : null}
+        </>
+      ) : (
+        <>
+          <Veil dur={o.dur} from="bottom" strength={0.8} size={78} />
+          <ThanksGlow dur={o.dur} />
+        </>
+      )}
+      <AbsoluteFill style={{top: o.top ?? 850, alignItems: 'center', color: 'white', textAlign: 'center'}}>
+        <Reveal dur={o.dur} delay={o.dim ? 12 : 0} rise={44}>
+          <div style={{fontFamily: SERIF, fontStyle: 'italic', fontSize: head, lineHeight: 1.05, textShadow: strongShadow}}>{o.head}</div>
+        </Reveal>
+        <div style={{marginTop: 22}}>
+          {(o.lines as string[]).map((l, i) => (
+            <Reveal key={i} dur={o.dur} delay={(o.dim ? 26 : 14) + i * 8} rise={22}>
+              <div
+                style={{
+                  fontFamily: SANS,
+                  fontWeight: 600,
+                  fontSize: o.lineSize ?? 36,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  lineHeight: 1.7,
+                  textShadow: strongShadow,
+                  marginRight: '-0.16em',
+                }}
+              >
+                {l}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </AbsoluteFill>
     </AbsoluteFill>
-  </AbsoluteFill>
-);
+  );
+};
 
 const EndCard: React.FC<{o: Ov; minimal: boolean}> = ({o, minimal}) => {
   const f = useCurrentFrame();
-  const scrim = interpolate(f, [0, 22], [0, 0.9], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const scrimFrom = minimal ? 0 : (o.scrimFrom ?? 0);
+  const scrim = interpolate(f, [0, 22], [scrimFrom, 0.9], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const solid = interpolate(f, [o.dur - 60, o.dur - 30], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const rule = interpolate(f, [48, 78], [0, 120], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: EASE_OUT});
   const [s1, s2] = (o.slogan as string).split('. ').map((s, i) => (i === 0 ? s + '.' : s));

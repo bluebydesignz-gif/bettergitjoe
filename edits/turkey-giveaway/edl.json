@@ -1,7 +1,7 @@
 {
  "title": "24th Annual Thanksgiving Turkey Giveaway - thank-you reel",
  "fps": 30,
- "tail": 1.6,
+ "tail": 0.0,
  "bed": {
   "src": "IMG_5302.MOV",
   "in": 3.0,
@@ -97,17 +97,19 @@
   },
   {
    "id": "a3",
-   "src": "IMG_5297.MOV",
-   "in": 3.7,
+   "src": "IMG_5304.MOV",
+   "in": 156.6,
    "dur": 2.5,
+   "zoom": 1.2,
+   "cx": 0.56,
+   "cy": 0.5,
    "xfade": 0.27,
    "push": [
     1.0,
     1.03
    ],
    "audio": {
-    "kind": "nat",
-    "db": -40
+    "kind": "bed"
    }
   },
   {
@@ -278,39 +280,26 @@
   {
    "id": "f1",
    "src": "IMG_5327.MOV",
-   "in": 11.0,
-   "dur": 2.0,
-   "push": [
-    1.0,
-    1.03
-   ],
-   "audio": {
-    "kind": "voice",
-    "chain": "close",
-    "in": 12.2,
-    "lead": -1.2,
-    "len": 0.92,
-    "pre": 0.02,
-    "tail": 0.05
-   }
-  },
-  {
-   "id": "f2",
-   "src": "DRONE_094045.mp4",
-   "in": 81.1,
-   "dur": 6.9,
-   "cx": 0.5,
-   "xfade": 0.3,
+   "in": 2.05,
+   "dur": 11.3,
+   "src_len": 8.1,
+   "xfade": 0.27,
    "push": [
     1.0,
     1.06
    ],
    "audio": {
-    "kind": "bed"
+    "kind": "voice",
+    "chain": "close",
+    "in": 12.2,
+    "lead": -0.3,
+    "len": 0.92,
+    "pre": 0.02,
+    "tail": 0.05
    },
-   "grade": "drone",
-   "sharpen": 0.8,
-   "grain": 4
+   "zoom": 1.12,
+   "cx": 0.5,
+   "cy": 0.52
   }
  ],
  "overlays": [
@@ -390,26 +379,25 @@
    "text": "“Keep your Toyota a Toyota.”"
   },
   {
-   "type": "caption",
-   "at": "f1+1.2",
-   "dur": 0.95,
-   "text": "“Driven to repair!”"
-  },
-  {
    "type": "thanks",
-   "at": "f2+0.45",
-   "dur": 3.1,
+   "at": "f1+3.2",
+   "dur": 3.0,
+   "top": 740,
+   "headSize": 176,
+   "dim": 0.72,
    "head": "Thank you",
    "lines": [
     "Gospel Vision Ministries",
     "Greater Love MBC",
     "Every volunteer. Every family."
-   ]
+   ],
+   "lineSize": 34
   },
   {
    "type": "endcard",
-   "at": "f2+3.45",
-   "dur": 5.05,
+   "at": "f1+6.2",
+   "dur": 5.1,
+   "scrimFrom": 0.72,
    "proud": "Certified Collision Center|was proud to be part of it.",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true
