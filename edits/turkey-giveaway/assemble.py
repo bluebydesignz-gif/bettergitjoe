@@ -63,12 +63,13 @@ if __name__ == "__main__":
         xf = b.get("xfade", 0.0)
         start = t - xf
         starts[b["id"]] = start
-        segs.append({"id": b["id"], "file": f"turkey/seg/{b['id']}.mp4", "from": round(start * fps), "dur": round(b["dur"] * fps),
+        play = b.get("use", b["dur"])                       # "use" = seconds of the built shot to show (audio may run longer)
+        segs.append({"id": b["id"], "file": f"turkey/seg/{b['id']}.mp4", "from": round(start * fps), "dur": round(play * fps),
                      "xfade": round(xf * fps), "push": b.get("push", [1.0, 1.025])})
         a_, b_ = os.path.join(segdir, b["id"] + ".mp4"), os.path.join(pub, "seg", b["id"] + ".mp4")
         if not (os.path.exists(b_) and os.path.getsize(a_) == os.path.getsize(b_) and os.path.getmtime(b_) >= os.path.getmtime(a_)):
             shutil.copy2(a_, b_)                                # only copy shots that changed
-        t = start + b["dur"]
+        t = start + play
     total = t + edl.get("tail", 0.0)
 
     def at(ref):                                   # "beatId+1.25" -> seconds
@@ -89,9 +90,9 @@ if __name__ == "__main__":
         src = os.path.join(footage, a.get("src", b["src"]))
         a_in = a.get("in", b["in"]); lead = a.get("lead", 0.0); length = a.get("len", b["dur"])
         if kind == "voice":
-            pre, post = 0.06, a.get("tail", 0.10)
+            pre, post = a.get("pre", 0.06), a.get("tail", 0.10)
             x, g = process(src, a_in - pre, length + pre + post, a.get("chain", "close"), a.get("db", -20.0), True, a.get("window"))
-            x = fade(x, 0.05, 0.09); t0 = starts[b["id"]] - lead - pre
+            x = fade(x, a.get("fin", 0.05), 0.09); t0 = starts[b["id"]] - lead - pre
         else:
             pre = post = 0.12                                   # overlap neighbours for a soft crossfade
             x, g = process(src, a_in - pre, length + pre + post, "nat", a.get("db", -32.0), False)
@@ -99,6 +100,15 @@ if __name__ == "__main__":
         i0 = max(int(t0 * SR), 0); x = x[: n - i0]
         mix[i0:i0 + len(x)] += x
         report.append((b["id"], kind, round(g, 1)))
+    # free-placed sounds: speech that starts over another shot (J-cut), applause, etc.
+    for sd in edl.get("sounds", []):
+        pre, post = 0.06, 0.10
+        x, g = process(os.path.join(footage, sd["src"]), sd["in"] - pre, sd["len"] + pre + post,
+                       sd.get("chain", "close"), sd.get("db", -20.0), sd.get("active", True), sd.get("window"))
+        x = fade(x, sd.get("fin", 0.05), sd.get("fout", 0.09))
+        i0 = max(int((at(sd["at"]) - pre) * SR), 0); x = x[: n - i0]
+        mix[i0:i0 + len(x)] += x
+        report.append((sd["at"], "sound", round(float(g), 1)))
     # continuous low ambience bed so drone / slow-motion shots are never dead silent
     bed = edl.get("bed")
     if bed:
@@ -126,6 +136,6 @@ if __name__ == "__main__":
     # per-shot level check of the finished mix
     w = wave.open(os.path.join(pub, "mix.wav")); y = np.frombuffer(w.readframes(w.getnframes()), np.int16).reshape(-1, 2)[:, 0] / 32768
     for b in edl["beats"]:
-        a0 = int(starts[b["id"]] * SR); chunk = y[a0:a0 + int(b["dur"] * SR)]
+        a0 = int(starts[b["id"]] * SR); chunk = y[a0:a0 + int(b.get("use", b["dur"]) * SR)]
         q = [chunk[i:i + SR // 2] for i in range(0, len(chunk), SR // 2)]
         print(f"  {b['id']:>3} @{starts[b['id']]:5.1f}s " + " ".join(f"{10*np.log10((c**2).mean()+1e-12):4.0f}" for c in q if len(c)))

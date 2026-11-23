@@ -1,57 +1,46 @@
 {
  "fps": 30,
- "durationInFrames": 1752,
+ "durationInFrames": 1622,
  "segments": [
   {
    "id": "d1",
    "file": "turkey/seg/d1.mp4",
    "from": 0,
-   "dur": 96,
+   "dur": 102,
    "xfade": 0,
    "push": [
     1.0,
-    1.05
+    1.03
    ]
   },
   {
    "id": "d2",
    "file": "turkey/seg/d2.mp4",
-   "from": 84,
-   "dur": 69,
-   "xfade": 12,
+   "from": 87,
+   "dur": 138,
+   "xfade": 15,
    "push": [
     1.0,
-    1.04
-   ]
-  },
-  {
-   "id": "d3",
-   "file": "turkey/seg/d3.mp4",
-   "from": 141,
-   "dur": 84,
-   "xfade": 12,
-   "push": [
-    1.0,
-    1.04
+    1.02
    ]
   },
   {
    "id": "a1",
    "file": "turkey/seg/a1.mp4",
-   "from": 225,
+   "from": 213,
    "dur": 60,
-   "xfade": 0,
+   "xfade": 12,
    "push": [
     1.0,
-    1.04
+    1.03
    ]
   },
   {
    "id": "a2",
    "file": "turkey/seg/a2.mp4",
-   "from": 285,
-   "dur": 72,
-   "xfade": 0,
+   "from": 264,
+   "dur": 66,
+   "xfade": 9,
    "push": [
     1.0,
     1.03
@@ -60,30 +49,19 @@
   {
    "id": "a3",
    "file": "turkey/seg/a3.mp4",
-   "from": 357,
-   "dur": 66,
-   "xfade": 0,
+   "from": 322,
+   "dur": 75,
+   "xfade": 8,
    "push": [
     1.0,
     1.03
    ]
   },
   {
-   "id": "m1",
-   "file": "turkey/seg/m1.mp4",
-   "from": 423,
-   "dur": 45,
-   "xfade": 0,
-   "push": [
-    1.0,
-    1.04
-   ]
-  },
-  {
    "id": "m3",
    "file": "turkey/seg/m3.mp4",
-   "from": 468,
-   "dur": 165,
+   "from": 397,
+   "dur": 170,
    "xfade": 0,
    "push": [
     1.0,
@@ -91,33 +69,22 @@
    ]
   },
   {
-   "id": "m4",
-   "file": "turkey/seg/m4.mp4",
-   "from": 633,
-   "dur": 60,
-   "xfade": 0,
+   "id": "p1",
+   "file": "turkey/seg/p1.mp4",
+   "from": 558,
+   "dur": 126,
+   "xfade": 8,
    "push": [
     1.0,
-    1.025
-   ]
-  },
-  {
-   "id": "c1",
-   "file": "turkey/seg/c1.mp4",
-   "from": 693,
-   "dur": 54,
-   "xfade": 0,
-   "push": [
-    1.0,
-    1.025
+    1.04
    ]
   },
   {
    "id": "g1",
    "file": "turkey/seg/g1.mp4",
-   "from": 747,
+   "from": 675,
    "dur": 66,
-   "xfade": 0,
+   "xfade": 9,
    "push": [
     1.0,
     1.025
@@ -126,7 +93,7 @@
   {
    "id": "g2",
    "file": "turkey/seg/g2.mp4",
-   "from": 813,
+   "from": 741,
    "dur": 84,
    "xfade": 0,
    "push": [
@@ -137,7 +104,7 @@
   {
    "id": "g3",
    "file": "turkey/seg/g3.mp4",
-   "from": 897,
+   "from": 825,
    "dur": 78,
    "xfade": 0,
    "push": [
@@ -148,7 +115,7 @@
   {
    "id": "g4",
    "file": "turkey/seg/g4.mp4",
-   "from": 975,
+   "from": 903,
    "dur": 60,
    "xfade": 0,
    "push": [
@@ -159,7 +126,7 @@
   {
    "id": "g5",
    "file": "turkey/seg/g5.mp4",
-   "from": 1035,
+   "from": 963,
    "dur": 69,
    "xfade": 0,
    "push": [
@@ -170,19 +137,19 @@
   {
    "id": "t0",
    "file": "turkey/seg/t0.mp4",
-   "from": 1104,
-   "dur": 54,
-   "xfade": 0,
+   "from": 1022,
+   "dur": 60,
+   "xfade": 10,
    "push": [
     1.0,
-    1.05
+    1.04
    ]
   },
   {
-   "id": "t1",
-   "file": "turkey/seg/t1.mp4",
-   "from": 1158,
-   "dur": 54,
+   "id": "t2",
+   "file": "turkey/seg/t2.mp4",
+   "from": 1082,
+   "dur": 69,
    "xfade": 0,
    "push": [
     1.0,
@@ -190,10 +157,10 @@
    ]
   },
   {
-   "id": "t2",
-   "file": "turkey/seg/t2.mp4",
-   "from": 1212,
-   "dur": 90,
+   "id": "t1",
+   "file": "turkey/seg/t1.mp4",
+   "from": 1151,
+   "dur": 48,
    "xfade": 0,
    "push": [
     1.0,
@@ -203,7 +170,7 @@
   {
    "id": "t3",
    "file": "turkey/seg/t3.mp4",
-   "from": 1302,
+   "from": 1199,
    "dur": 117,
    "xfade": 0,
    "push": [
@@ -214,8 +181,8 @@
   {
    "id": "f1",
    "file": "turkey/seg/f1.mp4",
-   "from": 1419,
-   "dur": 93,
+   "from": 1316,
+   "dur": 60,
    "xfade": 0,
    "push": [
     1.0,
@@ -225,9 +192,9 @@
   {
    "id": "f2",
    "file": "turkey/seg/f2.mp4",
-   "from": 1497,
+   "from": 1367,
    "dur": 207,
-   "xfade": 15,
+   "xfade": 9,
    "push": [
     1.0,
     1.06
@@ -237,7 +204,7 @@
  "overlays": [
   {
    "type": "title",
-   "dur": 162,
+   "dur": 168,
    "eyebrow": "24th Annual",
    "line1": "Thanksgiving",
    "line2": "TURKEY GIVEAWAY",
@@ -245,76 +212,76 @@
   },
   {
    "type": "tagline",
-   "dur": 126,
+   "dur": 102,
    "text": "Giving thanks.|Giving back.",
-   "from": 235
+   "from": 222
   },
   {
    "type": "caption",
-   "dur": 54,
+   "dur": 57,
    "text": "\u201cJust want to thank everybody|for coming out.\u201d",
-   "from": 413
+   "from": 334
   },
   {
    "type": "name",
    "dur": 138,
    "name": "Marcos Ruiz",
    "role": "Owner, Certified Collision Center",
-   "from": 479
+   "from": 407
   },
   {
    "type": "caption",
    "dur": 51,
    "text": "\u201cThis is our third year doing it.\u201d",
-   "from": 471
+   "from": 400
   },
   {
    "type": "caption",
    "dur": 96,
    "text": "\u201cAnd we\u2019re just blessed|to be a part of it.\u201d",
-   "from": 536
+   "from": 464
+  },
+  {
+   "type": "caption",
+   "dur": 117,
+   "text": "\u201cThank God for all the entities that|helped to make this thing happen.\u201d",
+   "from": 563
   },
   {
    "type": "label",
    "dur": 132,
    "text": "Even the turkey pitched in.",
-   "from": 825
+   "from": 753
   },
   {
    "type": "caption",
-   "dur": 44,
-   "text": "\u201cDriven to repair\u2026 what?\u201d",
-   "from": 1216
+   "dur": 38,
+   "text": "\u201cDriven to\u2026 what?\u201d",
+   "from": 1083
   },
   {
    "type": "caption",
    "dur": 34,
    "text": "\u201cDriven to repair.\u201d",
-   "from": 1304
+   "from": 1202
   },
   {
    "type": "caption",
    "dur": 30,
    "text": "\u201cCommitted to care.\u201d",
-   "from": 1341
+   "from": 1238
   },
   {
    "type": "caption",
    "dur": 45,
    "text": "\u201cKeep your Toyota a Toyota.\u201d",
-   "from": 1373
+   "from": 1270
   },
   {
    "type": "caption",
-   "dur": 42,
-   "text": "\u201cWe\u2019re driven to what?\u201d",
-   "from": 1430
-  },
-  {
-   "type": "caption",
-   "dur": 34,
+   "dur": 28,
    "text": "\u201cDriven to repair!\u201d",
-   "from": 1477
+   "from": 1352
   },
   {
    "type": "thanks",
@@ -325,7 +292,7 @@
     "Greater Love MBC",
     "Every volunteer. Every family."
    ],
-   "from": 1510
+   "from": 1381
   },
   {
    "type": "endcard",
@@ -333,7 +300,7 @@
    "proud": "Certified Collision Center|was proud to be part of it.",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true,
-   "from": 1600
+   "from": 1471
   }
  ]
 }

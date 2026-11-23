@@ -1,129 +1,120 @@
 {
  "title": "24th Annual Thanksgiving Turkey Giveaway - thank-you reel",
  "fps": 30,
+ "tail": 1.6,
+ "bed": {
+  "src": "IMG_5302.MOV",
+  "in": 3.0,
+  "len": 12.0,
+  "db": -46
+ },
+ "sounds": [
+  {
+   "at": "a3+0.4",
+   "src": "IMG_5277.MOV",
+   "in": 3.18,
+   "len": 1.9,
+   "chain": "pa",
+   "db": -20
+  }
+ ],
  "beats": [
   {
    "id": "d1",
    "src": "IMG_1634.MP4",
-   "in": 1.0,
-   "dur": 3.2,
-   "cx": 0.46,
-   "grade": "drone",
-   "sharpen": 0.7,
-   "push": [
-    1.0,
-    1.05
-   ],
-   "audio": {
-    "kind": "bed"
-   }
-  },
-  {
-   "id": "d2",
-   "src": "IMG_1634.MP4",
-   "in": 20.5,
-   "dur": 2.3,
-   "cx": 0.5,
-   "grade": "drone",
-   "sharpen": 0.7,
-   "xfade": 0.4,
-   "push": [
-    1.0,
-    1.04
-   ],
-   "audio": {
-    "kind": "bed"
-   }
-  },
-  {
-   "id": "d3",
-   "src": "IMG_1634.MP4",
-   "in": 53.0,
-   "dur": 2.8,
-   "cx": 0.48,
-   "grade": "drone",
-   "sharpen": 0.7,
-   "xfade": 0.4,
-   "push": [
-    1.0,
-    1.04
-   ],
-   "audio": {
-    "kind": "bed"
-   }
-  },
-  {
-   "id": "a1",
-   "src": "IMG_1635.MP4",
-   "in": 21.0,
-   "dur": 2.0,
-   "cx": 0.5,
-   "grade": "drone",
-   "sharpen": 0.7,
-   "push": [
-    1.0,
-    1.04
-   ],
-   "audio": {
-    "kind": "bed"
-   }
-  },
-  {
-   "id": "a2",
-   "src": "IMG_1640.MP4",
-   "in": 27.0,
-   "dur": 2.4,
-   "cx": 0.45,
-   "grade": "drone",
-   "sharpen": 0.7,
+   "in": 12.0,
+   "dur": 3.4,
+   "speed": 2,
+   "cx": 0.52,
    "push": [
     1.0,
     1.03
    ],
    "audio": {
     "kind": "bed"
-   }
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
+  },
+  {
+   "id": "d2",
+   "src": "IMG_1634.MP4",
+   "in": 62.0,
+   "dur": 4.6,
+   "speed": 2,
+   "cx": [
+    0.47,
+    0.66
+   ],
+   "xfade": 0.5,
+   "push": [
+    1.0,
+    1.02
+   ],
+   "audio": {
+    "kind": "bed"
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
+  },
+  {
+   "id": "a1",
+   "src": "IMG_1635.MP4",
+   "in": 23.0,
+   "dur": 2.0,
+   "cx": 0.5,
+   "xfade": 0.4,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "bed"
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
+  },
+  {
+   "id": "a2",
+   "src": "IMG_1640.MP4",
+   "in": 29.2,
+   "dur": 2.2,
+   "cx": 0.55,
+   "xfade": 0.3,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "bed"
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
   },
   {
    "id": "a3",
    "src": "IMG_5297.MOV",
    "in": 3.7,
-   "dur": 2.2,
+   "dur": 2.5,
+   "xfade": 0.27,
    "push": [
     1.0,
     1.03
    ],
    "audio": {
     "kind": "nat",
-    "db": -38
-   }
-  },
-  {
-   "id": "m1",
-   "src": "IMG_5277.MOV",
-   "in": 2.85,
-   "dur": 1.5,
-   "zoom": 1.2,
-   "cx": 0.5,
-   "cy": 0.44,
-   "push": [
-    1.0,
-    1.04
-   ],
-   "audio": {
-    "kind": "voice",
-    "chain": "pa",
-    "src": "IMG_5277.MOV",
-    "in": 3.18,
-    "lead": 0.4,
-    "len": 1.9
+    "db": -40
    }
   },
   {
    "id": "m3",
    "src": "IMG_5277.MOV",
    "in": 12.2,
-   "dur": 5.5,
+   "dur": 5.65,
    "zoom": 2.0,
    "cx": 0.58,
    "cy": 0.32,
@@ -137,29 +128,23 @@
    }
   },
   {
-   "id": "m4",
-   "src": "IMG_5277.MOV",
-   "in": 19.9,
-   "dur": 2.0,
-   "speed": 0.5,
-   "zoom": 1.8,
-   "cx": 0.58,
-   "cy": 0.33,
-   "audio": {
-    "kind": "bed"
-   }
-  },
-  {
-   "id": "c1",
+   "id": "p1",
    "src": "IMG_5279.MOV",
-   "in": 9.3,
-   "dur": 1.8,
+   "in": 9.25,
+   "dur": 4.2,
    "zoom": 1.2,
    "cx": 0.5,
    "cy": 0.42,
+   "xfade": 0.27,
+   "push": [
+    1.0,
+    1.04
+   ],
    "audio": {
-    "kind": "nat",
-    "db": -30
+    "kind": "voice",
+    "chain": "pa",
+    "db": -21,
+    "tail": 0.08
    }
   },
   {
@@ -170,6 +155,7 @@
    "zoom": 1.5,
    "cx": 0.48,
    "cy": 0.5,
+   "xfade": 0.3,
    "audio": {
     "kind": "nat",
     "db": -38
@@ -207,13 +193,13 @@
    "src": "IMG_5306.MOV",
    "in": 13.5,
    "dur": 2.0,
+   "speed": 0.5,
    "zoom": 1.15,
    "cx": 0.55,
    "cy": 0.5,
    "audio": {
     "kind": "bed"
-   },
-   "speed": 0.5
+   }
   },
   {
    "id": "g5",
@@ -230,25 +216,45 @@
   },
   {
    "id": "t0",
-   "src": "DRONE_094045.mp4",
-   "in": 0.8,
-   "dur": 1.8,
-   "cx": 0.36,
-   "grade": "drone",
-   "sharpen": 0.7,
+   "src": "IMG_1640.MP4",
+   "in": 15.8,
+   "dur": 2.0,
+   "cx": 0.33,
+   "xfade": 0.33,
    "push": [
     1.0,
-    1.05
+    1.04
    ],
    "audio": {
     "kind": "bed"
-   }
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
+  },
+  {
+   "id": "t2",
+   "src": "IMG_5304.MOV",
+   "in": 20.05,
+   "dur": 2.85,
+   "grade": "bright",
+   "audio": {
+    "kind": "voice",
+    "chain": "close_lvl",
+    "window": [
+     0.05,
+     0.85
+    ],
+    "pre": 0.01,
+    "fin": 0.04
+   },
+   "use": 2.3
   },
   {
    "id": "t1",
    "src": "IMG_5295.MOV",
    "in": 6.6,
-   "dur": 1.8,
+   "dur": 1.6,
    "rot": "cw",
    "zoom": 1.5,
    "cx": 0.7,
@@ -256,21 +262,6 @@
    "audio": {
     "kind": "nat",
     "db": -40
-   }
-  },
-  {
-   "id": "t2",
-   "src": "IMG_5304.MOV",
-   "in": 19.75,
-   "dur": 3.0,
-   "grade": "bright",
-   "audio": {
-    "kind": "voice",
-    "chain": "close_lvl",
-    "window": [
-     0.15,
-     1.2
-    ]
    }
   },
   {
@@ -287,61 +278,60 @@
   {
    "id": "f1",
    "src": "IMG_5327.MOV",
-   "in": 9.9,
-   "dur": 3.1,
+   "in": 11.0,
+   "dur": 2.0,
    "push": [
     1.0,
     1.03
    ],
    "audio": {
     "kind": "voice",
-    "chain": "close"
+    "chain": "close",
+    "in": 12.2,
+    "lead": -1.2,
+    "len": 0.92,
+    "pre": 0.02,
+    "tail": 0.05
    }
   },
   {
    "id": "f2",
    "src": "DRONE_094045.mp4",
-   "in": 78.0,
+   "in": 81.1,
    "dur": 6.9,
    "cx": 0.5,
-   "grade": "drone",
-   "sharpen": 0.7,
-   "xfade": 0.5,
+   "xfade": 0.3,
    "push": [
     1.0,
     1.06
    ],
    "audio": {
     "kind": "bed"
-   }
+   },
+   "grade": "drone",
+   "sharpen": 0.8,
+   "grain": 4
   }
  ],
- "tail": 1.6,
- "bed": {
-  "src": "IMG_5302.MOV",
-  "in": 3.0,
-  "len": 12.0,
-  "db": -46
- },
  "overlays": [
   {
    "type": "title",
    "at": "d1+0.5",
-   "dur": 5.4,
+   "dur": 5.6,
    "eyebrow": "24th Annual",
    "line1": "Thanksgiving",
    "line2": "TURKEY GIVEAWAY"
   },
   {
    "type": "tagline",
-   "at": "a1+0.35",
-   "dur": 4.2,
+   "at": "a1+0.3",
+   "dur": 3.4,
    "text": "Giving thanks.|Giving back."
   },
   {
    "type": "caption",
-   "at": "m1-0.35",
-   "dur": 1.8,
+   "at": "a3+0.42",
+   "dur": 1.9,
    "text": "“Just want to thank everybody|for coming out.”"
   },
   {
@@ -364,6 +354,12 @@
    "text": "“And we’re just blessed|to be a part of it.”"
   },
   {
+   "type": "caption",
+   "at": "p1+0.15",
+   "dur": 3.9,
+   "text": "“Thank God for all the entities that|helped to make this thing happen.”"
+  },
+  {
    "type": "label",
    "at": "g2+0.4",
    "dur": 4.4,
@@ -371,9 +367,9 @@
   },
   {
    "type": "caption",
-   "at": "t2+0.12",
-   "dur": 1.45,
-   "text": "“Driven to repair… what?”"
+   "at": "t2+0.03",
+   "dur": 1.25,
+   "text": "“Driven to… what?”"
   },
   {
    "type": "caption",
@@ -395,14 +391,8 @@
   },
   {
    "type": "caption",
-   "at": "f1+0.38",
-   "dur": 1.4,
-   "text": "“We’re driven to what?”"
-  },
-  {
-   "type": "caption",
-   "at": "f1+1.92",
-   "dur": 1.15,
+   "at": "f1+1.2",
+   "dur": 0.95,
    "text": "“Driven to repair!”"
   },
   {
