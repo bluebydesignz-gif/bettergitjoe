@@ -206,7 +206,8 @@ const ThanksGlow: React.FC<{dur: number}> = ({dur}) => {
 
 const Thanks: React.FC<{o: Ov}> = ({o}) => {
   const f = useCurrentFrame();
-  const dim = o.dim ? interpolate(f, [0, 18], [0, o.dim], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}) : 0;
+  const dimTo = Number(o.dim ?? 0);
+  const dim = dimTo ? interpolate(f, [0, 18], [0, dimTo], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}) : 0;
   const head = o.headSize ?? 196;
   return (
     <AbsoluteFill>
@@ -252,9 +253,9 @@ const Thanks: React.FC<{o: Ov}> = ({o}) => {
 
 const EndCard: React.FC<{o: Ov; minimal: boolean}> = ({o, minimal}) => {
   const f = useCurrentFrame();
-  const scrimFrom = minimal ? 0 : (o.scrimFrom ?? 0);
+  const scrimFrom = minimal ? 0 : Number(o.scrimFrom ?? 0);
   const scrim = interpolate(f, [0, 22], [scrimFrom, 0.9], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const solid = interpolate(f, [o.dur - 60, o.dur - 30], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const solid = interpolate(f, [Number(o.dur) - 60, Number(o.dur) - 30], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const rule = interpolate(f, [48, 78], [0, 120], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: EASE_OUT});
   const [s1, s2] = (o.slogan as string).split('. ').map((s, i) => (i === 0 ? s + '.' : s));
   const sloganDelay = minimal ? 26 : 58;
