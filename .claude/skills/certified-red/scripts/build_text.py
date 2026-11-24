@@ -104,8 +104,10 @@ if not clean and (by("name") or by("label")):
     items = []
     for n in by("name")[:1]:
         items.append(("lab-name", n["start"], n["len"], n["name"].upper(), n["role"], n.get("top", 930)))
+    sizes = {}
     for i, o in enumerate(by("label")):
-        items.append((f"lab-{i}", o["start"], o["len"], o["text"].upper(), "", 1100))
+        items.append((f"lab-{i}", o["start"], o["len"], o["text"].upper(), "", o.get("top", 1100)))
+        if o.get("size"): sizes[f"lab-{i}"] = o["size"]      # punchline labels can run bigger
     first = min(i[1] for i in items); last = max(i[1] + i[2] for i in items)
     css = f"""    .lab {{ position: absolute; left: 84px; }}
     .lab-scrim {{ position: absolute; left: 0; right: 0; top: 780px; height: 620px; opacity: 0;
@@ -121,7 +123,7 @@ if not clean and (by("name") or by("label")):
       <div id="{cid}-scrim" class="lab-scrim" style="top:{max(top - 150, 0)}px"></div>
       <div id="{cid}-in" class="lab" style="top:{top}px">
         <div id="{cid}-rule" class="lab-rule"></div>
-        <div id="{cid}-head" class="lab-head">{esc(head)}</div>
+        <div id="{cid}-head" class="lab-head"{f' style="font-size:{sizes[cid]}px"' if cid in sizes else ''}>{"<br />".join(esc(x) for x in head.split("|"))}</div>
         {f'<div id="{cid}-sub" class="lab-sub">{esc(sub)}</div>' if sub else ''}
       </div>
     </div>
