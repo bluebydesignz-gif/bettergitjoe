@@ -1,0 +1,72 @@
+{
+ "slug": "grateful-crystal",
+ "fps": 30,
+ "durationInFrames": 516,
+ "segments": [
+  {
+   "id": "c1",
+   "file": "grateful-crystal/seg/c1.mp4",
+   "from": 0,
+   "dur": 516,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  }
+ ],
+ "overlays": [
+  {
+   "type": "name",
+   "dur": 108,
+   "name": "Crystal",
+   "role": "Certified Collision Center",
+   "top": 250,
+   "from": 14
+  },
+  {
+   "type": "caption",
+   "dur": 64,
+   "text": "Hey, it's Crystal|at Certified Collision Center",
+   "from": 5
+  },
+  {
+   "type": "caption",
+   "dur": 61,
+   "text": "I just wanted to say that I'm|so thankful for my family",
+   "from": 74
+  },
+  {
+   "type": "caption",
+   "dur": 64,
+   "text": "I'm thankful for all the blessings|that we've had this year",
+   "from": 139
+  },
+  {
+   "type": "caption",
+   "dur": 48,
+   "text": "and definitely a great|place to work",
+   "from": 203
+  },
+  {
+   "type": "caption",
+   "dur": 67,
+   "text": "It's definitely become a family|and I couldn't ask for more",
+   "from": 255
+  },
+  {
+   "type": "caption",
+   "dur": 28,
+   "text": "Happy holidays!",
+   "from": 332
+  },
+  {
+   "type": "endcard",
+   "dur": 153,
+   "proud": "Certified & Grateful",
+   "slogan": "Driven to repair. Committed to care.",
+   "keepInMinimal": true,
+   "from": 363
+  }
+ ]
+}

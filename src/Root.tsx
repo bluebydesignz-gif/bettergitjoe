@@ -1,6 +1,7 @@
 import {Composition} from 'remotion';
 import {HelloStudio} from './HelloStudio';
 import {TurkeyReel, turkeyDuration} from './turkey/TurkeyReel';
+import {ReelBase as GratefulCrystal, reelDuration as gratefulCrystalDuration} from './grateful-crystal/ReelBase';
 
 export const Root: React.FC = () => (
   <>
@@ -39,6 +40,15 @@ export const Root: React.FC = () => (
       width={1080}
       height={1920}
       defaultProps={{minimal: false, bare: true}}
+    />
+    {/* Certified & Grateful: Crystal (picture and voice; text is added in HyperFrames) */}
+    <Composition
+      id="GratefulCrystalBase"
+      component={GratefulCrystal}
+      durationInFrames={gratefulCrystalDuration}
+      fps={30}
+      width={1080}
+      height={1920}
     />
   </>
 );

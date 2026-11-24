@@ -1,0 +1,83 @@
+{
+ "slug": "grateful-crystal",
+ "series": "Certified & Grateful",
+ "fps": 30,
+ "tail": 0.0,
+ "beats": [
+  {
+   "id": "c1",
+   "src": "IMG_5238.MOV",
+   "in": 5.55,
+   "dur": 17.2,
+   "src_len": 12.05,
+   "zoom": 1.35,
+   "cx": 0.55,
+   "cy": 0.42,
+   "grade": "lift",
+   "push": [
+    1.0,
+    1.04
+   ],
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "len": 12.0,
+    "tail": 0.1
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "name",
+   "at": "c1+0.45",
+   "dur": 3.6,
+   "name": "Crystal",
+   "role": "Certified Collision Center",
+   "top": 250
+  },
+  {
+   "type": "caption",
+   "at": "c1+0.17",
+   "dur": 2.15,
+   "text": "Hey, it's Crystal|at Certified Collision Center"
+  },
+  {
+   "type": "caption",
+   "at": "c1+2.45",
+   "dur": 2.05,
+   "text": "I just wanted to say that I'm|so thankful for my family"
+  },
+  {
+   "type": "caption",
+   "at": "c1+4.62",
+   "dur": 2.13,
+   "text": "I'm thankful for all the blessings|that we've had this year"
+  },
+  {
+   "type": "caption",
+   "at": "c1+6.77",
+   "dur": 1.6,
+   "text": "and definitely a great|place to work"
+  },
+  {
+   "type": "caption",
+   "at": "c1+8.5",
+   "dur": 2.22,
+   "text": "It's definitely become a family|and I couldn't ask for more"
+  },
+  {
+   "type": "caption",
+   "at": "c1+11.05",
+   "dur": 0.95,
+   "text": "Happy holidays!"
+  },
+  {
+   "type": "endcard",
+   "at": "c1+12.1",
+   "dur": 5.1,
+   "proud": "Certified & Grateful",
+   "slogan": "Driven to repair. Committed to care.",
+   "keepInMinimal": true
+  }
+ ]
+}

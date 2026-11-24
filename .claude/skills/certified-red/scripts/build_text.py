@@ -65,7 +65,7 @@ def write(name, text):
     open(os.path.join(hf, "compositions", name + ".html"), "w").write(text)
 
 # ---------------------------------------------------------------- title
-if not clean:
+if not clean and by("title"):
     t = by("title")[0]; d = t["len"]; W = 840
     l1, l2, sub = t["line1"].upper(), t["line2"].upper(), t["eyebrow"].upper()
     s1, s2 = fit(l1, "BarlowCondensed-Black.ttf", W, 0.005), fit(l2, "BarlowCondensed-Black.ttf", W, 0.005)
@@ -100,9 +100,10 @@ if not clean:
     write("title", scene("title", css, body, js)); host("title", t["start"], d, track=2)
 
 # ---------------------------------------------------------------- labels (name + dog line)
-if not clean:
+if not clean and (by("name") or by("label")):
     items = []
-    n = by("name")[0]; items.append(("lab-name", n["start"], n["len"], n["name"].upper(), n["role"], 930))
+    for n in by("name")[:1]:
+        items.append(("lab-name", n["start"], n["len"], n["name"].upper(), n["role"], n.get("top", 930)))
     for i, o in enumerate(by("label")):
         items.append((f"lab-{i}", o["start"], o["len"], o["text"].upper(), "", 1100))
     first = min(i[1] for i in items); last = max(i[1] + i[2] for i in items)
@@ -117,7 +118,7 @@ if not clean:
     for cid, st, ln, head, sub, top in items:
         ls = round(st - first, 3)
         body += f"""    <div id="{cid}" class="clip" data-start="{ls}" data-duration="{ln}">
-      <div id="{cid}-scrim" class="lab-scrim"></div>
+      <div id="{cid}-scrim" class="lab-scrim" style="top:{max(top - 150, 0)}px"></div>
       <div id="{cid}-in" class="lab" style="top:{top}px">
         <div id="{cid}-rule" class="lab-rule"></div>
         <div id="{cid}-head" class="lab-head">{esc(head)}</div>
@@ -156,8 +157,9 @@ if not clean:
     write("captions", scene("captions", css, body, js.rstrip("\n"))); host("captions", 0, DUR, kind="captions", track=4)
 
 # ---------------------------------------------------------------- finale (thank you + end card)
-th, en = by("thanks")[0], by("endcard")[0]
-f0 = en["start"] if clean else th["start"]; fd = round(DUR - f0, 3)
+th, en = (by("thanks") or [None])[0], by("endcard")[0]
+has_th = th is not None and not clean            # single-speaker episodes have no thank-you card
+f0 = th["start"] if has_th else en["start"]; fd = round(DUR - f0, 3)
 e0 = round(en["start"] - f0, 3); el = round(DUR - en["start"], 3)
 proud = en["proud"].split("|"); s_a, s_b = [x.strip() + "." for x in en["slogan"].rstrip(".").split(". ")]
 css = f"""    #fin-dim {{ position: absolute; inset: 0; background: {INK}; opacity: 0; }}
@@ -175,7 +177,7 @@ css = f"""    #fin-dim {{ position: absolute; inset: 0; background: {INK}; opaci
     #fin-s2 {{ color: #FF2A31; }}"""
 body = '    <div id="fin-dim-clip" class="clip" data-start="0" data-duration="{0}"><div id="fin-dim"></div></div>\n'.format(fd)
 js = ""
-if not clean:
+if has_th:
     body += f"""    <div id="fin-thanks-clip" class="clip" data-start="0" data-duration="{th['len']}">
       <div id="fin-thanks">
         <div id="fin-ty">{esc(th['head'].upper())}</div>
@@ -207,7 +209,7 @@ body += f"""    <div id="fin-card-clip" class="clip" data-start="{e0}" data-dura
         <div class="fin-mask" data-layout-allow-overflow><div id="fin-s2" class="fin-slogan">{esc(s_b)}</div></div>
       </div>
     </div>"""
-k = e0 + (0.45 if clean else 0.15)
+k = e0 + (0.15 if has_th else 0.45)
 js += f"""      tl.fromTo("#fin-logo", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }}, {round(k + 0.1, 3)});
 """
 if not clean:

@@ -15,6 +15,8 @@ GRADES = {
     "phone": "eq=contrast=1.05:saturation=1.10:gamma=1.03,colorbalance=rm=0.025:gm=0.005:bm=-0.03:rh=0.015:bh=-0.02",
     "drone": "eq=contrast=1.10:saturation=1.22:gamma=1.04,colorbalance=rm=0.03:gm=0.0:bm=-0.035:rh=0.02:bh=-0.02",
     "bright": "eq=contrast=1.04:saturation=1.10:gamma=0.94,colorbalance=rm=0.02:bm=-0.025",
+    # dusk or underexposed people shots: lift mids and shadows, keep skin warm and natural
+    "lift": "eq=brightness=0.03:contrast=1.05:saturation=1.06:gamma=1.28,colorbalance=rs=0.015:bs=-0.015:rm=0.02:bm=-0.02",
 }
 
 def probe(path):
