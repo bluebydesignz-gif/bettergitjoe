@@ -1,13 +1,13 @@
 {
  "slug": "marketing-dept",
  "fps": 30,
- "durationInFrames": 762,
+ "durationInFrames": 861,
  "segments": [
   {
    "id": "c1",
    "file": "marketing-dept/seg/c1.mp4",
    "from": 0,
-   "dur": 99,
+   "dur": 162,
    "xfade": 0,
    "push": [
     1.0,
@@ -17,8 +17,8 @@
   {
    "id": "c2",
    "file": "marketing-dept/seg/c2.mp4",
-   "from": 99,
-   "dur": 111,
+   "from": 162,
+   "dur": 142,
    "xfade": 0,
    "push": [
     1.0,
@@ -28,7 +28,7 @@
   {
    "id": "c4",
    "file": "marketing-dept/seg/c4.mp4",
-   "from": 210,
+   "from": 304,
    "dur": 129,
    "xfade": 0,
    "push": [
@@ -39,8 +39,8 @@
   {
    "id": "c5",
    "file": "marketing-dept/seg/c5.mp4",
-   "from": 339,
-   "dur": 423,
+   "from": 434,
+   "dur": 428,
    "xfade": 0,
    "push": [
     1.0,
@@ -56,71 +56,77 @@
    "from": 1
   },
   {
+   "type": "caption",
+   "dur": 28,
+   "text": "Oh, let me think",
+   "from": 66
+  },
+  {
    "type": "label",
-   "dur": 57,
+   "dur": 48,
    "text": "The marketing|department",
    "size": 118,
    "top": 900,
-   "from": 40
+   "from": 112
   },
   {
    "type": "caption",
    "dur": 46,
    "text": "What department do you think|works the hardest?",
-   "from": 102
+   "from": 165
   },
   {
    "type": "label",
-   "dur": 57,
+   "dur": 48,
    "text": "The marketing|department",
    "size": 118,
    "top": 900,
-   "from": 152
+   "from": 255
   },
   {
    "type": "caption",
-   "dur": 64,
+   "dur": 72,
    "text": "\u00bfLa oficina que|trabaja m\u00e1s duro?",
-   "from": 213
+   "from": 308
   },
   {
    "type": "label",
-   "dur": 57,
+   "dur": 48,
    "text": "The marketing|department",
    "size": 118,
    "top": 900,
-   "from": 280
+   "from": 384
   },
   {
    "type": "caption",
    "dur": 60,
    "text": "Hey Rosa, what department do you|think works the hardest?",
-   "from": 342
+   "from": 436
   },
   {
    "type": "caption",
    "dur": 34,
    "text": "Our media guy",
-   "from": 428
+   "from": 522
   },
   {
    "type": "label",
    "dur": 78,
    "text": "Correct answer",
    "top": 300,
-   "from": 428
+   "from": 522
   },
   {
    "type": "caption",
    "dur": 63,
    "text": "He has to put up with|all of the girls here",
-   "from": 465
+   "from": 560
   },
   {
    "type": "caption",
    "dur": 33,
    "text": "And the boss",
-   "from": 550
+   "from": 645
   },
   {
    "type": "thanks",
@@ -130,15 +136,15 @@
     "Love you",
     "The marketing department"
    ],
-   "from": 588
+   "from": 682
   },
   {
    "type": "endcard",
-   "dur": 102,
+   "dur": 106,
    "proud": "",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true,
-   "from": 660
+   "from": 754
   }
  ]
 }
