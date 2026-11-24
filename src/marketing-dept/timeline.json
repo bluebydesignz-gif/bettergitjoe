@@ -1,13 +1,13 @@
 {
  "slug": "marketing-dept",
  "fps": 30,
- "durationInFrames": 1110,
+ "durationInFrames": 762,
  "segments": [
   {
    "id": "c1",
    "file": "marketing-dept/seg/c1.mp4",
    "from": 0,
-   "dur": 162,
+   "dur": 99,
    "xfade": 0,
    "push": [
     1.0,
@@ -17,19 +17,8 @@
   {
    "id": "c2",
    "file": "marketing-dept/seg/c2.mp4",
-   "from": 162,
-   "dur": 150,
-   "xfade": 0,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
-   "id": "c3",
-   "file": "marketing-dept/seg/c3.mp4",
-   "from": 312,
-   "dur": 150,
+   "from": 99,
+   "dur": 111,
    "xfade": 0,
    "push": [
     1.0,
@@ -39,8 +28,8 @@
   {
    "id": "c4",
    "file": "marketing-dept/seg/c4.mp4",
-   "from": 462,
-   "dur": 150,
+   "from": 210,
+   "dur": 129,
    "xfade": 0,
    "push": [
     1.0,
@@ -50,8 +39,8 @@
   {
    "id": "c5",
    "file": "marketing-dept/seg/c5.mp4",
-   "from": 612,
-   "dur": 498,
+   "from": 339,
+   "dur": 423,
    "xfade": 0,
    "push": [
     1.0,
@@ -62,120 +51,94 @@
  "overlays": [
   {
    "type": "caption",
-   "dur": 39,
+   "dur": 38,
    "text": "What department do you think|works the hardest?",
-   "from": 2
-  },
-  {
-   "type": "caption",
-   "dur": 33,
-   "text": "Let me think",
-   "from": 58
+   "from": 1
   },
   {
    "type": "label",
-   "dur": 60,
+   "dur": 57,
    "text": "The marketing|department",
    "size": 118,
    "top": 900,
+   "from": 40
+  },
+  {
+   "type": "caption",
+   "dur": 46,
+   "text": "What department do you think|works the hardest?",
    "from": 102
   },
   {
-   "type": "caption",
-   "dur": 48,
-   "text": "What department do you think|works the hardest?",
-   "from": 164
-  },
-  {
    "type": "label",
-   "dur": 60,
+   "dur": 57,
    "text": "The marketing|department",
    "size": 118,
    "top": 900,
-   "from": 248
-  },
-  {
-   "type": "caption",
-   "dur": 60,
-   "text": "What department do you think|works the hardest?",
-   "from": 316
-  },
-  {
-   "type": "label",
-   "dur": 60,
-   "text": "The marketing|department",
-   "size": 118,
-   "top": 900,
-   "from": 382
+   "from": 152
   },
   {
    "type": "caption",
    "dur": 64,
    "text": "\u00bfLa oficina que|trabaja m\u00e1s duro?",
-   "from": 470
+   "from": 213
   },
   {
    "type": "label",
-   "dur": 60,
+   "dur": 57,
    "text": "The marketing|department",
    "size": 118,
    "top": 900,
-   "from": 538
+   "from": 280
   },
   {
    "type": "caption",
-   "dur": 64,
-   "text": "Hey Rosa, what department do you think|works the hardest?",
-   "from": 616
+   "dur": 60,
+   "text": "Hey Rosa, what department do you|think works the hardest?",
+   "from": 342
   },
   {
    "type": "caption",
    "dur": 34,
    "text": "Our media guy",
-   "from": 704
+   "from": 428
   },
   {
    "type": "label",
-   "dur": 96,
+   "dur": 78,
    "text": "Correct answer",
    "top": 300,
-   "from": 704
+   "from": 428
   },
   {
    "type": "caption",
    "dur": 63,
    "text": "He has to put up with|all of the girls here",
-   "from": 741
+   "from": 465
   },
   {
    "type": "caption",
-   "dur": 32,
+   "dur": 33,
    "text": "And the boss",
-   "from": 826
-  },
-  {
-   "type": "caption",
-   "dur": 20,
-   "text": "The boss",
-   "from": 874
+   "from": 550
   },
   {
    "type": "thanks",
-   "dur": 90,
+   "dur": 72,
    "head": "Thank you guys",
    "lines": [
     "Love you",
     "The marketing department"
    ],
-   "from": 895
+   "from": 588
   },
   {
    "type": "endcard",
-   "dur": 125,
+   "dur": 102,
    "proud": "",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true,
-   "from": 985
+   "from": 660
   }
  ]
 }
