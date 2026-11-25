@@ -7,7 +7,8 @@
    "id": "c1",
    "src": "IMG_5497.MOV",
    "in": 0.55,
-   "dur": 5.4,
+   "dur": 3.05,
+   "speed": 1.5,
    "push": [
     1.0,
     1.03
@@ -16,15 +17,18 @@
    "audio": {
     "kind": "voice",
     "chain": "close",
-    "len": 3.65,
-    "tail": 0.05
+    "len": 2.12,
+    "tail": 0.05,
+    "speed": 1.5
    }
   },
   {
    "id": "c2",
    "src": "IMG_5499.MOV",
    "in": 0.0,
-   "dur": 4.75,
+   "dur": 3.1,
+   "speed": 2,
+   "src_len": 5.3,
    "push": [
     1.0,
     1.03
@@ -33,15 +37,17 @@
    "audio": {
     "kind": "voice",
     "chain": "close",
-    "len": 3.05,
-    "tail": 0.05
+    "len": 2.9,
+    "tail": 0.05,
+    "speed": 2
    }
   },
   {
    "id": "c4",
    "src": "IMG_5498.MOV",
    "in": 7.05,
-   "dur": 4.3,
+   "dur": 2.9,
+   "speed": 2,
    "src_len": 3.2,
    "push": [
     1.0,
@@ -51,32 +57,52 @@
    "audio": {
     "kind": "voice",
     "chain": "close",
-    "len": 2.55,
-    "tail": 0.05
+    "len": 2.6,
+    "tail": 0.05,
+    "speed": 2
+   }
+  },
+  {
+   "id": "c5q",
+   "src": "IMG_5494.MOV",
+   "in": 19.05,
+   "dur": 1.77,
+   "speed": 1.75,
+   "push": [
+    1.0,
+    1.01
+   ],
+   "grade": "phone",
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "len": 2.3,
+    "tail": 0.05,
+    "speed": 1.75
    }
   },
   {
    "id": "c5",
    "src": "IMG_5494.MOV",
-   "in": 19.05,
-   "dur": 14.25,
-   "src_len": 8.25,
+   "in": 22.15,
+   "dur": 10.3,
+   "src_len": 5.15,
    "push": [
-    1.0,
+    1.01,
     1.03
    ],
    "grade": "phone",
    "audio": {
     "kind": "voice",
     "chain": "close",
-    "len": 8.25,
+    "len": 5.0,
     "tail": 0.1
    }
   }
  ],
  "sounds": [
   {
-   "at": "c1+3.57",
+   "at": "c1+1.28",
    "src": "VO_marketing.mp3",
    "in": 0.0,
    "len": 2.4,
@@ -85,7 +111,7 @@
    "pre": 0
   },
   {
-   "at": "c2+2.92",
+   "at": "c2+1.37",
    "src": "VO_marketing.mp3",
    "in": 0.0,
    "len": 2.4,
@@ -94,7 +120,7 @@
    "pre": 0
   },
   {
-   "at": "c4+2.47",
+   "at": "c4+1.15",
    "src": "VO_marketing.mp3",
    "in": 0.0,
    "len": 2.4,
@@ -107,86 +133,80 @@
   {
    "type": "caption",
    "at": "c1+0.03",
-   "dur": 1.25,
+   "dur": 1.2,
    "text": "What department do you think|works the hardest?"
   },
   {
+   "type": "label",
+   "at": "c1+1.46",
+   "dur": 1.5,
+   "text": "The marketing|department",
+   "size": 118,
+   "top": 900
+  },
+  {
    "type": "caption",
-   "at": "c1+2.19",
+   "at": "c2+0.03",
    "dur": 0.95,
-   "text": "Oh, let me think"
-  },
-  {
-   "type": "label",
-   "at": "c1+3.75",
-   "dur": 1.6,
-   "text": "The marketing|department",
-   "size": 118,
-   "top": 900
-  },
-  {
-   "type": "caption",
-   "at": "c2+0.1",
-   "dur": 1.55,
    "text": "What department do you think|works the hardest?"
   },
   {
    "type": "label",
-   "at": "c2+3.1",
-   "dur": 1.6,
+   "at": "c2+1.55",
+   "dur": 1.5,
    "text": "The marketing|department",
    "size": 118,
    "top": 900
   },
   {
    "type": "caption",
-   "at": "c4+0.1",
-   "dur": 2.4,
+   "at": "c4+0.03",
+   "dur": 1.15,
    "text": "¿La oficina que|trabaja más duro?"
   },
   {
    "type": "label",
-   "at": "c4+2.65",
-   "dur": 1.6,
+   "at": "c4+1.33",
+   "dur": 1.5,
    "text": "The marketing|department",
    "size": 118,
    "top": 900
   },
   {
    "type": "caption",
-   "at": "c5+0.1",
-   "dur": 2.0,
+   "at": "c5q+0.05",
+   "dur": 1.6,
    "text": "Hey Rosa, what department do you|think works the hardest?"
   },
   {
    "type": "caption",
-   "at": "c5+2.95",
-   "dur": 1.15,
+   "at": "c5+0.1",
+   "dur": 1.1,
    "text": "Our media guy"
   },
   {
    "type": "label",
-   "at": "c5+2.95",
+   "at": "c5+0.1",
    "dur": 2.6,
    "text": "Correct answer",
    "top": 300
   },
   {
    "type": "caption",
-   "at": "c5+4.2",
+   "at": "c5+1.25",
    "dur": 2.1,
    "text": "He has to put up with|all of the girls here"
   },
   {
    "type": "caption",
-   "at": "c5+7.05",
-   "dur": 1.1,
+   "at": "c5+3.95",
+   "dur": 0.95,
    "text": "And the boss"
   },
   {
    "type": "thanks",
-   "at": "c5+8.3",
-   "dur": 2.4,
+   "at": "c5+4.9",
+   "dur": 2.35,
    "head": "Thank you guys",
    "lines": [
     "Love you",
@@ -195,8 +215,8 @@
   },
   {
    "type": "endcard",
-   "at": "c5+10.7",
-   "dur": 3.55,
+   "at": "c5+7.25",
+   "dur": 3.05,
    "proud": "",
    "slogan": "Driven to repair. Committed to care.",
    "keepInMinimal": true

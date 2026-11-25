@@ -212,14 +212,15 @@ body += f"""    <div id="fin-card-clip" class="clip" data-start="{e0}" data-dura
       </div>
     </div>"""
 k = e0 + (0.15 if has_th else 0.45)
+gap = 0.45 if clean or any(l.strip() for l in proud) else 0.0   # no proud line: the slogan follows the logo directly
 js += f"""      tl.fromTo("#fin-logo", {{ opacity: 0, filter: "blur(10px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }}, {round(k + 0.1, 3)});
 """
 if not clean:
     js += f"""      tl.fromTo("#fin-proud", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5, ease: "power2.out" }}, {round(k + 0.55, 3)});
 """
-js += f"""      tl.fromTo("#fin-rule", {{ scaleX: 0 }}, {{ scaleX: 1, duration: 0.45, ease: "power4.out" }}, {round(k + 1.0, 3)});
-      tl.fromTo("#fin-s1", {{ yPercent: 104 }}, {{ yPercent: 0, duration: 0.8, ease: "expo.out" }}, {round(k + 1.15, 3)});
-      tl.fromTo("#fin-s2", {{ yPercent: 104 }}, {{ yPercent: 0, duration: 0.8, ease: "expo.out" }}, {round(k + 1.27, 3)});"""
+js += f"""      tl.fromTo("#fin-rule", {{ scaleX: 0 }}, {{ scaleX: 1, duration: 0.45, ease: "power4.out" }}, {round(k + 1.0 - (0.45 - gap), 3)});
+      tl.fromTo("#fin-s1", {{ yPercent: 104 }}, {{ yPercent: 0, duration: 0.8, ease: "expo.out" }}, {round(k + 1.15 - (0.45 - gap), 3)});
+      tl.fromTo("#fin-s2", {{ yPercent: 104 }}, {{ yPercent: 0, duration: 0.8, ease: "expo.out" }}, {round(k + 1.27 - (0.45 - gap), 3)});"""
 write("finale", scene("finale", css, body, js)); host("finale", f0, fd, track=5)
 
 # ---------------------------------------------------------------- root

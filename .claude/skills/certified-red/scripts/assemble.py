@@ -35,14 +35,16 @@ def rms_db(x, active=False):
     if active: p = np.sort(p)[int(len(p) * 0.4):]          # loudest 60% = the words, not the gaps
     return 10 * np.log10(p.mean())
 
-def process(src, t0, dur, chain, target_db, active, window=None):
-    """Level a clip to target_db. `window` = [start, end] seconds to measure (e.g. just the words)."""
+def process(src, t0, dur, chain, target_db, active, window=None, speed=1.0):
+    """Level a clip to target_db. `window` = [start, end] seconds to measure (e.g. just the words).
+    `speed` > 1 speeds the audio up with pitch kept (atempo), to match a sped-up shot."""
+    tempo = f"atempo={speed:.4f}," if speed != 1.0 else ""
     def meas(x):
         if window: x = x[int(window[0] * SR): int(window[1] * SR)]
         return rms_db(x, active)
-    raw = pcm(src, t0, dur)
+    raw = pcm(src, t0, dur, tempo.rstrip(",") or None)
     g = min(target_db - meas(raw), 34.0)                      # cap make-up gain
-    out = pcm(src, t0, dur, f"volume={g:.2f}dB," + CHAINS[chain])
+    out = pcm(src, t0, dur, tempo + f"volume={g:.2f}dB," + CHAINS[chain])
     g2 = target_db - meas(out)                                # trim after the chain
     return out * (10 ** (g2 / 20)), g + g2
 
@@ -90,10 +92,12 @@ if __name__ == "__main__":
         if kind == "bed": continue
         src = os.path.join(footage, a.get("src", b["src"]))
         a_in = a.get("in", b["in"]); lead = a.get("lead", 0.0); length = a.get("len", b["dur"])
+        sp = a.get("speed", b.get("speed", 1.0)) if kind == "voice" else 1.0   # len/pre/tail are source seconds
         if kind == "voice":
             pre, post = a.get("pre", 0.06), a.get("tail", 0.10)
-            x, g = process(src, a_in - pre, length + pre + post, a.get("chain", "close"), a.get("db", -20.0), True, a.get("window"))
-            x = fade(x, a.get("fin", 0.05), 0.09); t0 = starts[b["id"]] - lead - pre
+            x, g = process(src, a_in - pre, length + pre + post, a.get("chain", "close"), a.get("db", -20.0), True,
+                           a.get("window"), sp)
+            x = fade(x, a.get("fin", 0.05), 0.09); t0 = starts[b["id"]] - lead - pre / sp
         else:
             pre = post = 0.12                                   # overlap neighbours for a soft crossfade
             x, g = process(src, a_in - pre, length + pre + post, "nat", a.get("db", -32.0), False)
