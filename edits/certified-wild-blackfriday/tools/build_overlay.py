@@ -76,7 +76,7 @@ css = f"""
       line-height: 1.05; text-transform: uppercase; white-space: nowrap; }}
     .cap .w {{ display: inline-block; margin: 0 .12em; }}
     .cap .w.bf {{ font-family: "BarlowC"; font-size: 88px; vertical-align: -6px; }}
-    #endcard {{ position: absolute; left: 70px; right: 70px; top: 740px; border-radius: 44px; padding: 34px 40px 36px; text-align: center; opacity: 0; }}
+    #endcard {{ position: absolute; left: 70px; right: 70px; top: 800px; border-radius: 44px; padding: 34px 40px 36px; text-align: center; opacity: 0; }}
     #endcard img {{ width: 400px; height: auto; display: block; margin: 0 auto 10px; }}
     #endcard .e {{ opacity: 0; }}
     #e1 {{ font-family: "Barlow"; font-weight: 700; font-size: 38px; }}
@@ -188,7 +188,7 @@ for b in E["beats"]:
     d = round(b["end"] - b["start"], 3)
     push.append(f'      tl.set("#base", {{scale: 1}}, {b["start"]}); tl.to("#base", {{scale: 1.035, duration: {d}, ease: "sine.inOut"}}, {b["start"]});')
 for t in (td, ta):
-    push.append(f'      tl.to("#basewrap", {{keyframes: [{{scale: 1.09, duration: 0.07}}, {{scale: 1.0, duration: 0.45}}], ease: "power2.out"}}, {t:.2f});')
+    push.append(f'      tl.to("#basewrap", {{keyframes: [{{scale: 1.04, duration: 0.07}}, {{scale: 1.0, duration: 0.45}}], ease: "power2.out"}}, {t:.2f});')
 index = f"""<!doctype html>
 <html lang="en" data-resolution="portrait">
   <head>
