@@ -23,8 +23,8 @@
     #fin-s2 { color: #FF2A31; }
   </style>
   <div id="root" data-composition-id="finale" data-width="1080" data-height="1920">
-    <div id="fin-dim-clip" class="clip" data-start="0" data-duration="5.4"><div id="fin-dim"></div></div>
-    <div id="fin-thanks-clip" class="clip" data-start="0" data-duration="2.333">
+    <div id="fin-dim-clip" class="clip" data-start="0" data-duration="5.534"><div id="fin-dim"></div></div>
+    <div id="fin-thanks-clip" class="clip" data-start="0" data-duration="2.4">
       <div id="fin-thanks">
         <div id="fin-ty">THANK YOU GUYS</div>
         <div id="fin-ty-rule"></div>
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div id="fin-card-clip" class="clip" data-start="2.334" data-duration="3.066">
+    <div id="fin-card-clip" class="clip" data-start="2.4" data-duration="3.134">
       <div id="fin-card">
         <img id="fin-logo" src="assets/logo.png" alt="Certified Collision Center" />
         <div id="fin-proud">
@@ -53,13 +53,13 @@
       tl.fromTo("#fin-ty", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0.35);
       tl.fromTo("#fin-ty-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power4.out" }, 0.6);
       tl.fromTo(".fin-credit", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out", stagger: 0.09 }, 0.72);
-      tl.to("#fin-thanks", { opacity: 0, filter: "blur(8px)", duration: 0.24, ease: "power2.in" }, 2.053);
-      tl.to("#fin-dim", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 2.034);
-      tl.fromTo("#fin-logo", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }, 2.584);
-      tl.fromTo("#fin-proud", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 3.034);
-      tl.fromTo("#fin-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power4.out" }, 3.034);
-      tl.fromTo("#fin-s1", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 3.184);
-      tl.fromTo("#fin-s2", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 3.304);
+      tl.to("#fin-thanks", { opacity: 0, filter: "blur(8px)", duration: 0.24, ease: "power2.in" }, 2.12);
+      tl.to("#fin-dim", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 2.1);
+      tl.fromTo("#fin-logo", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }, 2.65);
+      tl.fromTo("#fin-proud", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 3.1);
+      tl.fromTo("#fin-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power4.out" }, 3.1);
+      tl.fromTo("#fin-s1", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 3.25);
+      tl.fromTo("#fin-s2", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 3.37);
       window.__timelines["finale"] = tl;
     })();
   </script>
