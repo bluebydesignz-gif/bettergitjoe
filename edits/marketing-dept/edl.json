@@ -7,7 +7,7 @@
    "id": "c1",
    "src": "IMG_5497.MOV",
    "in": 0.55,
-   "dur": 4.9,
+   "dur": 4.75,
    "speed": 1.15,
    "src_len": 5.5,
    "push": [
@@ -27,7 +27,7 @@
    "id": "c2",
    "src": "IMG_5499.MOV",
    "in": 0.0,
-   "dur": 4.35,
+   "dur": 4.1,
    "speed": 1.15,
    "push": [
     1.0,
@@ -46,7 +46,7 @@
    "id": "c4",
    "src": "IMG_5498.MOV",
    "in": 7.05,
-   "dur": 4.0,
+   "dur": 3.3,
    "speed": 1.15,
    "src_len": 3.2,
    "push": [
@@ -83,29 +83,29 @@
  ],
  "sounds": [
   {
-   "at": "c1+3.08",
-   "src": "VO_marketing.mp3",
-   "in": 0.0,
-   "len": 2.4,
-   "chain": "nat",
+   "at": "c1+3.22",
+   "src": "joe_rec8.m4a",
+   "in": 0.59,
+   "len": 1.33,
+   "chain": "close",
    "db": -17,
    "pre": 0
   },
   {
-   "at": "c2+2.52",
-   "src": "VO_marketing.mp3",
-   "in": 0.0,
-   "len": 2.4,
-   "chain": "nat",
+   "at": "c2+2.66",
+   "src": "joe_rec8.m4a",
+   "in": 7.35,
+   "len": 1.27,
+   "chain": "close",
    "db": -17,
    "pre": 0
   },
   {
-   "at": "c4+2.12",
-   "src": "VO_marketing.mp3",
-   "in": 0.0,
-   "len": 2.4,
-   "chain": "nat",
+   "at": "c4+2.26",
+   "src": "joe_rec8.m4a",
+   "in": 16.96,
+   "len": 0.69,
+   "chain": "close",
    "db": -17,
    "pre": 0
   }
@@ -126,7 +126,7 @@
   {
    "type": "label",
    "at": "c1+3.26",
-   "dur": 1.6,
+   "dur": 1.4,
    "text": "The marketing|department",
    "size": 118,
    "top": 900
@@ -140,7 +140,7 @@
   {
    "type": "label",
    "at": "c2+2.7",
-   "dur": 1.6,
+   "dur": 1.4,
    "text": "The marketing|department",
    "size": 118,
    "top": 900
@@ -154,8 +154,8 @@
   {
    "type": "label",
    "at": "c4+2.3",
-   "dur": 1.6,
-   "text": "The marketing|department",
+   "dur": 1.0,
+   "text": "Marketing",
    "size": 118,
    "top": 900
   },
