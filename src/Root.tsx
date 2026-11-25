@@ -2,6 +2,7 @@ import {Composition} from 'remotion';
 import {HelloStudio} from './HelloStudio';
 import {TurkeyReel, turkeyDuration} from './turkey/TurkeyReel';
 import {ReelBase as MarketingDept, reelDuration as marketingDeptDuration} from './marketing-dept/ReelBase';
+import {ReelBase as InsyncTransparent, reelDuration as insyncTransparentDuration} from './insync-transparent/ReelBase';
 import {ReelBase as GratefulCrystal, reelDuration as gratefulCrystalDuration} from './grateful-crystal/ReelBase';
 
 export const Root: React.FC = () => (
@@ -55,6 +56,14 @@ export const Root: React.FC = () => (
       id="MarketingDeptBase"
       component={MarketingDept}
       durationInFrames={marketingDeptDuration}
+      fps={30}
+      width={1080}
+      height={1920}
+    />
+      <Composition
+      id="InsyncTransparentBase"
+      component={InsyncTransparent}
+      durationInFrames={insyncTransparentDuration}
       fps={30}
       width={1080}
       height={1920}
