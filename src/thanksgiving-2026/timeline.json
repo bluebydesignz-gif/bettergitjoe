@@ -1,7 +1,7 @@
 {
  "slug": "thanksgiving-2026",
  "fps": 30,
- "durationInFrames": 991,
+ "durationInFrames": 1070,
  "segments": [
   {
    "id": "o1",
@@ -59,9 +59,20 @@
    ]
   },
   {
+   "id": "v1",
+   "file": "thanksgiving-2026/seg/v1.mp4",
+   "from": 219,
+   "dur": 78,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  },
+  {
    "id": "m5",
    "file": "thanksgiving-2026/seg/m5.mp4",
-   "from": 219,
+   "from": 297,
    "dur": 27,
    "xfade": 0,
    "push": [
@@ -72,7 +83,7 @@
   {
    "id": "m6",
    "file": "thanksgiving-2026/seg/m6.mp4",
-   "from": 246,
+   "from": 324,
    "dur": 27,
    "xfade": 0,
    "push": [
@@ -83,7 +94,7 @@
   {
    "id": "m7",
    "file": "thanksgiving-2026/seg/m7.mp4",
-   "from": 273,
+   "from": 351,
    "dur": 33,
    "xfade": 0,
    "push": [
@@ -94,7 +105,7 @@
   {
    "id": "j1",
    "file": "thanksgiving-2026/seg/j1.mp4",
-   "from": 306,
+   "from": 384,
    "dur": 74,
    "xfade": 0,
    "push": [
@@ -105,7 +116,7 @@
   {
    "id": "j2",
    "file": "thanksgiving-2026/seg/j2.mp4",
-   "from": 379,
+   "from": 458,
    "dur": 66,
    "xfade": 0,
    "push": [
@@ -116,7 +127,7 @@
   {
    "id": "j3",
    "file": "thanksgiving-2026/seg/j3.mp4",
-   "from": 445,
+   "from": 524,
    "dur": 57,
    "xfade": 0,
    "push": [
@@ -127,7 +138,7 @@
   {
    "id": "c1",
    "file": "thanksgiving-2026/seg/c1.mp4",
-   "from": 502,
+   "from": 580,
    "dur": 74,
    "xfade": 0,
    "push": [
@@ -138,7 +149,7 @@
   {
    "id": "k1",
    "file": "thanksgiving-2026/seg/k1.mp4",
-   "from": 576,
+   "from": 654,
    "dur": 104,
    "xfade": 0,
    "push": [
@@ -149,7 +160,7 @@
   {
    "id": "cl",
    "file": "thanksgiving-2026/seg/cl.mp4",
-   "from": 679,
+   "from": 757,
    "dur": 114,
    "xfade": 0,
    "push": [
@@ -160,7 +171,7 @@
   {
    "id": "f1",
    "file": "thanksgiving-2026/seg/f1.mp4",
-   "from": 793,
+   "from": 871,
    "dur": 198,
    "xfade": 0,
    "push": [
