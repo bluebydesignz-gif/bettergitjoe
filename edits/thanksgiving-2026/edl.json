@@ -249,6 +249,96 @@
    }
   },
   {
+   "id": "b1",
+   "src": "IMG_5304.MOV",
+   "in": 19.85,
+   "dur": 2.55,
+   "grade": "bright",
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "db": -19
+   }
+  },
+  {
+   "id": "b2",
+   "src": "IMG_5494.MOV",
+   "in": 27.0,
+   "dur": 0.95,
+   "grade": "phone",
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -26
+   }
+  },
+  {
+   "id": "b3",
+   "src": "IMG_5497.MOV",
+   "in": 4.7,
+   "dur": 1.25,
+   "grade": "phone",
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -28
+   }
+  },
+  {
+   "id": "b4",
+   "src": "IMG_5496.MOV",
+   "in": 5.6,
+   "dur": 0.85,
+   "grade": "phone",
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "bed"
+   }
+  },
+  {
+   "id": "b5",
+   "src": "IMG_5499.MOV",
+   "in": 3.8,
+   "dur": 1.45,
+   "grade": "phone",
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -28
+   }
+  },
+  {
+   "id": "b6",
+   "src": "IMG_5304.MOV",
+   "in": 23.9,
+   "dur": 1.05,
+   "grade": "bright",
+   "push": [
+    1.0,
+    1.05
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -26
+   }
+  },
+  {
    "id": "cl",
    "src": "IMG_5230.mov",
    "in": 3.6,

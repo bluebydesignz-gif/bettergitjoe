@@ -46,8 +46,11 @@ css = f"""
       border-radius: 8px; opacity: 0; box-shadow: 0 34px 80px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.25); }}
     #feat img {{ display: block; width: 648px; height: 810px; object-fit: cover; }}
     #feat .cap {{ font-family: "Barlow"; font-weight: 700; font-size: 38px; color: #2A2A2E; text-align: center; padding: 26px 0 32px; }}
+    #outt {{ position: absolute; left: 0; right: 0; top: 300px; text-align: center; opacity: 0; }}
+    #outt span {{ display: inline-block; padding: 14px 34px 12px; border-radius: 999px; background: rgba(10,10,12,.55); backdrop-filter: blur(14px);
+      font-family: "Barlow"; font-weight: 800; font-size: 40px; letter-spacing: .3em; margin-right: -.3em; color: #FFFFFF; }}
     #coll-veil {{ position: absolute; inset: 0; background: rgba(10,10,12,.35); backdrop-filter: blur(16px); opacity: 0; }}
-    #coll-t {{ position: absolute; left: 0; right: 0; top: 1330px; text-align: center; opacity: 0; }}
+    #coll-t {{ position: absolute; left: 0; right: 0; top: 1240px; text-align: center; opacity: 0; }}
     #coll-t .a {{ font-family: "Barlow"; font-weight: 600; font-size: 46px; letter-spacing: .26em; margin-right: -.26em; }}
     #coll-t .b {{ font-family: "BarlowC"; font-weight: 900; font-size: 140px; line-height: .95; color: {CREAM}; }}
     /* ending */
@@ -66,7 +69,7 @@ css = f"""
 """
 js = []; A = lambda s: js.append("      " + s)
 # warm flashes on the fast cuts
-for k in ("m2", "m3", "m4", "m5", "m6", "m7"):          # camera-flash on the fast montage cuts
+for k in ("m2", "m3", "m4", "m5", "m6", "m7", "b2", "b3", "b4", "b5", "b6"):          # camera-flash on the fast montage cuts
     A(f'tl.fromTo("#flash", {{opacity: 0.5}}, {{opacity: 0, duration: 0.25, ease: "power2.out", immediateRender: false}}, {st(k):.2f});')
 # polaroid-to-life: a photo of the next scene drops in, then grows until it becomes the live shot
 TR = ["m1", "j1", "c1", "f1"]
@@ -89,8 +92,8 @@ def word(i, t0, t1, a, b, top):
     A(f'tl.fromTo("#wd{i}", {{opacity: 0, y: 40, filter: "blur(12px)"}}, {{opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out"}}, {t0:.2f});')
     A(f'tl.to("#wd{i}", {{opacity: 0, y: -30, filter: "blur(8px)", duration: 0.25, ease: "power2.in"}}, {t1 - 0.25:.2f});')
     return f'      <div class="word soft" id="wd{i}" style="top:{top}px"><span class="a">{esc(a)}</span><span class="b">{esc(b)}</span></div>\n'
-words = word(0, st("m1") + 0.1, en("m4") - 0.05, "GRATEFUL FOR", "our community", 330)
-words += word(1, st("m5") + 0.05, en("m7"), "GRATEFUL FOR", "our team", 330)
+words = word(0, st("m1") + 0.1, en("m4") - 0.05, "GRATEFUL FOR", "our community", 1060)
+words += word(1, st("m5") + 0.05, en("m7"), "GRATEFUL FOR", "our team", 1060)
 # quotes (their own words), line by line
 def quote(i, t0, dur, who, lines):
     A(f'tl.fromTo("#q{i}", {{opacity: 0}}, {{opacity: 1, duration: 0.2}}, {t0:.2f});')
@@ -104,13 +107,17 @@ qs += quote(1, j + 2.5, 2.05, "JOSH", ["“This year I’m", "thankful for famil
 qs += quote(2, j + 4.6, en("j3") - j - 4.6, "JOSH", ["“Thankful for my son,", "Bruce.”"])
 qs += quote(3, st("c1") + 0.02, en("c1") - st("c1"), "CRYSTAL", ["“It’s definitely become a family", "and I couldn’t ask for more.”"])
 qs += quote(4, st("k1") + 0.08, en("k1") - st("k1") - 0.08, "MARCOS", ["“And we’re just blessed", "to be a part of it.”"])
+# outtakes run
+o0, o1e = st("b1"), en("b6")
+A(f'tl.fromTo("#outt", {{opacity: 0, y: -30, scale: 0.9}}, {{opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)"}}, {o0 + 0.1:.2f});')
+A(f'tl.to("#outt", {{opacity: 0, y: -20, duration: 0.25, ease: "power2.in"}}, {o1e - 0.3:.2f});')
 # featured photo: volunteering at the Turkey Giveaway
 v0, v1e = st("v1"), en("v1")
 A(f'tl.fromTo("#feat", {{opacity: 0, scale: 1.5, y: -500, rotation: -14}}, {{opacity: 1, scale: 1, y: 0, rotation: -3, duration: 0.55, ease: "back.out(1.25)"}}, {v0 + 0.05:.2f});')
 A(f'tl.to("#feat", {{rotation: -1, y: -14, duration: {v1e - v0 - 0.8:.2f}, ease: "sine.inOut"}}, {v0 + 0.6:.2f});')
 A(f'tl.to("#feat", {{opacity: 0, y: 120, rotation: 6, duration: 0.3, ease: "power2.in"}}, {v1e - 0.3:.2f});')
 # polaroid collage
-pols = [("o1", 90, 260, -8), ("j2", 560, 300, 7), ("m2", 120, 720, 5), ("m7", 530, 760, -6), ("c1", 300, 520, -2)]
+pols = [("c1", 560, 300, 7), ("o1", 90, 260, -8), ("m2", 120, 720, 5), ("m7", 530, 760, -6), ("j2", 300, 520, -2)]
 c0 = st("cl")
 A(f'tl.fromTo("#coll-veil", {{opacity: 0}}, {{opacity: 1, duration: 0.4}}, {c0:.2f});')
 pol_html = ""
@@ -132,6 +139,7 @@ for k, sel in enumerate(("#e-logo", "#e-h", "#e-s")):
 body = f"""    <div id="w">
       <div id="hello" class="soft"><div id="h1">HAPPY</div><div id="h2">Thanksgiving</div><div id="h3">FROM OUR FAMILY TO YOURS</div></div>
 {words}{qs}      <div id="feat"><img src="assets/pol/v1.jpg" alt="" /><div class="cap">Volunteering at the Turkey Giveaway</div></div>
+      <div id="outt"><span>OUTTAKES</span></div>
       <div id="coll-veil"></div>
 {pol_html}      <div id="coll-t" class="soft"><div class="a">THIS IS OUR</div><div class="b">FAMILY</div></div>
       <div id="love" class="soft"><div id="l1">Grateful for <span>our customers</span></div><div id="l2">Grateful for <span>our team</span></div></div>
@@ -181,6 +189,6 @@ open("hf/index.html", "w").write(f"""<!doctype html>
   </body>
 </html>
 """)
-json.dump({"flash": [st(k) for k in ("m2", "m3", "m4", "m5", "m6", "m7")], "trans": [st(k) for k in TR], "pols": [c0 + 0.15 + i * 0.42 for i in range(len(pols))] + [st("v1") + 0.1],
+json.dump({"flash": [st(k) for k in ("m2", "m3", "m4", "m5", "m6", "m7", "b2", "b3", "b4", "b5", "b6")], "trans": [st(k) for k in TR], "pols": [c0 + 0.15 + i * 0.42 for i in range(len(pols))] + [st("v1") + 0.1],
            "title": [0.15, 0.45], "end": f0 + 3.2}, open("cues.json", "w"), indent=1)
 print(f"warm overlay: {DUR}s")
