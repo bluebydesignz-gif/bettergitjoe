@@ -86,7 +86,7 @@ for k in TR:
 A('tl.fromTo("#h1", {opacity: 0, y: 30, scaleX: 1.3}, {opacity: 1, y: 0, scaleX: 1, duration: 0.7, ease: "expo.out"}, 0.15);')
 A('tl.fromTo("#h2", {opacity: 0, scale: 1.25, filter: "blur(16px)"}, {opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out"}, 0.45);')
 A('tl.fromTo("#h3", {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease: "cubic.out"}, 0.95);')
-A(f'tl.to("#hello", {{opacity: 0, y: -60, filter: "blur(10px)", duration: 0.35, ease: "power2.in"}}, {en("o1") - 0.3:.2f});')
+A(f'tl.to("#hello", {{opacity: 0, y: -60, filter: "blur(10px)", duration: 0.35, ease: "power2.in"}}, {min(en("o1") - 0.3, 2.6):.2f});')
 # montage words
 def word(i, t0, t1, a, b, top):
     A(f'tl.fromTo("#wd{i}", {{opacity: 0, y: 40, filter: "blur(12px)"}}, {{opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out"}}, {t0:.2f});')

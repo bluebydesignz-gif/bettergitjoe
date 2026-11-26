@@ -38,17 +38,18 @@
   {
    "id": "o1",
    "src": "IMG_5230.mov",
-   "in": 0.6,
-   "dur": 2.6,
+   "in": 0.3,
+   "dur": 5.0,
    "push": [
     1.0,
-    1.05
+    1.03
    ],
    "grade": "phone",
    "audio": {
     "kind": "nat",
     "db": -34
-   }
+   },
+   "speed": 2
   },
   {
    "id": "m1",
@@ -112,7 +113,7 @@
    "id": "v1",
    "src": "IMG_5292.mp4",
    "in": 0.0,
-   "dur": 2.6,
+   "dur": 1.7,
    "grade": "phone",
    "push": [
     1.0,
@@ -296,9 +297,9 @@
   },
   {
    "id": "b4",
-   "src": "IMG_5496.MOV",
-   "in": 5.6,
-   "dur": 0.85,
+   "src": "DANCE_5a77f3d5.mp4",
+   "in": 2.3,
+   "dur": 2.3,
    "grade": "phone",
    "push": [
     1.0,
