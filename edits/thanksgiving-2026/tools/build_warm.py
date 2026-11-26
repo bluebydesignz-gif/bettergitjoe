@@ -107,10 +107,6 @@ qs += quote(1, j + 2.5, 2.05, "JOSH", ["“This year I’m", "thankful for famil
 qs += quote(2, j + 4.6, en("j3") - j - 4.6, "JOSH", ["“Thankful for my son,", "Bruce.”"])
 qs += quote(3, st("c1") + 0.02, en("c1") - st("c1"), "CRYSTAL", ["“It’s definitely become a family", "and I couldn’t ask for more.”"])
 qs += quote(4, st("k1") + 0.08, en("k1") - st("k1") - 0.08, "MARCOS", ["“And we’re just blessed", "to be a part of it.”"])
-# outtakes run
-o0, o1e = st("b1"), en("b6")
-A(f'tl.fromTo("#outt", {{opacity: 0, y: -30, scale: 0.9}}, {{opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)"}}, {o0 + 0.1:.2f});')
-A(f'tl.to("#outt", {{opacity: 0, y: -20, duration: 0.25, ease: "power2.in"}}, {o1e - 0.3:.2f});')
 # featured photo: volunteering at the Turkey Giveaway
 v0, v1e = st("v1"), en("v1")
 A(f'tl.fromTo("#feat", {{opacity: 0, scale: 1.5, y: -500, rotation: -14}}, {{opacity: 1, scale: 1, y: 0, rotation: -3, duration: 0.55, ease: "back.out(1.25)"}}, {v0 + 0.05:.2f});')
@@ -139,7 +135,6 @@ for k, sel in enumerate(("#e-logo", "#e-h", "#e-s")):
 body = f"""    <div id="w">
       <div id="hello" class="soft"><div id="h1">HAPPY</div><div id="h2">Thanksgiving</div><div id="h3">FROM OUR FAMILY TO YOURS</div></div>
 {words}{qs}      <div id="feat"><img src="assets/pol/v1.jpg" alt="" /><div class="cap">Volunteering at the Turkey Giveaway</div></div>
-      <div id="outt"><span>OUTTAKES</span></div>
       <div id="coll-veil"></div>
 {pol_html}      <div id="coll-t" class="soft"><div class="a">THIS IS OUR</div><div class="b">FAMILY</div></div>
       <div id="love" class="soft"><div id="l1">Grateful for <span>our customers</span></div><div id="l2">Grateful for <span>our team</span></div></div>
