@@ -1,0 +1,132 @@
+<template>
+  <style>
+    @font-face { font-family: "Barlow"; font-weight: 800; src: url("assets/fonts/Barlow-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 700; src: url("assets/fonts/Barlow-Bold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 600; src: url("assets/fonts/Barlow-SemiBold.ttf"); }
+    @font-face { font-family: "BarlowC"; font-weight: 900; src: url("assets/fonts/BarlowCondensed-Black.ttf"); }
+    #w { position: absolute; inset: 0; overflow: hidden; color: #FFF3DF; }
+    /* film look */
+    #tone { position: absolute; inset: 0; mix-blend-mode: soft-light; background: linear-gradient(180deg, rgba(255,175,90,.32), rgba(255,130,70,.24)); }
+    #vig { position: absolute; inset: 0; background: radial-gradient(ellipse 78% 62% at 50% 46%, rgba(0,0,0,0) 55%, rgba(30,12,0,.42) 100%); }
+    .leak { position: absolute; border-radius: 50%; mix-blend-mode: screen; opacity: 0; filter: blur(40px); }
+    #leak1 { width: 900px; height: 900px; left: -380px; top: -220px; background: radial-gradient(circle, rgba(255,150,60,.9), rgba(255,90,40,0) 70%); }
+    #leak2 { width: 800px; height: 800px; right: -360px; top: 900px; background: radial-gradient(circle, rgba(255,200,120,.85), rgba(255,120,80,0) 70%); }
+    #grain { position: absolute; inset: -60px; background: url("assets/grain.png"); background-size: 270px 270px; opacity: .10; mix-blend-mode: overlay; }
+    #flash { position: absolute; inset: 0; background: #FFF6E8; opacity: 0; }
+    /* type */
+    .soft { text-shadow: 0 4px 22px rgba(40,12,0,.7), 0 2px 4px rgba(0,0,0,.55); }
+    #hello { position: absolute; left: 0; right: 0; top: 520px; text-align: center; }
+    #h1 { font-family: "Barlow"; font-weight: 800; font-size: 64px; letter-spacing: .32em; margin-right: -.32em; opacity: 0; }
+    #h2 { font-family: "BarlowC"; font-weight: 900; font-size: 150px; line-height: .9; text-transform: uppercase; opacity: 0;
+      color: #FFF3DF; text-shadow: 0 0 34px rgba(255,170,80,.75), 0 6px 18px rgba(40,12,0,.8); }
+    #h3 { font-family: "Barlow"; font-weight: 700; font-size: 40px; letter-spacing: .14em; margin-top: 22px; opacity: 0; }
+    .word { position: absolute; left: 0; right: 0; text-align: center; opacity: 0; }
+    .word .a { font-family: "Barlow"; font-weight: 600; font-size: 50px; letter-spacing: .26em; margin-right: -.26em; display: block; }
+    .word .b { font-family: "BarlowC"; font-weight: 900; font-size: 150px; line-height: .95; text-transform: uppercase; display: block; }
+    .q { position: absolute; left: 80px; right: 80px; top: 1010px; text-align: center; font-family: "Barlow"; font-weight: 800; font-size: 60px;
+      line-height: 1.18; opacity: 0; }
+    .q .who { display: block; font-size: 30px; font-weight: 800; letter-spacing: .3em; color: #FFB866; margin-bottom: 12px; }
+    .q .ln { display: inline-block; }
+    /* collage */
+    .pol { position: absolute; width: 440px; padding: 18px 18px 64px; background: #FBF7EF; border-radius: 6px; opacity: 0;
+      box-shadow: 0 22px 50px rgba(30,10,0,.45), 0 2px 4px rgba(0,0,0,.2); }
+    .pol img { display: block; width: 404px; height: 404px; object-fit: cover; filter: sepia(.18) saturate(1.05); }
+    #coll-veil { position: absolute; inset: 0; background: rgba(40,18,4,.35); backdrop-filter: blur(16px); opacity: 0; }
+    #coll-t { position: absolute; left: 0; right: 0; top: 1330px; text-align: center; opacity: 0; }
+    #coll-t .a { font-family: "Barlow"; font-weight: 600; font-size: 46px; letter-spacing: .26em; margin-right: -.26em; }
+    #coll-t .b { font-family: "BarlowC"; font-weight: 900; font-size: 140px; line-height: .95; color: #FFF3DF; }
+    /* ending */
+    #love { position: absolute; left: 0; right: 0; top: 300px; text-align: center; }
+    #love div { opacity: 0; }
+    #l1, #l2 { font-family: "BarlowC"; font-weight: 900; font-size: 86px; line-height: 1; text-transform: uppercase; }
+    #l1 span, #l2 span { color: #FFB866; }
+    #end-veil { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, rgba(40,16,2,.55), rgba(15,6,0,.88)); opacity: 0; }
+    #end { position: absolute; left: 0; right: 0; top: 560px; text-align: center; }
+    #end > * { opacity: 0; }
+    #e-logo { width: 620px; display: block; margin: 0 auto; }
+    #e-h { font-family: "BarlowC"; font-weight: 900; font-size: 100px; line-height: .95; margin-top: 34px; text-transform: uppercase;
+      color: #FFF3DF; text-shadow: 0 0 34px rgba(255,170,80,.75), 0 6px 18px rgba(40,12,0,.8); }
+    #e-s { font-family: "Barlow"; font-weight: 700; font-size: 40px; margin-top: 20px; letter-spacing: .04em; }
+    #e-s b { color: #FF5A4E; }
+  </style>
+  <div id="root" data-composition-id="warm" data-width="1080" data-height="1920">
+    <div id="w">
+      <div id="tone"></div>
+      <div id="leak1" class="leak"></div><div id="leak2" class="leak"></div>
+      <div id="vig"></div>
+      <div id="hello" class="soft"><div id="h1">HAPPY</div><div id="h2">Thanksgiving</div><div id="h3">FROM OUR FAMILY TO YOURS</div></div>
+      <div class="word soft" id="wd0" style="top:330px"><span class="a">GRATEFUL FOR</span><span class="b">our community</span></div>
+      <div class="word soft" id="wd1" style="top:330px"><span class="a">GRATEFUL FOR</span><span class="b">our team</span></div>
+      <div class="q soft" id="q0"><span class="who">JOSH</span><span class="ln">“I’m Josh from</span><br /><span class="ln">Certified Collision Kirby.”</span></div>
+      <div class="q soft" id="q1"><span class="who">JOSH</span><span class="ln">“This year I’m</span><br /><span class="ln">thankful for family.”</span></div>
+      <div class="q soft" id="q2"><span class="who">JOSH</span><span class="ln">“Thankful for my son,</span><br /><span class="ln">Bruce.”</span></div>
+      <div class="q soft" id="q3"><span class="who">CRYSTAL</span><span class="ln">“It’s definitely become a family</span><br /><span class="ln">and I couldn’t ask for more.”</span></div>
+      <div class="q soft" id="q4"><span class="who">MARCOS</span><span class="ln">“And we’re just blessed</span><br /><span class="ln">to be a part of it.”</span></div>
+      <div id="coll-veil"></div>
+      <div class="pol" id="p0" style="left:90px; top:260px; transform: rotate(-8deg)"><img src="assets/pol/o1.jpg" alt="" /></div>
+      <div class="pol" id="p1" style="left:560px; top:300px; transform: rotate(7deg)"><img src="assets/pol/j2.jpg" alt="" /></div>
+      <div class="pol" id="p2" style="left:120px; top:720px; transform: rotate(5deg)"><img src="assets/pol/m2.jpg" alt="" /></div>
+      <div class="pol" id="p3" style="left:530px; top:760px; transform: rotate(-6deg)"><img src="assets/pol/m7.jpg" alt="" /></div>
+      <div class="pol" id="p4" style="left:300px; top:520px; transform: rotate(-2deg)"><img src="assets/pol/c1.jpg" alt="" /></div>
+      <div id="coll-t" class="soft"><div class="a">THIS IS OUR</div><div class="b">FAMILY</div></div>
+      <div id="love" class="soft"><div id="l1">Grateful for <span>our customers</span></div><div id="l2">Grateful for <span>our team</span></div></div>
+      <div id="end-veil"></div>
+      <div id="end" class="soft"><img id="e-logo" src="assets/logo.png" alt="Certified Collision Center" />
+        <div id="e-h">Happy Thanksgiving</div><div id="e-s">Driven to repair. <b>Committed to care.</b></div></div>
+      <div id="grain"></div>
+      <div id="flash"></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#leak1", {opacity: 0.0, x: 0, y: 0}, {opacity: 0.32, x: 260, y: 120, duration: 16.52, ease: "sine.inOut", yoyo: true, repeat: 1}, 0);
+      tl.fromTo("#leak2", {opacity: 0.18, x: 0, y: 0}, {opacity: 0.34, x: -220, y: -260, duration: 16.52, ease: "sine.inOut", yoyo: true, repeat: 1}, 0);
+      for (let i = 0; i < 396; i++) tl.set("#grain", {x: ((i * 37) % 60) - 30, y: ((i * 53) % 60) - 30}, i / 12);
+      tl.fromTo("#flash", {opacity: 0.55}, {opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false}, 2.60);
+      tl.fromTo("#flash", {opacity: 0.55}, {opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false}, 7.30);
+      tl.fromTo("#flash", {opacity: 0.55}, {opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false}, 10.20);
+      tl.fromTo("#flash", {opacity: 0.55}, {opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false}, 22.63);
+      tl.fromTo("#flash", {opacity: 0.55}, {opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false}, 26.43);
+      tl.fromTo("#h1", {opacity: 0, y: 30, scaleX: 1.3}, {opacity: 1, y: 0, scaleX: 1, duration: 0.7, ease: "expo.out"}, 0.15);
+      tl.fromTo("#h2", {opacity: 0, scale: 1.25, filter: "blur(16px)"}, {opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out"}, 0.45);
+      tl.fromTo("#h3", {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5, ease: "cubic.out"}, 0.95);
+      tl.to("#hello", {opacity: 0, y: -60, filter: "blur(10px)", duration: 0.35, ease: "power2.in"}, 2.30);
+      tl.fromTo("#wd0", {opacity: 0, y: 40, filter: "blur(12px)"}, {opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out"}, 2.70);
+      tl.to("#wd0", {opacity: 0, y: -30, filter: "blur(8px)", duration: 0.25, ease: "power2.in"}, 7.05);
+      tl.fromTo("#wd1", {opacity: 0, y: 40, filter: "blur(12px)"}, {opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out"}, 7.35);
+      tl.to("#wd1", {opacity: 0, y: -30, filter: "blur(8px)", duration: 0.25, ease: "power2.in"}, 9.95);
+      tl.fromTo("#q0", {opacity: 0}, {opacity: 1, duration: 0.2}, 10.32);
+      tl.fromTo("#q0 .ln", {opacity: 0, y: 18}, {opacity: 1, y: 0, duration: 0.35, ease: "cubic.out", stagger: 0.25}, 10.32);
+      tl.to("#q0", {opacity: 0, duration: 0.2}, 12.42);
+      tl.fromTo("#q1", {opacity: 0}, {opacity: 1, duration: 0.2}, 12.70);
+      tl.fromTo("#q1 .ln", {opacity: 0, y: 18}, {opacity: 1, y: 0, duration: 0.35, ease: "cubic.out", stagger: 0.25}, 12.70);
+      tl.to("#q1", {opacity: 0, duration: 0.2}, 14.55);
+      tl.fromTo("#q2", {opacity: 0}, {opacity: 1, duration: 0.2}, 14.80);
+      tl.fromTo("#q2 .ln", {opacity: 0, y: 18}, {opacity: 1, y: 0, duration: 0.35, ease: "cubic.out", stagger: 0.25}, 14.80);
+      tl.to("#q2", {opacity: 0, duration: 0.2}, 16.53);
+      tl.fromTo("#q3", {opacity: 0}, {opacity: 1, duration: 0.2}, 16.75);
+      tl.fromTo("#q3 .ln", {opacity: 0, y: 18}, {opacity: 1, y: 0, duration: 0.35, ease: "cubic.out", stagger: 0.25}, 16.75);
+      tl.to("#q3", {opacity: 0, duration: 0.2}, 19.02);
+      tl.fromTo("#q4", {opacity: 0}, {opacity: 1, duration: 0.2}, 19.28);
+      tl.fromTo("#q4 .ln", {opacity: 0, y: 18}, {opacity: 1, y: 0, duration: 0.35, ease: "cubic.out", stagger: 0.25}, 19.28);
+      tl.to("#q4", {opacity: 0, duration: 0.2}, 22.47);
+      tl.fromTo("#coll-veil", {opacity: 0}, {opacity: 1, duration: 0.4}, 22.63);
+      tl.fromTo("#p0", {opacity: 0, scale: 1.6, y: -120, rotation: -24}, {opacity: 1, scale: 1, y: 0, rotation: -8, duration: 0.45, ease: "back.out(1.4)"}, 22.78);
+      tl.fromTo("#p1", {opacity: 0, scale: 1.6, y: -120, rotation: 21}, {opacity: 1, scale: 1, y: 0, rotation: 7, duration: 0.45, ease: "back.out(1.4)"}, 23.20);
+      tl.fromTo("#p2", {opacity: 0, scale: 1.6, y: -120, rotation: 15}, {opacity: 1, scale: 1, y: 0, rotation: 5, duration: 0.45, ease: "back.out(1.4)"}, 23.62);
+      tl.fromTo("#p3", {opacity: 0, scale: 1.6, y: -120, rotation: -18}, {opacity: 1, scale: 1, y: 0, rotation: -6, duration: 0.45, ease: "back.out(1.4)"}, 24.04);
+      tl.fromTo("#p4", {opacity: 0, scale: 1.6, y: -120, rotation: -6}, {opacity: 1, scale: 1, y: 0, rotation: -2, duration: 0.45, ease: "back.out(1.4)"}, 24.46);
+      tl.fromTo("#coll-t", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 24.53);
+      tl.to(["#coll-veil", ".pol", "#coll-t"], {opacity: 0, duration: 0.35, ease: "power2.in"}, 26.13);
+      tl.fromTo("#l1", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 26.78);
+      tl.fromTo("#l2", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, 27.43);
+      tl.to("#love", {opacity: 0, duration: 0.3}, 29.33);
+      tl.fromTo("#end-veil", {opacity: 0}, {opacity: 1, duration: 0.6, ease: "power2.inOut"}, 29.38);
+      tl.fromTo("#e-logo", {opacity: 0, y: 30, filter: "blur(10px)"}, {opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out"}, 29.63);
+      tl.fromTo("#e-h", {opacity: 0, y: 30, filter: "blur(10px)"}, {opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out"}, 29.88);
+      tl.fromTo("#e-s", {opacity: 0, y: 30, filter: "blur(10px)"}, {opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "expo.out"}, 30.13);
+      window.__timelines["warm"] = tl;
+    })();
+  </script>
+</template>

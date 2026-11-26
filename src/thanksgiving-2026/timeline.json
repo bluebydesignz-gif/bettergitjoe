@@ -1,79 +1,35 @@
 {
  "slug": "thanksgiving-2026",
  "fps": 30,
- "durationInFrames": 1429,
+ "durationInFrames": 991,
  "segments": [
   {
    "id": "o1",
    "file": "thanksgiving-2026/seg/o1.mp4",
    "from": 0,
-   "dur": 108,
+   "dur": 78,
    "xfade": 0,
    "push": [
     1.0,
-    1.04
+    1.05
    ]
   },
   {
-   "id": "c1",
-   "file": "thanksgiving-2026/seg/c1.mp4",
-   "from": 99,
-   "dur": 190,
-   "xfade": 9,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
-   "id": "j1",
-   "file": "thanksgiving-2026/seg/j1.mp4",
-   "from": 290,
-   "dur": 58,
+   "id": "m1",
+   "file": "thanksgiving-2026/seg/m1.mp4",
+   "from": 78,
+   "dur": 42,
    "xfade": 0,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
-   "id": "j2",
-   "file": "thanksgiving-2026/seg/j2.mp4",
-   "from": 348,
-   "dur": 52,
-   "xfade": 0,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
-   "id": "d1",
-   "file": "thanksgiving-2026/seg/d1.mp4",
-   "from": 388,
-   "dur": 102,
-   "xfade": 12,
    "push": [
     1.0,
     1.0
    ]
   },
   {
-   "id": "g1",
-   "file": "thanksgiving-2026/seg/g1.mp4",
-   "from": 490,
-   "dur": 66,
-   "xfade": 0,
-   "push": [
-    1.0,
-    1.025
-   ]
-  },
-  {
-   "id": "g2",
-   "file": "thanksgiving-2026/seg/g2.mp4",
-   "from": 556,
-   "dur": 84,
+   "id": "m2",
+   "file": "thanksgiving-2026/seg/m2.mp4",
+   "from": 120,
+   "dur": 39,
    "xfade": 0,
    "push": [
     1.0,
@@ -83,19 +39,19 @@
   {
    "id": "m3",
    "file": "thanksgiving-2026/seg/m3.mp4",
-   "from": 640,
-   "dur": 170,
+   "from": 159,
+   "dur": 30,
    "xfade": 0,
    "push": [
     1.0,
-    1.05
+    1.025
    ]
   },
   {
-   "id": "g3",
-   "file": "thanksgiving-2026/seg/g3.mp4",
-   "from": 810,
-   "dur": 78,
+   "id": "m4",
+   "file": "thanksgiving-2026/seg/m4.mp4",
+   "from": 189,
+   "dur": 30,
    "xfade": 0,
    "push": [
     1.0,
@@ -103,169 +59,115 @@
    ]
   },
   {
-   "id": "s1",
-   "file": "thanksgiving-2026/seg/s1.mp4",
-   "from": 879,
-   "dur": 48,
-   "xfade": 9,
-   "push": [
-    1.0,
-    1.03
-   ]
-  },
-  {
-   "id": "s2",
-   "file": "thanksgiving-2026/seg/s2.mp4",
-   "from": 927,
-   "dur": 42,
+   "id": "m5",
+   "file": "thanksgiving-2026/seg/m5.mp4",
+   "from": 219,
+   "dur": 27,
    "xfade": 0,
    "push": [
     1.0,
-    1.03
+    1.04
    ]
   },
   {
-   "id": "s3",
-   "file": "thanksgiving-2026/seg/s3.mp4",
-   "from": 969,
+   "id": "m6",
+   "file": "thanksgiving-2026/seg/m6.mp4",
+   "from": 246,
+   "dur": 27,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "m7",
+   "file": "thanksgiving-2026/seg/m7.mp4",
+   "from": 273,
+   "dur": 33,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "j1",
+   "file": "thanksgiving-2026/seg/j1.mp4",
+   "from": 306,
+   "dur": 74,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "j2",
+   "file": "thanksgiving-2026/seg/j2.mp4",
+   "from": 379,
+   "dur": 66,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "j3",
+   "file": "thanksgiving-2026/seg/j3.mp4",
+   "from": 445,
    "dur": 57,
    "xfade": 0,
    "push": [
     1.0,
-    1.03
+    1.05
    ]
   },
   {
-   "id": "t3",
-   "file": "thanksgiving-2026/seg/t3.mp4",
-   "from": 1017,
-   "dur": 72,
-   "xfade": 9,
+   "id": "c1",
+   "file": "thanksgiving-2026/seg/c1.mp4",
+   "from": 502,
+   "dur": 74,
+   "xfade": 0,
    "push": [
     1.0,
     1.025
    ]
   },
   {
-   "id": "f1",
-   "file": "thanksgiving-2026/seg/f1.mp4",
-   "from": 1081,
-   "dur": 348,
-   "xfade": 8,
+   "id": "k1",
+   "file": "thanksgiving-2026/seg/k1.mp4",
+   "from": 576,
+   "dur": 104,
+   "xfade": 0,
    "push": [
     1.0,
-    1.06
+    1.05
+   ]
+  },
+  {
+   "id": "cl",
+   "file": "thanksgiving-2026/seg/cl.mp4",
+   "from": 679,
+   "dur": 114,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "f1",
+   "file": "thanksgiving-2026/seg/f1.mp4",
+   "from": 793,
+   "dur": 198,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.05
    ]
   }
  ],
- "overlays": [
-  {
-   "type": "title",
-   "dur": 108,
-   "eyebrow": "From our family to yours",
-   "line1": "Happy",
-   "line2": "THANKSGIVING",
-   "top": 380,
-   "from": 10
-  },
-  {
-   "type": "name",
-   "dur": 90,
-   "name": "Crystal",
-   "role": "Certified Collision Center",
-   "top": 250,
-   "from": 114
-  },
-  {
-   "type": "caption",
-   "dur": 58,
-   "text": "“I’m thankful for all the blessings|that we’ve had this year”",
-   "from": 102
-  },
-  {
-   "type": "caption",
-   "dur": 52,
-   "text": "“and definitely a great place to work.”",
-   "from": 165
-  },
-  {
-   "type": "caption",
-   "dur": 66,
-   "text": "“It’s definitely become a family|and I couldn’t ask for more.”",
-   "from": 219
-  },
-  {
-   "type": "caption",
-   "dur": 56,
-   "text": "“This year I’m thankful for family.”",
-   "from": 291
-  },
-  {
-   "type": "caption",
-   "dur": 50,
-   "text": "“Thankful for my son, Bruce.”",
-   "from": 349
-  },
-  {
-   "type": "label",
-   "dur": 87,
-   "text": "24th Annual|Turkey Giveaway",
-   "from": 398
-  },
-  {
-   "type": "label",
-   "dur": 69,
-   "text": "Even the turkey pitched in.",
-   "from": 568
-  },
-  {
-   "type": "caption",
-   "dur": 51,
-   "text": "“This is our third year doing it.”",
-   "from": 644
-  },
-  {
-   "type": "caption",
-   "dur": 96,
-   "text": "“And we’re just blessed|to be a part of it.”",
-   "from": 708
-  },
-  {
-   "type": "label",
-   "dur": 138,
-   "text": "Our team",
-   "from": 885
-  },
-  {
-   "type": "caption",
-   "dur": 34,
-   "text": "“Driven to repair.”",
-   "from": 1019
-  },
-  {
-   "type": "caption",
-   "dur": 30,
-   "text": "“Committed to care.”",
-   "from": 1056
-  },
-  {
-   "type": "thanks",
-   "dur": 90,
-   "head": "Grateful for you",
-   "lines": [
-    "Our customers",
-    "Our team",
-    "Our community"
-   ],
-   "from": 1177
-  },
-  {
-   "type": "endcard",
-   "dur": 162,
-   "proud": "Happy Thanksgiving from|our family to yours.",
-   "slogan": "Driven to repair. Committed to care.",
-   "keepInMinimal": true,
-   "from": 1267
-  }
- ]
+ "overlays": []
 }
