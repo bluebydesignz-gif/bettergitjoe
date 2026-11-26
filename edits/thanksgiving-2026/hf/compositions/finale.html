@@ -1,0 +1,68 @@
+<template>
+  <style>
+    @font-face { font-family: "Barlow Condensed"; font-weight: 900; src: url("assets/fonts/BarlowCondensed-Black.ttf"); }
+    @font-face { font-family: "Barlow Condensed"; font-weight: 800; src: url("assets/fonts/BarlowCondensed-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 800; src: url("assets/fonts/Barlow-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 700; src: url("assets/fonts/Barlow-Bold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 600; src: url("assets/fonts/Barlow-SemiBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 500; src: url("assets/fonts/Barlow-Medium.ttf"); }
+
+    #root { position: absolute; inset: 0; color: #fff; }
+    #fin-dim { position: absolute; inset: 0; background: #0B0B0C; opacity: 0; }
+    #fin-thanks { position: absolute; left: 0; right: 0; top: 600px; text-align: center; }
+    #fin-ty { font-family: "Barlow Condensed"; font-weight: 900; font-size: 212px; line-height: .95; letter-spacing: .005em; }
+    #fin-ty-rule { width: 96px; height: 6px; margin: 30px auto 30px; background: #E01B22; }
+    .fin-credit { font-family: "Barlow"; font-weight: 600; font-size: 36px; line-height: 1.6; letter-spacing: .14em; margin-right: -.14em; }
+    #fin-card { position: absolute; left: 0; right: 0; top: 460px; text-align: center; }
+    #fin-logo { width: 700px; height: auto; }
+    .fin-proud { font-family: "Barlow"; font-weight: 500; font-size: 46px; line-height: 1.3; }
+    #fin-proud { margin-top: 44px; }
+    #fin-rule { width: 96px; height: 6px; margin: 38px auto 34px; background: #E01B22; }
+    .fin-mask { overflow: hidden; }
+    .fin-slogan { font-family: "Barlow"; font-weight: 800; font-size: 66px; line-height: 1.16; letter-spacing: -.005em; }
+    #fin-s2 { color: #FF2A31; }
+  </style>
+  <div id="root" data-composition-id="finale" data-width="1080" data-height="1920">
+    <div id="fin-dim-clip" class="clip" data-start="0" data-duration="8.4"><div id="fin-dim"></div></div>
+    <div id="fin-thanks-clip" class="clip" data-start="0" data-duration="3.0">
+      <div id="fin-thanks">
+        <div id="fin-ty">GRATEFUL FOR YOU</div>
+        <div id="fin-ty-rule"></div>
+        <div id="fin-credits">
+          <div class="fin-credit" id="fin-c0">OUR CUSTOMERS</div>
+          <div class="fin-credit" id="fin-c1">OUR TEAM</div>
+          <div class="fin-credit" id="fin-c2">OUR COMMUNITY</div>
+        </div>
+      </div>
+    </div>
+    <div id="fin-card-clip" class="clip" data-start="3.0" data-duration="5.4">
+      <div id="fin-card">
+        <img id="fin-logo" src="assets/logo.png" alt="Certified Collision Center" />
+        <div id="fin-proud">
+          <div class="fin-proud">Happy Thanksgiving from</div>
+          <div class="fin-proud">our family to yours.</div>
+        </div>
+        <div id="fin-rule"></div>
+        <div class="fin-mask" data-layout-allow-overflow><div id="fin-s1" class="fin-slogan">Driven to repair.</div></div>
+        <div class="fin-mask" data-layout-allow-overflow><div id="fin-s2" class="fin-slogan">Committed to care.</div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fin-dim", { opacity: 0 }, { opacity: 0.74, duration: 0.6, ease: "power2.inOut" }, 0);
+      tl.fromTo("#fin-ty", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0.35);
+      tl.fromTo("#fin-ty-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power4.out" }, 0.6);
+      tl.fromTo(".fin-credit", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out", stagger: 0.09 }, 0.72);
+      tl.to("#fin-thanks", { opacity: 0, filter: "blur(8px)", duration: 0.24, ease: "power2.in" }, 2.72);
+      tl.to("#fin-dim", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 2.7);
+      tl.fromTo("#fin-logo", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }, 3.25);
+      tl.fromTo("#fin-proud", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 3.7);
+      tl.fromTo("#fin-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power4.out" }, 4.15);
+      tl.fromTo("#fin-s1", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 4.3);
+      tl.fromTo("#fin-s2", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 4.42);
+      window.__timelines["finale"] = tl;
+    })();
+  </script>
+</template>

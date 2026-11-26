@@ -71,7 +71,7 @@ if not clean and by("title"):
     s1, s2 = fit(l1, "BarlowCondensed-Black.ttf", W, 0.005), fit(l2, "BarlowCondensed-Black.ttf", W, 0.005)
     css = f"""    #title-scrim {{ position: absolute; inset: 0; opacity: 0;
       background: linear-gradient(180deg, rgba(11,11,12,.72) 0%, rgba(11,11,12,.5) 26%, rgba(11,11,12,0) 50%); }}
-    #title-block {{ position: absolute; left: 120px; width: {W}px; top: 300px; text-align: center; }}
+    #title-block {{ position: absolute; left: 120px; width: {W}px; top: {t.get('top', 300)}px; text-align: center; }}
     .title-mask {{ overflow: hidden; }}
     .title-line {{ font-family: "Barlow Condensed"; font-weight: 900; line-height: .92; letter-spacing: .005em;
       white-space: nowrap; text-shadow: {SHADOW}; }}

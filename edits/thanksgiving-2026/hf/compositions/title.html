@@ -1,0 +1,47 @@
+<template>
+  <style>
+    @font-face { font-family: "Barlow Condensed"; font-weight: 900; src: url("assets/fonts/BarlowCondensed-Black.ttf"); }
+    @font-face { font-family: "Barlow Condensed"; font-weight: 800; src: url("assets/fonts/BarlowCondensed-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 800; src: url("assets/fonts/Barlow-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 700; src: url("assets/fonts/Barlow-Bold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 600; src: url("assets/fonts/Barlow-SemiBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 500; src: url("assets/fonts/Barlow-Medium.ttf"); }
+
+    #root { position: absolute; inset: 0; color: #fff; }
+    #title-scrim { position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(180deg, rgba(11,11,12,.72) 0%, rgba(11,11,12,.5) 26%, rgba(11,11,12,0) 50%); }
+    #title-block { position: absolute; left: 120px; width: 840px; top: 380px; text-align: center; }
+    .title-mask { overflow: hidden; }
+    .title-line { font-family: "Barlow Condensed"; font-weight: 900; line-height: .92; letter-spacing: .005em;
+      white-space: nowrap; text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.5); }
+    #title-l1 { font-size: 338px; }
+    #title-l2 { font-size: 151px; }
+    #title-rule { width: 96px; height: 6px; margin: 30px auto 24px; background: #E01B22; }
+    #title-sub { font-family: "Barlow"; font-weight: 700; font-size: 44px; letter-spacing: .22em; margin-right: -.22em;
+      text-shadow: 0 2px 14px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.5); }
+  </style>
+  <div id="root" data-composition-id="title" data-width="1080" data-height="1920">
+    <div id="title-clip" class="clip" data-start="0" data-duration="3.6">
+      <div id="title-scrim"></div>
+      <div id="title-block">
+        <div class="title-mask" data-layout-allow-overflow><div id="title-l1" class="title-line">HAPPY</div></div>
+        <div class="title-mask" data-layout-allow-overflow><div id="title-l2" class="title-line">THANKSGIVING</div></div>
+        <div id="title-rule"></div>
+        <div id="title-sub">FROM OUR FAMILY TO YOURS</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#title-scrim", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0);
+      tl.fromTo("#title-l1", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 0.05);
+      tl.fromTo("#title-l2", { yPercent: 104 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 0.15);
+      tl.fromTo("#title-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power4.out" }, 0.5);
+      tl.fromTo("#title-sub", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.62);
+      tl.to("#title-block", { opacity: 0, filter: "blur(8px)", duration: 0.24, ease: "power2.in" }, 3.32);
+      tl.to("#title-scrim", { opacity: 0, duration: 0.26, ease: "power2.in" }, 3.32);
+      window.__timelines["title"] = tl;
+    })();
+  </script>
+</template>
