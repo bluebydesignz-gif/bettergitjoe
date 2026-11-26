@@ -33,6 +33,7 @@ for i,b in enumerate(bm['beats']):
     kind=b.get('audio','voice')
     if kind=='ambient': a*=0.45
     if kind=='ambient_low': a*=0.35
+    if kind=='mute': a*=0.0
     fade=np.ones(n); fade[:xf]=np.linspace(0,1,xf); fade[-xf:]=np.linspace(1,0,xf); a*=fade
     out.append(a)
     edl.append({'id':b['id'],'start':round(tcur,3),'end':round(tcur+dur,3),'src_in':t0,'zoom':z,

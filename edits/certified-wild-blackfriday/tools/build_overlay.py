@@ -134,6 +134,8 @@ A(f'tl.fromTo("#est", {{opacity: 0, y: 70, scale: 0.92}}, {{opacity: 1, y: 0, sc
 A(f'tl.fromTo("#est1", {{opacity: 0, y: 16}}, {{opacity: 1, y: 0, duration: 0.3, ease: "power2.out"}}, {ts - 0.05:.2f});')
 A(f'tl.fromTo("#est2", {{opacity: 0, scale: 0.5}}, {{opacity: 1, scale: 1, duration: 0.55, ease: "elastic.out(1, 0.55)"}}, {tf - 0.05:.2f});')
 A(f'tl.to("#est", {{opacity: 0, y: -40, duration: 0.3, ease: "power2.in"}}, {B["crazy"]["start"] + 0.35:.2f});')
+A(f'tl.to("#badge", {{opacity: 0, y: -20, duration: 0.2, ease: "power2.in"}}, {ts - 0.25:.2f});')
+A(f'tl.to("#badge", {{opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.6)"}}, {B["crazy"]["start"] + 0.6:.2f});')
 # accident flash
 ta = t_of("accident")
 A(f'tl.fromTo("#flash", {{opacity: 0}}, {{keyframes: [{{opacity: 1, duration: 0.08}}, {{opacity: 0, duration: 0.5}}], ease: "power2.out"}}, {ta:.2f});')
