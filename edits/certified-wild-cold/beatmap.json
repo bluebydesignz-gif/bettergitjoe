@@ -1,0 +1,15 @@
+{
+ "source": "/tmp/claude-0/-home-user-bettergitjoe/ec0793d8-2d21-50ca-aef4-1797794e3797/scratchpad/cw/dl/DJI_152714_196.mp4",
+ "face_keys": [[0,0.55,0.34],[57,0.55,0.34]],
+ "beats": [
+  {"id":"hook","in":7.68,"out":9.12,"zoom":1.35,"face_y":0.60},
+  {"id":"cool1","in":9.62,"out":15.9,"zoom":1.0,"face_y":0.36},
+  {"id":"cool2","in":18.52,"out":24.0,"zoom":1.2,"face_y":0.36},
+  {"id":"ice","in":29.6,"out":33.55,"zoom":1.0,"face_y":0.36},
+  {"id":"tire1","in":34.02,"out":37.2,"zoom":1.2,"face_y":0.36},
+  {"id":"tire2","in":37.96,"out":39.46,"zoom":1.0,"face_y":0.36},
+  {"id":"tire3","in":40.24,"out":41.34,"zoom":1.2,"face_y":0.36},
+  {"id":"diff","in":41.82,"out":44.86,"zoom":1.0,"face_y":0.36},
+  {"id":"tail","in":54.9,"out":56.2,"zoom":1.2,"face_y":0.36,"audio":"mute","hold":2.2}
+ ]
+}

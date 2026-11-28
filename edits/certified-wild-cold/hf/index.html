@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0B0B0C; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      #base { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; transform-origin: 50% 35%; z-index: 1; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="29.4" data-width="1080" data-height="1920">
+      <video id="base" class="clip" src="assets/base.mp4" data-start="0" data-duration="29.4" data-track-index="0"
+        playsinline data-has-audio="true" data-volume="1"></video>
+      <div id="overlay" data-composition-id="overlay" data-composition-src="compositions/overlay.html" data-start="0" data-duration="29.4"
+        data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#base", {scale: 1}, 0.0); tl.to("#base", {scale: 1.035, duration: 1.433, ease: "sine.inOut"}, 0.0);
+      tl.set("#base", {scale: 1}, 1.433); tl.to("#base", {scale: 1.035, duration: 6.267, ease: "sine.inOut"}, 1.433);
+      tl.set("#base", {scale: 1}, 7.7); tl.to("#base", {scale: 1.035, duration: 5.467, ease: "sine.inOut"}, 7.7);
+      tl.set("#base", {scale: 1}, 13.167); tl.to("#base", {scale: 1.035, duration: 3.933, ease: "sine.inOut"}, 13.167);
+      tl.set("#base", {scale: 1}, 17.1); tl.to("#base", {scale: 1.035, duration: 3.167, ease: "sine.inOut"}, 17.1);
+      tl.set("#base", {scale: 1}, 20.267); tl.to("#base", {scale: 1.035, duration: 1.5, ease: "sine.inOut"}, 20.267);
+      tl.set("#base", {scale: 1}, 21.767); tl.to("#base", {scale: 1.035, duration: 1.1, ease: "sine.inOut"}, 21.767);
+      tl.set("#base", {scale: 1}, 22.867); tl.to("#base", {scale: 1.035, duration: 3.033, ease: "sine.inOut"}, 22.867);
+      tl.set("#base", {scale: 1}, 25.9); tl.to("#base", {scale: 1.035, duration: 3.5, ease: "sine.inOut"}, 25.9);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
