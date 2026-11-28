@@ -1,0 +1,150 @@
+{
+ "slug": "marketing-dept",
+ "fps": 30,
+ "durationInFrames": 778,
+ "segments": [
+  {
+   "id": "c1",
+   "file": "marketing-dept/seg/c1.mp4",
+   "from": 0,
+   "dur": 142,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "c2",
+   "file": "marketing-dept/seg/c2.mp4",
+   "from": 142,
+   "dur": 123,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "c4",
+   "file": "marketing-dept/seg/c4.mp4",
+   "from": 266,
+   "dur": 99,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "id": "c5",
+   "file": "marketing-dept/seg/c5.mp4",
+   "from": 364,
+   "dur": 414,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  }
+ ],
+ "overlays": [
+  {
+   "type": "caption",
+   "dur": 33,
+   "text": "What department do you think|works the hardest?",
+   "from": 1
+  },
+  {
+   "type": "caption",
+   "dur": 26,
+   "text": "Oh, let me think",
+   "from": 57
+  },
+  {
+   "type": "label",
+   "dur": 42,
+   "text": "The marketing|department",
+   "size": 118,
+   "top": 900,
+   "from": 98
+  },
+  {
+   "type": "caption",
+   "dur": 42,
+   "text": "What department do you think|works the hardest?",
+   "from": 144
+  },
+  {
+   "type": "label",
+   "dur": 42,
+   "text": "The marketing|department",
+   "size": 118,
+   "top": 900,
+   "from": 224
+  },
+  {
+   "type": "caption",
+   "dur": 63,
+   "text": "\u00bfLa oficina que|trabaja m\u00e1s duro?",
+   "from": 267
+  },
+  {
+   "type": "label",
+   "dur": 30,
+   "text": "Marketing",
+   "size": 118,
+   "top": 900,
+   "from": 334
+  },
+  {
+   "type": "caption",
+   "dur": 60,
+   "text": "Hey Rosa, what department do you|think works the hardest?",
+   "from": 367
+  },
+  {
+   "type": "caption",
+   "dur": 34,
+   "text": "Our media guy",
+   "from": 453
+  },
+  {
+   "type": "label",
+   "dur": 78,
+   "text": "Correct answer",
+   "top": 300,
+   "from": 453
+  },
+  {
+   "type": "caption",
+   "dur": 63,
+   "text": "He has to put up with|all of the girls here",
+   "from": 490
+  },
+  {
+   "type": "caption",
+   "dur": 33,
+   "text": "And the boss",
+   "from": 576
+  },
+  {
+   "type": "thanks",
+   "dur": 72,
+   "head": "Thank you guys",
+   "lines": [
+    "Love you",
+    "The marketing department"
+   ],
+   "from": 614
+  },
+  {
+   "type": "endcard",
+   "dur": 93,
+   "proud": "",
+   "slogan": "Driven to repair. Committed to care.",
+   "keepInMinimal": true,
+   "from": 685
+  }
+ ]
+}

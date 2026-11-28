@@ -1,0 +1,84 @@
+{
+ "source": "/tmp/claude-0/-home-user-bettergitjoe/ec0793d8-2d21-50ca-aef4-1797794e3797/scratchpad/cw/dl/DJI_152852_269.mp4",
+ "face_keys": [
+  [
+   0,
+   0.55,
+   0.34
+  ],
+  [
+   53,
+   0.55,
+   0.34
+  ]
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "in": 12.95,
+   "out": 15.5,
+   "zoom": 1.35,
+   "face_y": 0.6
+  },
+  {
+   "id": "loc",
+   "in": 16.13,
+   "out": 17.92,
+   "zoom": 1.0,
+   "face_y": 0.36
+  },
+  {
+   "id": "shop",
+   "in": 18.41,
+   "out": 20.42,
+   "zoom": 1.2,
+   "face_y": 0.36
+  },
+  {
+   "id": "cart",
+   "in": 22.39,
+   "out": 26.17,
+   "zoom": 1.0,
+   "face_y": 0.36
+  },
+  {
+   "id": "est",
+   "in": 26.52,
+   "out": 28.5,
+   "zoom": 1.35,
+   "face_y": 0.52
+  },
+  {
+   "id": "crazy",
+   "in": 28.92,
+   "out": 31.32,
+   "zoom": 1.2,
+   "face_y": 0.36
+  },
+  {
+   "id": "acc",
+   "in": 32.69,
+   "out": 35.95,
+   "zoom": 1.0,
+   "face_y": 0.36
+  },
+  {
+   "id": "cta",
+   "in": 45.89,
+   "out": 47.7,
+   "zoom": 1.2,
+   "face_y": 0.36
+  },
+  {
+   "id": "tail",
+   "in": 9.0,
+   "out": 12.4,
+   "zoom": 1.0,
+   "center": [
+    0.5,
+    0.5
+   ],
+   "audio": "mute"
+  }
+ ]
+}

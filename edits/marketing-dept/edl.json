@@ -1,0 +1,212 @@
+{
+ "slug": "marketing-dept",
+ "fps": 30,
+ "tail": 0.0,
+ "beats": [
+  {
+   "id": "c1",
+   "src": "IMG_5497.MOV",
+   "in": 0.55,
+   "dur": 4.75,
+   "speed": 1.15,
+   "src_len": 5.5,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "grade": "phone",
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "len": 3.65,
+    "tail": 0.05,
+    "speed": 1.15
+   }
+  },
+  {
+   "id": "c2",
+   "src": "IMG_5499.MOV",
+   "in": 0.0,
+   "dur": 4.1,
+   "speed": 1.15,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "grade": "phone",
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "len": 3.05,
+    "tail": 0.05,
+    "speed": 1.15
+   }
+  },
+  {
+   "id": "c4",
+   "src": "IMG_5498.MOV",
+   "in": 7.05,
+   "dur": 3.3,
+   "speed": 1.15,
+   "src_len": 3.2,
+   "push": [
+    1.0,
+    1.04
+   ],
+   "grade": "phone",
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "len": 2.55,
+    "tail": 0.05,
+    "speed": 1.15
+   }
+  },
+  {
+   "id": "c5",
+   "src": "IMG_5494.MOV",
+   "in": 19.05,
+   "dur": 13.8,
+   "src_len": 8.25,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "grade": "phone",
+   "audio": {
+    "kind": "voice",
+    "chain": "close",
+    "len": 8.25,
+    "tail": 0.1
+   }
+  }
+ ],
+ "sounds": [
+  {
+   "at": "c1+3.22",
+   "src": "joe_rec8.m4a",
+   "in": 0.59,
+   "len": 1.33,
+   "chain": "close",
+   "db": -17,
+   "pre": 0
+  },
+  {
+   "at": "c2+2.66",
+   "src": "joe_rec8.m4a",
+   "in": 7.35,
+   "len": 1.27,
+   "chain": "close",
+   "db": -17,
+   "pre": 0
+  },
+  {
+   "at": "c4+2.26",
+   "src": "joe_rec8.m4a",
+   "in": 16.96,
+   "len": 0.69,
+   "chain": "close",
+   "db": -17,
+   "pre": 0
+  }
+ ],
+ "overlays": [
+  {
+   "type": "caption",
+   "at": "c1+0.03",
+   "dur": 1.1,
+   "text": "What department do you think|works the hardest?"
+  },
+  {
+   "type": "caption",
+   "at": "c1+1.9",
+   "dur": 0.85,
+   "text": "Oh, let me think"
+  },
+  {
+   "type": "label",
+   "at": "c1+3.26",
+   "dur": 1.4,
+   "text": "The marketing|department",
+   "size": 118,
+   "top": 900
+  },
+  {
+   "type": "caption",
+   "at": "c2+0.05",
+   "dur": 1.4,
+   "text": "What department do you think|works the hardest?"
+  },
+  {
+   "type": "label",
+   "at": "c2+2.7",
+   "dur": 1.4,
+   "text": "The marketing|department",
+   "size": 118,
+   "top": 900
+  },
+  {
+   "type": "caption",
+   "at": "c4+0.05",
+   "dur": 2.1,
+   "text": "¿La oficina que|trabaja más duro?"
+  },
+  {
+   "type": "label",
+   "at": "c4+2.3",
+   "dur": 1.0,
+   "text": "Marketing",
+   "size": 118,
+   "top": 900
+  },
+  {
+   "type": "caption",
+   "at": "c5+0.1",
+   "dur": 2.0,
+   "text": "Hey Rosa, what department do you|think works the hardest?"
+  },
+  {
+   "type": "caption",
+   "at": "c5+2.95",
+   "dur": 1.15,
+   "text": "Our media guy"
+  },
+  {
+   "type": "label",
+   "at": "c5+2.95",
+   "dur": 2.6,
+   "text": "Correct answer",
+   "top": 300
+  },
+  {
+   "type": "caption",
+   "at": "c5+4.2",
+   "dur": 2.1,
+   "text": "He has to put up with|all of the girls here"
+  },
+  {
+   "type": "caption",
+   "at": "c5+7.05",
+   "dur": 1.1,
+   "text": "And the boss"
+  },
+  {
+   "type": "thanks",
+   "at": "c5+8.3",
+   "dur": 2.4,
+   "head": "Thank you guys",
+   "lines": [
+    "Love you",
+    "The marketing department"
+   ]
+  },
+  {
+   "type": "endcard",
+   "at": "c5+10.7",
+   "dur": 3.1,
+   "proud": "",
+   "slogan": "Driven to repair. Committed to care.",
+   "keepInMinimal": true
+  }
+ ]
+}

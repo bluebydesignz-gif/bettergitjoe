@@ -1,0 +1,66 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; font-weight: 400; src: url("assets/fonts/Anton-Regular.ttf"); }
+    @font-face { font-family: "Manrope"; font-weight: 200 800; src: url("assets/fonts/Manrope[wght].ttf"); }
+
+    #root { position: absolute; inset: 0; }
+    .glass { position: absolute; border-radius: 38px; overflow: hidden;
+      background: rgba(247,244,238,0.62);
+      backdrop-filter: url(#captions-lg) blur(0.65px) saturate(1.2) brightness(1.05);
+      box-shadow: inset 0 2px 0 rgba(255,255,255,.95), inset 0 -1.5px 0 rgba(255,255,255,.45),
+        inset 0 0 0 1.5px rgba(255,255,255,.6), 0 14px 34px rgba(5,7,10,.24); }
+    .glass .sheen { position: absolute; top: -20%; bottom: -20%; width: 46%; left: -50%;
+      background: linear-gradient(105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.28) 50%, rgba(255,255,255,0) 100%); }
+    .glass .in { position: relative; }
+    #cap-stage { position: absolute; left: 64px; width: 866px; bottom: 766px; height: 0; }
+    .cap { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; opacity: 0; }
+    .cap .glass { position: relative; padding: 18px 34px 20px; border-radius: 30px; }
+    .cap-t { font-family: "Manrope"; font-weight: 700; font-size: 44px; line-height: 1.24; color: #111317; text-align: center;
+      text-wrap: balance; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <svg width="0" height="0" style="position:absolute">
+      <filter id="captions-lg" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="n" />
+        <feGaussianBlur in="n" stdDeviation="2" result="nb" />
+        <feDisplacementMap in="SourceGraphic" in2="nb" scale="42" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+    <div id="cap-stage">
+      <div id="cap-0" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">My name is Leonard<br />I&#x27;m here with INSYNC Credit Repair</div></div></div>
+      <div id="cap-1" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">We will explain every step<br />of the way with you</div></div></div>
+      <div id="cap-2" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">And make sure to be<br />clear as day</div></div></div>
+      <div id="cap-3" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">I&#x27;m not hiding anything<br />I can&#x27;t</div></div></div>
+      <div id="cap-4" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">I don&#x27;t have the capacity<br />to deceive you</div></div></div>
+      <div id="cap-5" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">If you have any questions</div></div></div>
+      <div id="cap-6" class="cap"><div class="glass"><div class="sheen"></div><div class="in cap-t">You can message me<br />or fill out our intake form<br />at insynccredit.com</div></div></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#cap-0", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 2.3);
+      tl.to("#cap-0", { opacity: 0, duration: 0.12, ease: "power2.in" }, 4.88);
+      tl.set("#cap-0", { visibility: "hidden" }, 5.0);
+      tl.fromTo("#cap-1", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 5.1);
+      tl.to("#cap-1", { opacity: 0, duration: 0.12, ease: "power2.in" }, 7.08);
+      tl.set("#cap-1", { visibility: "hidden" }, 7.2);
+      tl.fromTo("#cap-2", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 7.3);
+      tl.to("#cap-2", { opacity: 0, duration: 0.12, ease: "power2.in" }, 9.48);
+      tl.set("#cap-2", { visibility: "hidden" }, 9.6);
+      tl.fromTo("#cap-3", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 10.133);
+      tl.to("#cap-3", { opacity: 0, duration: 0.12, ease: "power2.in" }, 11.913);
+      tl.set("#cap-3", { visibility: "hidden" }, 12.033);
+      tl.fromTo("#cap-4", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 12.2);
+      tl.to("#cap-4", { opacity: 0, duration: 0.12, ease: "power2.in" }, 14.213);
+      tl.set("#cap-4", { visibility: "hidden" }, 14.333);
+      tl.fromTo("#cap-5", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 14.5);
+      tl.to("#cap-5", { opacity: 0, duration: 0.12, ease: "power2.in" }, 15.847);
+      tl.set("#cap-5", { visibility: "hidden" }, 15.967);
+      tl.fromTo("#cap-6", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 16.0);
+      tl.to("#cap-6", { opacity: 0, duration: 0.12, ease: "power2.in" }, 20.58);
+      tl.set("#cap-6", { visibility: "hidden" }, 20.7);
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

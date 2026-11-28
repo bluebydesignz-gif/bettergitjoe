@@ -1,0 +1,50 @@
+<template>
+  <style>
+    @font-face { font-family: "Barlow Condensed"; font-weight: 900; src: url("assets/fonts/BarlowCondensed-Black.ttf"); }
+    @font-face { font-family: "Barlow Condensed"; font-weight: 800; src: url("assets/fonts/BarlowCondensed-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 800; src: url("assets/fonts/Barlow-ExtraBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 700; src: url("assets/fonts/Barlow-Bold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 600; src: url("assets/fonts/Barlow-SemiBold.ttf"); }
+    @font-face { font-family: "Barlow"; font-weight: 500; src: url("assets/fonts/Barlow-Medium.ttf"); }
+
+    #root { position: absolute; inset: 0; color: #fff; }
+    #cap-stage { position: absolute; left: 0; right: 0; bottom: 690px; height: 0; }
+    .cap { position: absolute; left: 90px; right: 90px; bottom: 0; text-align: center; opacity: 0; }
+    .cap span { display: inline-block; padding: 14px 30px 16px; border-radius: 14px; background: rgba(11,11,12,.68);
+      font-family: "Barlow"; font-weight: 700; font-size: 47px; line-height: 1.22; text-wrap: balance; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="cap-stage">
+      <div id="cap-0" class="cap"><span>Hey, it&#x27;s Crystal<br />at Certified Collision Center</span></div>
+      <div id="cap-1" class="cap"><span>I just wanted to say that I&#x27;m<br />so thankful for my family</span></div>
+      <div id="cap-2" class="cap"><span>I&#x27;m thankful for all the blessings<br />that we&#x27;ve had this year</span></div>
+      <div id="cap-3" class="cap"><span>and definitely a great<br />place to work</span></div>
+      <div id="cap-4" class="cap"><span>It&#x27;s definitely become a family<br />and I couldn&#x27;t ask for more</span></div>
+      <div id="cap-5" class="cap"><span>Happy holidays!</span></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#cap-0", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 0.167);
+      tl.to("#cap-0", { opacity: 0, duration: 0.12, ease: "power2.in" }, 2.18);
+      tl.set("#cap-0", { visibility: "hidden" }, 2.3);
+      tl.fromTo("#cap-1", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 2.467);
+      tl.to("#cap-1", { opacity: 0, duration: 0.12, ease: "power2.in" }, 4.38);
+      tl.set("#cap-1", { visibility: "hidden" }, 4.5);
+      tl.fromTo("#cap-2", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 4.633);
+      tl.to("#cap-2", { opacity: 0, duration: 0.12, ease: "power2.in" }, 6.646);
+      tl.set("#cap-2", { visibility: "hidden" }, 6.766);
+      tl.fromTo("#cap-3", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 6.767);
+      tl.to("#cap-3", { opacity: 0, duration: 0.12, ease: "power2.in" }, 8.247);
+      tl.set("#cap-3", { visibility: "hidden" }, 8.367);
+      tl.fromTo("#cap-4", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 8.5);
+      tl.to("#cap-4", { opacity: 0, duration: 0.12, ease: "power2.in" }, 10.613);
+      tl.set("#cap-4", { visibility: "hidden" }, 10.733);
+      tl.fromTo("#cap-5", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.out" }, 11.067);
+      tl.to("#cap-5", { opacity: 0, duration: 0.12, ease: "power2.in" }, 11.88);
+      tl.set("#cap-5", { visibility: "hidden" }, 12.0);
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

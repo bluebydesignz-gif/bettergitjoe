@@ -1,0 +1,121 @@
+{
+ "_note": "Template. Replace every src, in and dur after reviewing the footage, and every [BRACKETED] line with copy Joe approved.",
+ "slug": "insync-event",
+ "fps": 30,
+ "tail": 0.0,
+ "beats": [
+  {
+   "id": "h1",
+   "src": "[BEST_MOMENT].MOV",
+   "in": 0.0,
+   "dur": 2.4,
+   "push": [
+    1.0,
+    1.03
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -34
+   }
+  },
+  {
+   "id": "e1",
+   "src": "[TABLE_WIDE].MOV",
+   "in": 0.0,
+   "dur": 2.6,
+   "xfade": 0.3,
+   "push": [
+    1.0,
+    1.02
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -36
+   }
+  },
+  {
+   "id": "l1",
+   "src": "[LEONARD_TALKING].MOV",
+   "in": 0.0,
+   "dur": 4.5,
+   "zoom": 1.3,
+   "cx": 0.5,
+   "cy": 0.4,
+   "audio": {
+    "kind": "voice",
+    "chain": "close"
+   }
+  },
+  {
+   "id": "e2",
+   "src": "[PEOPLE_STOPPING_BY].MOV",
+   "in": 0.0,
+   "dur": 2.8,
+   "audio": {
+    "kind": "nat",
+    "db": -36
+   }
+  },
+  {
+   "id": "t1",
+   "src": "[AUTHORIZED_CLIENT_LINE].MOV",
+   "in": 0.0,
+   "dur": 4.0,
+   "audio": {
+    "kind": "voice",
+    "chain": "close"
+   }
+  },
+  {
+   "id": "c1",
+   "src": "[LAST_CLEAN_SHOT].MOV",
+   "in": 0.0,
+   "dur": 4.2,
+   "xfade": 0.3,
+   "push": [
+    1.0,
+    1.0
+   ],
+   "audio": {
+    "kind": "nat",
+    "db": -38
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "hook",
+   "at": "h1+0.2",
+   "dur": 2.6,
+   "lines": [
+    "[HOOK LINE ONE]",
+    "[HOOK LINE TWO]"
+   ]
+  },
+  {
+   "type": "name",
+   "at": "l1+0.3",
+   "dur": 3.4,
+   "name": "Leonard",
+   "role": "Founder, INSYNC Credit Repair"
+  },
+  {
+   "type": "caption",
+   "at": "l1+0.2",
+   "dur": 2.0,
+   "text": "[LEONARD'S WORDS, EXACT]"
+  },
+  {
+   "type": "caption",
+   "at": "t1+0.2",
+   "dur": 3.4,
+   "text": "[CLIENT'S WORDS, EXACT]",
+   "verified": true
+  },
+  {
+   "type": "cta",
+   "at": "c1+0.4",
+   "dur": 3.8
+  }
+ ]
+}

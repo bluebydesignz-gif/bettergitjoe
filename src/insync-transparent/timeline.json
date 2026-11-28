@@ -1,0 +1,142 @@
+{
+ "slug": "insync-transparent",
+ "fps": 30,
+ "durationInFrames": 705,
+ "segments": [
+  {
+   "id": "b1",
+   "file": "insync-transparent/seg/b1.mp4",
+   "from": 0,
+   "dur": 66,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "b2",
+   "file": "insync-transparent/seg/b2.mp4",
+   "from": 66,
+   "dur": 86,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "b3",
+   "file": "insync-transparent/seg/b3.mp4",
+   "from": 152,
+   "dur": 66,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "b4",
+   "file": "insync-transparent/seg/b4.mp4",
+   "from": 218,
+   "dur": 72,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "b5",
+   "file": "insync-transparent/seg/b5.mp4",
+   "from": 290,
+   "dur": 74,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "b6",
+   "file": "insync-transparent/seg/b6.mp4",
+   "from": 363,
+   "dur": 69,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  },
+  {
+   "id": "b7",
+   "file": "insync-transparent/seg/b7.mp4",
+   "from": 432,
+   "dur": 273,
+   "xfade": 0,
+   "push": [
+    1.0,
+    1.03
+   ]
+  }
+ ],
+ "overlays": [
+  {
+   "type": "hook",
+   "dur": 60,
+   "lines": [
+    "Totally",
+    "transparent"
+   ],
+   "from": 30
+  },
+  {
+   "type": "caption",
+   "dur": 81,
+   "text": "My name is Leonard|I'm here with INSYNC Credit Repair",
+   "from": 69
+  },
+  {
+   "type": "caption",
+   "dur": 63,
+   "text": "We will explain every step|of the way with you",
+   "from": 153
+  },
+  {
+   "type": "caption",
+   "dur": 69,
+   "text": "And make sure to be|clear as day",
+   "from": 219
+  },
+  {
+   "type": "caption",
+   "dur": 57,
+   "text": "I'm not hiding anything|I can't",
+   "from": 304
+  },
+  {
+   "type": "caption",
+   "dur": 64,
+   "text": "I don't have the capacity|to deceive you",
+   "from": 366
+  },
+  {
+   "type": "caption",
+   "dur": 44,
+   "text": "If you have any questions",
+   "from": 435
+  },
+  {
+   "type": "caption",
+   "dur": 141,
+   "text": "You can message me|or fill out our intake form|at insynccredit.com",
+   "from": 480
+  },
+  {
+   "type": "cta",
+   "dur": 82,
+   "from": 622
+  }
+ ]
+}

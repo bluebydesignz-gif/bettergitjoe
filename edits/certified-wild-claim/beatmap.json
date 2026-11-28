@@ -1,0 +1,13 @@
+{
+ "source": "/tmp/claude-0/-home-user-bettergitjoe/ec0793d8-2d21-50ca-aef4-1797794e3797/scratchpad/cw/dl/DJI_151911_430.mp4",
+ "face_keys": [[0,0.55,0.34],[27,0.55,0.34]],
+ "beats": [
+  {"id":"hook","in":0.75,"out":3.26,"zoom":1.35,"face_y":0.60},
+  {"id":"myth","in":4.08,"out":7.70,"zoom":1.5,"face_y":0.62},
+  {"id":"here","in":8.12,"out":11.28,"zoom":1.0,"face_y":0.36},
+  {"id":"list1","in":11.58,"out":17.08,"zoom":1.35,"face_y":0.60},
+  {"id":"list2","in":17.40,"out":19.40,"zoom":1.5,"face_y":0.62},
+  {"id":"close","in":19.60,"out":24.52,"zoom":1.0,"face_y":0.36},
+  {"id":"tail","in":24.52,"out":26.55,"zoom":1.2,"face_y":0.36,"audio":"mute","hold":1.4}
+ ]
+}
